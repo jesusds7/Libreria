@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,7 +16,6 @@ public class BarraMenu extends JMenuBar {
 	private JMenuItem itemAgregarLibro;
 	private JMenuItem itemEditarLibro;
 	private JMenuItem itemRemoverLibro;
-	private JMenuItem itemComprarLibro;
 	private JMenu menuImportar;
 	private JMenu menuExportar;
 	private JMenuItem itemSalir;
@@ -26,19 +26,23 @@ public class BarraMenu extends JMenuBar {
 	
 	public BarraMenu(Controlador controlador) {
 		menuArchivo = new JMenu(ConstantesGUI.T_MENU_ARCHIVO);
-		itemComprarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_COMPRAR_LIBRO);
-		menuArchivo.add(itemComprarLibro);
 		itemAgregarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);
+		itemAgregarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
 		menuArchivo.add(itemAgregarLibro);
 		itemRemoverLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_REMOVER_LIBRO);
+		itemRemoverLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_ELIMINAR_LIBRO));
 		menuArchivo.add(itemRemoverLibro);
 		itemEditarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_EDITAR_LIBRO);
+		itemEditarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_EDITAR));
 		menuArchivo.add(itemEditarLibro);
 		menuImportar = new JMenu(ConstantesGUI.T_MENU_IMPORTAR);
+		menuImportar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_IMPORTAR));
 		menuArchivo.add(menuImportar);
 		menuExportar = new JMenu(ConstantesGUI.T_MENU_EXPORTAR);
+		menuExportar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_EXPORTAR));
 		menuArchivo.add(menuExportar);
 		itemSalir = new JMenuItem(ConstantesGUI.T_MENU_ITEM_SALIR);
+		itemSalir.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_SALIR));
 		menuArchivo.add(itemSalir);
 		add(menuArchivo);
 		
@@ -50,6 +54,15 @@ public class BarraMenu extends JMenuBar {
 		
 		menuAyuda = new JMenu(ConstantesGUI.T_MENU_AYUDA);
 		add(menuAyuda);
+	}
+	
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
 	}
 
 }
