@@ -1,6 +1,4 @@
 package vista;
-
-import java.awt.Checkbox;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,7 +18,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
@@ -124,7 +120,7 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridx = 0;
 		cons.gridy = 5;
 		add(lbGenero, cons);
-		
+
 		listaGenero = new JComboBox<TipoGenero>();
 		cons.gridx = 1;
 		cons.gridy = 5;
@@ -134,6 +130,8 @@ public class DialogoAgregarLibro extends JDialog{
 		listaGenero.addItem(TipoGenero.INFANTIL);
 		listaGenero.addItem(TipoGenero.TERROR);
 		add(listaGenero, cons);
+
+
 
 		btnAgregarImagen = new JButton(ConstantesGUI.T_BTN_CARGAR_IMAGEN);
 		btnAgregarImagen.setActionCommand(Controlador.A_AGREGAR_IMAGEN);
@@ -164,7 +162,14 @@ public class DialogoAgregarLibro extends JDialog{
 		btnCrear.addActionListener(controlador);
 		btnCrear.setActionCommand(Controlador.A_AGREGAR_LIBRO);
 		add(btnCrear, cons);
+		seleccionBox();
 	}
+
+	public TipoGenero seleccionBox(){
+		TipoGenero aux = (TipoGenero) listaGenero.getSelectedItem();
+		return aux;
+	}
+
 
 	public void copiarImagen(){
 		Path entrada = Paths.get(txtRutaImagen.getText());
@@ -178,7 +183,7 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), TipoGenero.ACCION);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), TipoGenero.INFANTIL);
 		dispose();
 		cancelar();
 		return libro;

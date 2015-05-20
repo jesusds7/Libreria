@@ -22,6 +22,7 @@ public class BarraHerramientasAdm extends JToolBar {
 	protected ButtonGroup grupoBuscarLibro;
 	private JButton btnEliminar;
 	private JButton btnEditar;
+	private JButton btnNuevoAutor;
 	
 	public BarraHerramientasAdm(Controlador controlador) {
 		setEnabled(false);
@@ -45,6 +46,13 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnEditar.setToolTipText(ConstantesGUI.T_MENU_ITEM_EDITAR_LIBRO);
 		btnEditar.setActionCommand(Controlador.A_MOSTAR_EDITAR_LIBRO);
 		add(btnEditar);
+		
+		btnNuevoAutor = new JButton();
+		btnNuevoAutor.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
+		btnNuevoAutor.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
+		btnNuevoAutor.addActionListener(controlador);
+		btnNuevoAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
+		add(btnNuevoAutor);
 		
 		btnBuscarLibro = new JButton();
 		btnBuscarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_BUSCAR));

@@ -3,6 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,6 +14,8 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.entidades.Autor;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import modelo.util.Util;
@@ -27,8 +30,13 @@ public class VentanaAdministrador extends JFrame {
 	private BarraHerramientasAdm barraHerramientas;
 	private BarraMenuAdm barraMenu;
 	private JTable tablalibros;
-	private DefaultTableModel modeloTabla;
-	private JPanel panelCentro;
+	private DefaultTableModel modeloTablaLibros;
+	private JTable tablaAutores;
+	private DefaultTableModel modeloTablaAutores;
+	private JPanel panelLibros;
+//	private JPanel panelCliente;
+	private JPanel panelAutor;
+	private JPanel panelClase;
 	private PanelFotos panelFotos;
 	private DialogoAgregarLibro dialogoAgregarLibro;
 
@@ -45,19 +53,20 @@ public class VentanaAdministrador extends JFrame {
 
 		barraHerramientas = new BarraHerramientasAdm(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
-
-		panelCentro = new JPanel(new GridBagLayout());
+		
+		panelClase = new JPanel(new GridBagLayout());
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.BOTH;
+		
+		panelLibros = new JPanel();
 
-		modeloTabla = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"}, 0);
-		tablalibros = new JTable(modeloTabla);
-		panelFotos = new PanelFotos();
+		modeloTablaLibros = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"}, 0);
+		tablalibros = new JTable(modeloTablaLibros);
 		tablalibros.getTableHeader().setReorderingAllowed(false);
 		tablalibros.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				if(modeloTabla.getRowCount() > 0){
+				if(modeloTablaLibros.getRowCount() > 0){
 					//					try {
 					//						panelFotos.setRutaImagen(controlador.buscarSitioTuristico(retornarIdSeleccion()).getImagen());
 					//						panelFotos.repaint();
@@ -67,18 +76,35 @@ public class VentanaAdministrador extends JFrame {
 				}
 			}
 		});
-		cons.gridx = 0;
-		cons.gridy = 0;
-		cons.weightx = 1;
-		cons.weighty = 1;
-		panelCentro.add(new JScrollPane(tablalibros), cons);
-		panelFotos.setBorder(BorderFactory.createTitledBorder("Imagen"));
-		cons.gridx = 6;
-		cons.gridy = 0;
-		cons.weightx = 4;
-		cons.weighty = 1;
-		panelCentro.add(panelFotos, cons);
-		add(panelCentro);
+		panelLibros.setBorder(BorderFactory.createTitledBorder("Libros"));
+		panelLibros.add(new JScrollPane(tablalibros));
+		panelClase.add(panelLibros, cons);
+		
+		panelAutor = new JPanel();
+		modeloTablaAutores = new DefaultTableModel(new String[]{"N°Orden" , "Nombre"}, 0);
+		tablaAutores = new JTable(modeloTablaAutores);
+		tablaAutores.getTableHeader().setReorderingAllowed(false);
+		tablaAutores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(modeloTablaAutores.getRowCount() > 0){
+					//					try {
+					//						panelFotos.setRutaImagen(controlador.buscarSitioTuristico(retornarIdSeleccion()).getImagen());
+					//						panelFotos.repaint();
+					//					} catch (ExcepcionSitioNoEncontrado e1) {
+					//						e1.printStackTrace();
+					//					}
+				}
+			}
+		});
+		panelAutor.setBorder(BorderFactory.createTitledBorder("Autor"));
+		panelAutor.add(new JScrollPane(tablaAutores), cons);
+		panelClase.add(panelAutor, cons);
+		
+//		panelCliente = new JPanel();
+//		panelCliente.setBorder(BorderFactory.createTitledBorder("Clientes"));
+//		panelClase.add(panelCliente, cons);
+		add(panelClase);
 
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
 		dialogoAgregarLibro.setVisible(false);
@@ -86,7 +112,7 @@ public class VentanaAdministrador extends JFrame {
 
 	public void seleccionarLibro(int id){
 		for (int i = 0; i < tablalibros.getRowCount(); i++) {
-			int aux = Integer.parseInt((String) modeloTabla.getValueAt(i, 0));
+			int aux = Integer.parseInt((String) modeloTablaLibros.getValueAt(i, 0));
 			if(id == aux){
 				tablalibros.setRowSelectionInterval(i, i);
 				break;
@@ -95,8 +121,8 @@ public class VentanaAdministrador extends JFrame {
 	}
 
 	public void seleccionarLibro(String name){
-		for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-			String n = (String) modeloTabla.getValueAt(i, 1);
+		for (int i = 0; i < modeloTablaLibros.getRowCount(); i++) {
+			String n = (String) modeloTablaLibros.getValueAt(i, 1);
 			if(n.equalsIgnoreCase(name)){
 				tablalibros.setRowSelectionInterval(i, i);
 				break;
@@ -107,16 +133,20 @@ public class VentanaAdministrador extends JFrame {
 	public void elimiarFila(){
 		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Libro?.", "", 1, 0);
 		if(pregunta == JOptionPane.YES_OPTION){
-			modeloTabla.removeRow(tablalibros.getSelectedRow());
+			modeloTablaLibros.removeRow(tablalibros.getSelectedRow());
 		}
 	}
 
 	public int retornarIdSeleccion(){
-		return Integer.parseInt((String) modeloTabla.getValueAt(tablalibros.getSelectedRow(), 0));
+		return Integer.parseInt((String) modeloTablaLibros.getValueAt(tablalibros.getSelectedRow(), 0));
 	}
 
 	public void agregarLibroTabla(Libro libro, TipoGenero genero){
-		modeloTabla.addRow(Util.sitioAVector(libro, genero));
+		modeloTablaLibros.addRow(Util.sitioAVector(libro, genero));
+	}
+	
+	public void agregarAutorTabla(Autor autor){
+		modeloTablaAutores.addRow(Util.sitioAVectorAutor(autor));
 	}
 
 	public void mostrarDialogo(){
@@ -124,14 +154,14 @@ public class VentanaAdministrador extends JFrame {
 	}
 	
 	public void actualizarTabla (Libro s, int fila){
-		modeloTabla.setValueAt(s.getId(), fila, 0);
-		modeloTabla.setValueAt(s.getNombre(), fila, 1);
-		modeloTabla.setValueAt(s.getDescripcion(), fila, 2);
-		modeloTabla.setValueAt(s.getPrecio(), fila, 3);
-		modeloTabla.setValueAt(s.getNumeroCopias(), fila, 4);
-		modeloTabla.setValueAt(s.getNombreAutor(), fila, 5);		
+		modeloTablaLibros.setValueAt(s.getId(), fila, 0);
+		modeloTablaLibros.setValueAt(s.getNombre(), fila, 1);
+		modeloTablaLibros.setValueAt(s.getDescripcion(), fila, 2);
+		modeloTablaLibros.setValueAt(s.getPrecio(), fila, 3);
+		modeloTablaLibros.setValueAt(s.getNumeroCopias(), fila, 4);
+		modeloTablaLibros.setValueAt(s.getNombreAutor(), fila, 5);		
 		panelFotos.setRutaImagen(s.getImagen());
-		modeloTabla.fireTableDataChanged();
+		modeloTablaLibros.fireTableDataChanged();
 	}
 
 	protected ImageIcon createImageIcon(String path) {
@@ -157,45 +187,5 @@ public class VentanaAdministrador extends JFrame {
 
 	public void setBarraMenu(BarraMenuAdm barraMenu) {
 		this.barraMenu = barraMenu;
-	}
-
-	public JTable getTablalibros() {
-		return tablalibros;
-	}
-
-	public void setTablalibros(JTable tablalibros) {
-		this.tablalibros = tablalibros;
-	}
-
-	public DefaultTableModel getModeloTabla() {
-		return modeloTabla;
-	}
-
-	public void setModeloTabla(DefaultTableModel modeloTabla) {
-		this.modeloTabla = modeloTabla;
-	}
-
-	public JPanel getPanelCentro() {
-		return panelCentro;
-	}
-
-	public void setPanelCentro(JPanel panelCentro) {
-		this.panelCentro = panelCentro;
-	}
-
-	public PanelFotos getPanelFotos() {
-		return panelFotos;
-	}
-
-	public void setPanelFotos(PanelFotos panelFotos) {
-		this.panelFotos = panelFotos;
-	}
-
-	public DialogoAgregarLibro getDialogoAgregarLibro() {
-		return dialogoAgregarLibro;
-	}
-
-	public void setDialogoAgregarLibro(DialogoAgregarLibro dialogoAgregarLibro) {
-		this.dialogoAgregarLibro = dialogoAgregarLibro;
 	}
 }

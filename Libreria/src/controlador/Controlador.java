@@ -4,10 +4,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import modelo.dao.GestorAutor;
 import modelo.dao.GestorLibro;
+import modelo.entidades.Autor;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
+import vista.DialogoAgregarAutor;
 import vista.DialogoAgregarLibro;
 import vista.DialogoInicio;
 import vista.EditDialogoAgregarLibro;
@@ -21,6 +24,7 @@ public class Controlador extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	public static final String A_BTN_DIALOGO_ADMINISTRADOR = "DIALOGO_ADMINISTRADOR";
 	public static final String A_MOSTAR_AGREGAR_LIBRO = "A_MOSTRAR_AGREGAR_LIBRO";
+	public static final String A_MOSTAR_AGREGAR_AUTOR = "A_MOSTRAR_AGREGAR_AUTOR";
 	public static final String A_REMOVER_LIBRO = "REMOVER_LIBRO";
 	public static final String A_MOSTAR_EDITAR_LIBRO = "MOSTAR_EDITAR_LIBRO";
 	public static final String A_BUSCAR_LIBRO = "BUSCAR_LIBRO";
@@ -31,8 +35,11 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_COMPRAR_LIBRO = "COMPRAR_LIBRO";
 	public static final String A_BTN_DIALOGO_USUARIO = "VENTANA USARIO";
 	public static final String A_AGREGAR_IMAGEN = "Agregar_imagen";
+	public static final String A_AGREGAR_IMAGEN_AUTOR = "Agregar_imagen_AUTOR";
 	public static final String A_CANCELAR_LIBRO = "CANCELAR_LIBRO";
+	public static final String A_CANCELAR_AUTOR = "CANCELAR_AUTOR";
 	public static final String A_AGREGAR_LIBRO = "ACCION_AGREGAR_LIBRO";
+	public static final String A_AGREGAR_AUTOR = "ACCION_AGREGAR_AUTOR";
 	public static final String A_MOSTRAR_DIALOGO_AGREGAR_LIBRO = "ACCION_MOSTAR_AGREGAR_LIBRO";
 	public static final String A_SALIR = "SALIR";
 	public static final String A_EDITAR_LIBRO = "EDITAR_LIBRO";
@@ -42,11 +49,15 @@ public class Controlador extends JPanel implements ActionListener {
 	private VentanaUsuario ventanaUsuario;
 	private GestorLibro gestorLibro;
 	private EditDialogoAgregarLibro editDialogoAgregarLibro;
+	private DialogoAgregarAutor dialogoAgregarAutor;
+	private GestorAutor gestorAutor;
 	
 	public Controlador() {
 		gestorLibro = new GestorLibro();
+		gestorAutor = new GestorAutor();
 		dialogoPrimario = new DialogoInicio(this);
 		dialogoAgregarLibro = new DialogoAgregarLibro(ventanaAdministrador, this);
+		dialogoAgregarAutor = new DialogoAgregarAutor(ventanaAdministrador, this);
 		editDialogoAgregarLibro = new EditDialogoAgregarLibro(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
 		ventanaUsuario = new VentanaUsuario(this);
@@ -108,6 +119,11 @@ public class Controlador extends JPanel implements ActionListener {
 			} catch (ExcepcionLibroNoEncontrado e1) {
 				e1.printStackTrace();
 			}
+		case A_MOSTAR_AGREGAR_AUTOR:
+			dialogoAgregarAutor.setVisible(true);
+			break;
+		case A_AGREGAR_AUTOR:
+			agregarAutor();
 			break;
 		default:
 			break;
@@ -158,8 +174,20 @@ public class Controlador extends JPanel implements ActionListener {
 		return gestorLibro.buscarLibro(id);
 	}
 	
+	public void agregarAutor(){
+		Autor autor = dialogoAgregarAutor.crearAutor();
+		crearAutor(autor);
+	}
+	
+	public void crearAutor(Autor autor){
+		if(autor != null){
+			gestorAutor.agregarAutor(autor);
+			ventanaAdministrador.agregarAutorTabla(autor);
+		}
+	}
+	
 	public void agregarLibro(){
-		TipoGenero genero = TipoGenero.AVENTURA;
+		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
 	}

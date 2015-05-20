@@ -6,6 +6,7 @@ public enum TipoGenero {
 	CIENTIFICO("Cientifico"),
 	INFANTIL("Infantil"),
 	TERROR("Terror");
+	
 	private String genero;
 
 	private TipoGenero(String genero) {
@@ -14,10 +15,6 @@ public enum TipoGenero {
 	
 	@Override
 	public String toString() {
-		return genero;
-	}
-
-	public String getGenero() {
 		return genero;
 	}
 

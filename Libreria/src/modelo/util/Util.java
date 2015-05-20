@@ -1,5 +1,6 @@
 package modelo.util;
 
+import modelo.entidades.Autor;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 /**
@@ -17,9 +18,12 @@ public class Util {
 	}
 
 	public static String[] sitioAVector(Libro  libro, TipoGenero genero){
-
 		return new String[]{Integer.toString( libro.getId()),  libro.getNombre(),  libro.getDescripcion(),
 				Double.toString(libro.getPrecio()), Integer.toString(libro.getNumeroCopias()),
 				libro.getNombreAutor(), genero.toString() };
+	}
+	
+	public static String[] sitioAVectorAutor(Autor autor){
+		return new String[]{Integer.toString( autor.getId()),  autor.getNombre()};
 	}
 }

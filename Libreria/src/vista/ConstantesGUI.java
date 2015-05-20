@@ -94,6 +94,7 @@ public class ConstantesGUI {
 	public static final String T_CHECK_CIENTIFICO = "Cientifico";
 	public static final String T_CHECK_INFANTIL = "Infantil";
 	public static final String T_LABEL_GENERO = "Genero";
+	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "Agregar Autor";
 	
 	
 }
