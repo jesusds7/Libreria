@@ -23,8 +23,7 @@ public class DialogoInicio extends JDialog{
 	
 	
 	public DialogoInicio(Controlador controlador) {
-		
-		
+			
 		setLayout(new GridBagLayout());
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
@@ -33,6 +32,11 @@ public class DialogoInicio extends JDialog{
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
+		
+//		JPanelFondo panelFondo = new JPanelFondo("src/imagenes/fondodialogoinicio.jpg");
+//		cons.weightx = 10;
+//		cons.weighty = 10;
+//		add(panelFondo, cons);
 
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);
 		
