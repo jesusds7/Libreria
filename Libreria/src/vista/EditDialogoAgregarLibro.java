@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -39,15 +40,10 @@ public class EditDialogoAgregarLibro extends JDialog {
 	private JLabel lbValor;
 	private JLabel lbNumeroCopias;
 	private JLabel lbAutor;
-	private JLabel lbGenero;
+	private JComboBox<TipoGenero> listaGenero;
 	protected JButton btnEdit;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
-	private Checkbox btnAccion;	 
-	private Checkbox btnAventura;
-	private Checkbox btnCientifico;
-	private Checkbox btnInfantil;
-	private Checkbox btnTerror;
 	
 	public EditDialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
@@ -120,35 +116,15 @@ public class EditDialogoAgregarLibro extends JDialog {
 		cons.gridy = 4;
 		add(txtAutor, cons);
 
-		lbGenero = new JLabel(ConstantesGUI.T_LABEL_GENERO);
-		cons.gridx = 0;
-		cons.gridy = 5;
-		add(lbGenero, cons);
-
-		btnAccion = new Checkbox(ConstantesGUI.T_CHECK_ACCION);
+		listaGenero = new JComboBox<TipoGenero>();
 		cons.gridx = 1;
 		cons.gridy = 5;
-		add(btnAccion, cons);
-
-		btnAventura = new Checkbox(ConstantesGUI.T_CHECK_AVENTURA);
-		cons.gridx = 2;
-		cons.gridy = 5;
-		add(btnAventura, cons);
-
-		btnCientifico = new Checkbox(ConstantesGUI.T_CHECK_CIENTIFICO);
-		cons.gridx = 3;
-		cons.gridy = 5;
-		add(btnCientifico, cons);
-
-		btnInfantil = new Checkbox(ConstantesGUI.T_CHECK_INFANTIL);
-		cons.gridx = 4;
-		cons.gridy = 5;
-		add(btnInfantil, cons);
-
-		btnTerror = new Checkbox(ConstantesGUI.T_CHECK_TERROR);
-		cons.gridx = 5;
-		cons.gridy = 5;
-		add(btnTerror, cons);
+		listaGenero.addItem(TipoGenero.ACCION);
+		listaGenero.addItem(TipoGenero.AVENTURA);
+		listaGenero.addItem(TipoGenero.CIENTIFICO);
+		listaGenero.addItem(TipoGenero.INFANTIL);
+		listaGenero.addItem(TipoGenero.TERROR);
+		add(listaGenero, cons);
 
 		btnAgregarImagen = new JButton(ConstantesGUI.T_BTN_CARGAR_IMAGEN);
 		btnAgregarImagen.setActionCommand(Controlador.A_AGREGAR_IMAGEN);
