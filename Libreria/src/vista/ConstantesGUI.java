@@ -59,6 +59,7 @@ public class ConstantesGUI {
 	public static final String T_TABLA_NOMBRE = "NOMBRE";
 	public static final String T_TABLA_DESCRIPCION = "DESCRIPCION";
 	public static final String T_TABLA_VALOR = "PRECIO";
+	public static final String IMG_ICONO_VENTANA_USUARIO = "src/imagenes/iconoventanausuario.png";
 	
 	/**
 	 * Constantes Barra Herramientas Usuario

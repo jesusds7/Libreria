@@ -4,9 +4,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import com.sun.jmx.mbeanserver.JmxMBeanServer;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
 import controlador.Controlador;
 
 public class BarraMenuUs extends JMenuBar{

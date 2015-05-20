@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.BorderLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,6 +26,7 @@ public class VentanaUsuario extends JFrame{
 		this.setLayout(new BorderLayout());
 		this.setSize(ConstantesGUI.VENTANA_USUARIO_ANCHO, ConstantesGUI.VENTANA_USUARIO_ALTO);
 		this.setLocationRelativeTo(null);
+		this.setIconImage(new ImageIcon(ConstantesGUI.IMG_ICONO_VENTANA_USUARIO).getImage());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		barraMenu = new BarraMenuUs(controlador);
