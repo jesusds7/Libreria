@@ -1,7 +1,4 @@
 package vista;
-
-import javax.swing.Icon;
-
 public class ConstantesGUI {
 	
 	/**

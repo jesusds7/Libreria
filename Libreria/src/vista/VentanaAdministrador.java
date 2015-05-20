@@ -3,7 +3,6 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,8 +13,6 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
-import modelo.entidades.Autor;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import modelo.util.Util;
@@ -48,7 +45,7 @@ public class VentanaAdministrador extends JFrame {
 
 		barraHerramientas = new BarraHerramientasAdm(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
-		
+
 		panelCentro = new JPanel(new GridBagLayout());
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.BOTH;
@@ -61,12 +58,12 @@ public class VentanaAdministrador extends JFrame {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if(modeloTabla.getRowCount() > 0){
-//					try {
-//						panelFotos.setRutaImagen(controlador.buscarSitioTuristico(retornarIdSeleccion()).getImagen());
-//						panelFotos.repaint();
-//					} catch (ExcepcionSitioNoEncontrado e1) {
-//						e1.printStackTrace();
-//					}
+					//					try {
+					//						panelFotos.setRutaImagen(controlador.buscarSitioTuristico(retornarIdSeleccion()).getImagen());
+					//						panelFotos.repaint();
+					//					} catch (ExcepcionSitioNoEncontrado e1) {
+					//						e1.printStackTrace();
+					//					}
 				}
 			}
 		});
@@ -82,11 +79,11 @@ public class VentanaAdministrador extends JFrame {
 		cons.weighty = 1;
 		panelCentro.add(panelFotos, cons);
 		add(panelCentro);
-		
+
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
 		dialogoAgregarLibro.setVisible(false);
 	}
-	
+
 	public void seleccionarLibro(int id){
 		for (int i = 0; i < tablalibros.getRowCount(); i++) {
 			int aux = Integer.parseInt((String) modeloTabla.getValueAt(i, 0));
@@ -125,7 +122,7 @@ public class VentanaAdministrador extends JFrame {
 	public void mostrarDialogo(){
 		dialogoAgregarLibro.setVisible(true);
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

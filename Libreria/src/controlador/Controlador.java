@@ -2,12 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JFileChooser;
 import javax.swing.JPanel;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import modelo.dao.GestorAutor;
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;

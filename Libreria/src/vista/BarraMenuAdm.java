@@ -22,8 +22,8 @@ public class BarraMenuAdm extends JMenuBar {
 	private JMenu menuEstadisticas;
 	private JMenu menuPreferencias;
 	private JMenu menuAyuda;
-	
-	
+
+
 	public BarraMenuAdm(Controlador controlador) {
 		menuArchivo = new JMenu(ConstantesGUI.T_MENU_ARCHIVO);
 		itemAgregarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);
@@ -49,17 +49,17 @@ public class BarraMenuAdm extends JMenuBar {
 		itemSalir.setActionCommand(Controlador.A_SALIR);
 		menuArchivo.add(itemSalir);
 		add(menuArchivo);
-		
+
 		menuPreferencias = new JMenu(ConstantesGUI.T_MENU_PREFERENCIAS);
 		add(menuPreferencias);
-		
+
 		menuEstadisticas = new JMenu(ConstantesGUI.T_MENU_ESTADISTICAS);
 		add(menuEstadisticas);
-		
+
 		menuAyuda = new JMenu(ConstantesGUI.T_MENU_AYUDA);
 		add(menuAyuda);
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

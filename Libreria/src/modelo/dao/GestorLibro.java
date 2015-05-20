@@ -1,8 +1,6 @@
 package modelo.dao;
 
 import java.util.ArrayList;
-
-import modelo.entidades.Autor;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
