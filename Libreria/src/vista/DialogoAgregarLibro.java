@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,8 +20,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
+import modelo.entidades.TipoGenero;
 import controlador.Controlador;
 
 public class DialogoAgregarLibro extends JDialog{
@@ -193,7 +196,7 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), null);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), TipoGenero.ACCION);
 		dispose();
 		cancelar();
 		return libro;

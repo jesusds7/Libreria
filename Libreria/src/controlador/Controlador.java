@@ -40,6 +40,7 @@ public class Controlador extends JPanel implements ActionListener {
 	
 	
 	public Controlador() {
+		gestorLibro = new GestorLibro();
 		dialogoPrimario = new DialogoInicio(this);
 		dialogoAgregarLibro = new DialogoAgregarLibro(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
@@ -81,7 +82,7 @@ public class Controlador extends JPanel implements ActionListener {
 	}
 	
 	public void agregarLibro(){
-		TipoGenero genero = TipoGenero.ACCION;
+		TipoGenero genero = TipoGenero.AVENTURA;
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
 	}

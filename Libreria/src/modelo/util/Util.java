@@ -19,7 +19,7 @@ public class Util {
 	public static String[] sitioAVector(Libro  libro, TipoGenero genero){
 
 		return new String[]{Integer.toString( libro.getId()),  libro.getNombre(),  libro.getDescripcion(),
-				libro.getImagen(), Integer.toString(libro.getNumeroCopias()), Double.toString(libro.getPrecio()),
+				Double.toString(libro.getPrecio()), Integer.toString(libro.getNumeroCopias()),
 				libro.getNombreAutor(), genero.toString() };
 	}
 }
