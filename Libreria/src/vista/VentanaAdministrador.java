@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -40,6 +41,7 @@ public class VentanaAdministrador extends JFrame {
 		setSize(ConstantesGUI.VENTANA_ALTO,ConstantesGUI.VENTANA_ANCHO);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		barraMenu = new BarraMenuAdm(controlador);
 		setJMenuBar(barraMenu);	
@@ -122,5 +124,14 @@ public class VentanaAdministrador extends JFrame {
 
 	public void mostrarDialogo(){
 		dialogoAgregarLibro.setVisible(true);
+	}
+	
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
 	}
 }

@@ -82,7 +82,7 @@ public class ConstantesGUI {
 	/**
 	 * dialogoAgregarLibro
 	 */
-	public static final String IMG_ICONO_LIBRO = "src/imagenes/library.png";
+	public static final String IMG_ICONO_LIBRO = "/imagenes/library.png";
 	public static final String T_LABEL_NOMBRE = "Nombre";
 	public static final String T_LABEL_DESCRIPCION = "Descripcion";
 	public static final String T_LABEL_SITIO_VALOR = "Precio";

@@ -34,6 +34,7 @@ public class DialogoInicio extends JDialog{
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);
 		
@@ -61,5 +62,13 @@ public class DialogoInicio extends JDialog{
 		add(btnUsuario, BorderLayout.EAST);		
 	}
 	
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
+	}
 
 }
