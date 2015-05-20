@@ -33,6 +33,8 @@ public class BarraMenuAdm extends JMenuBar {
 		menuArchivo.add(itemAgregarLibro);		
 		itemRemoverLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_REMOVER_LIBRO);
 		itemRemoverLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_ELIMINAR_LIBRO));
+		itemRemoverLibro.addActionListener(controlador);
+		itemRemoverLibro.setActionCommand(Controlador.A_REMOVER_LIBRO);
 		menuArchivo.add(itemRemoverLibro);
 		itemEditarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_EDITAR_LIBRO);
 		itemEditarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_EDITAR));

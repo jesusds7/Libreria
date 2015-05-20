@@ -122,6 +122,17 @@ public class VentanaAdministrador extends JFrame {
 	public void mostrarDialogo(){
 		dialogoAgregarLibro.setVisible(true);
 	}
+	
+	public void actualizarTabla (Libro s, int fila){
+		modeloTabla.setValueAt(s.getId(), fila, 0);
+		modeloTabla.setValueAt(s.getNombre(), fila, 1);
+		modeloTabla.setValueAt(s.getDescripcion(), fila, 2);
+		modeloTabla.setValueAt(s.getPrecio(), fila, 3);
+		modeloTabla.setValueAt(s.getNumeroCopias(), fila, 4);
+		modeloTabla.setValueAt(s.getNombreAutor(), fila, 5);		
+		panelFotos.setRutaImagen(s.getImagen());
+		modeloTabla.fireTableDataChanged();
+	}
 
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
@@ -130,5 +141,61 @@ public class VentanaAdministrador extends JFrame {
 		} else {
 			return null;
 		}
+	}
+
+	public BarraHerramientasAdm getBarraHerramientas() {
+		return barraHerramientas;
+	}
+
+	public void setBarraHerramientas(BarraHerramientasAdm barraHerramientas) {
+		this.barraHerramientas = barraHerramientas;
+	}
+
+	public BarraMenuAdm getBarraMenu() {
+		return barraMenu;
+	}
+
+	public void setBarraMenu(BarraMenuAdm barraMenu) {
+		this.barraMenu = barraMenu;
+	}
+
+	public JTable getTablalibros() {
+		return tablalibros;
+	}
+
+	public void setTablalibros(JTable tablalibros) {
+		this.tablalibros = tablalibros;
+	}
+
+	public DefaultTableModel getModeloTabla() {
+		return modeloTabla;
+	}
+
+	public void setModeloTabla(DefaultTableModel modeloTabla) {
+		this.modeloTabla = modeloTabla;
+	}
+
+	public JPanel getPanelCentro() {
+		return panelCentro;
+	}
+
+	public void setPanelCentro(JPanel panelCentro) {
+		this.panelCentro = panelCentro;
+	}
+
+	public PanelFotos getPanelFotos() {
+		return panelFotos;
+	}
+
+	public void setPanelFotos(PanelFotos panelFotos) {
+		this.panelFotos = panelFotos;
+	}
+
+	public DialogoAgregarLibro getDialogoAgregarLibro() {
+		return dialogoAgregarLibro;
+	}
+
+	public void setDialogoAgregarLibro(DialogoAgregarLibro dialogoAgregarLibro) {
+		this.dialogoAgregarLibro = dialogoAgregarLibro;
 	}
 }

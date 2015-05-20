@@ -21,15 +21,12 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import controlador.Controlador;
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
-import controlador.Controlador;
 
-public class DialogoAgregarLibro extends JDialog{
-	/**
-	 * 
-	 */
+public class EditDialogoAgregarLibro extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextArea txtADescripcion;
@@ -43,7 +40,7 @@ public class DialogoAgregarLibro extends JDialog{
 	private JLabel lbNumeroCopias;
 	private JLabel lbAutor;
 	private JLabel lbGenero;
-	protected JButton btnCrear;
+	protected JButton btnEdit;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
 	private Checkbox btnAccion;	 
@@ -51,13 +48,13 @@ public class DialogoAgregarLibro extends JDialog{
 	private Checkbox btnCientifico;
 	private Checkbox btnInfantil;
 	private Checkbox btnTerror;
-
-	public DialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
+	
+	public EditDialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
 		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
-		setTitle("Ingresar Datos Ciudad");
+		setTitle("Ingresar Datos Para Editar");
 		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -175,15 +172,36 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.insets = new Insets(0, 100, 0, 0);
 		add(btnCancelar, cons);
 
-		btnCrear = new JButton(ConstantesGUI.T_BTN_CREAR);
+		btnEdit = new JButton("Editar");
 		cons.gridx = 1;
 		cons.gridy = 7;
 		cons.insets = new Insets(0, 0, 0, 100);
-		btnCrear.addActionListener(controlador);
-		btnCrear.setActionCommand(Controlador.A_AGREGAR_LIBRO);
-		add(btnCrear, cons);
+		btnEdit.addActionListener(controlador);
+		btnEdit.setActionCommand(controlador.A_EDITAR_LIBRO);
+		add(btnEdit, cons);
 	}
-
+	
+	public Libro  editarLibro(Libro libro){
+		libro.setImagen(txtNombre.getText());
+		libro.setDescripcion(txtADescripcion.getText());
+		libro.setPrecio(Double.parseDouble(txtValor.getText()));
+		libro.setNombreAutor(txtAutor.getText());
+		libro.setNombre(txtNombre.getText());
+		libro.setNumeroCopias(Integer.parseInt(txtNumeroCopias.getText()));
+		cancelar();
+		dispose();
+		return libro;	
+	}
+	
+	public void cambiarValores(Libro libro){
+		txtNombre.setText(libro.getNombre());
+		txtADescripcion.setText(libro.getDescripcion());
+		txtValor.setText(libro.getPrecio() + "");
+		txtRutaImagen.setText(libro.getImagen());
+		txtNumeroCopias.setText(Integer.toString(libro.getNumeroCopias()));
+		txtAutor.setText(libro.getNombreAutor());
+	}
+	
 	public void copiarImagen(){
 		Path entrada = Paths.get(txtRutaImagen.getText());
 		Path salida = Paths.get("/src/img");
@@ -230,4 +248,5 @@ public class DialogoAgregarLibro extends JDialog{
 			return null;
 		}
 	}
+
 }

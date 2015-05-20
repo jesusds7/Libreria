@@ -78,4 +78,30 @@ public class BarraHerramientasAdm extends JToolBar {
 		}
 	}
 
+	public JTextField getTxBuscarLibro() {
+		return txBuscarLibro;
+	}
+
+	public void setTxBuscarLibro(JTextField txBuscarLibro) {
+		this.txBuscarLibro = txBuscarLibro;
+	}
+
+	public JRadioButton getrBtnNombreLibro() {
+		return rBtnNombreLibro;
+	}
+
+	public void setrBtnNombreLibro(JRadioButton rBtnNombreLibro) {
+		this.rBtnNombreLibro = rBtnNombreLibro;
+	}
+
+	public JRadioButton getrBtnIdLibro() {
+		return rBtnIdLibro;
+	}
+
+	public void setrBtnIdLibro(JRadioButton rBtnIdLibro) {
+		this.rBtnIdLibro = rBtnIdLibro;
+	}
+	
+	
+
 }
