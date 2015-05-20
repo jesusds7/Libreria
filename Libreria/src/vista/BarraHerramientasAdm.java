@@ -29,7 +29,7 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnNuevoLibro.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);
 		btnNuevoLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
 		btnNuevoLibro.addActionListener(controlador);
-		btnNuevoLibro.setActionCommand(Controlador.A_MOSTAR_AGREGAR_LIBRO);
+		btnNuevoLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_LIBRO);
 		add(btnNuevoLibro);
 
 		btnEliminar = new JButton();

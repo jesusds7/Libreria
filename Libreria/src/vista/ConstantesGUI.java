@@ -1,5 +1,7 @@
 package vista;
 
+import javax.swing.Icon;
+
 public class ConstantesGUI {
 	
 	/**
@@ -77,7 +79,24 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_US_COMPRAR_LIBRO = "Comprar Libro";
 	public static final String T_MENU_ITEM_US_BUSCAR_LIBRO = "Buscar Libro";
 	public static final String T_MENU_ITEM_US_MOSTRAR_LIBROS = "Lista de Libros";
-	
+	/**
+	 * dialogoAgregarLibro
+	 */
+	public static final String IMG_ICONO_LIBRO = "src/imagenes/library.png";
+	public static final String T_LABEL_NOMBRE = "Nombre";
+	public static final String T_LABEL_DESCRIPCION = "Descripcion";
+	public static final String T_LABEL_SITIO_VALOR = "Precio";
+	public static final String T_BTN_CARGAR_IMAGEN = "Cargar imagen";
+	public static final String T_BTN_CANCELAR = "Cancelar";
+	public static final String T_BTN_CREAR = "Crear";
+	public static final String T_LABEL_NUMERO_COPIAS = "Numero de Copias";
+	public static final String T_LABEL_AUTOR = "Autor";
+	public static final String T_CHECK_AVENTURA = "Aventura";
+	public static final String T_CHECK_ACCION = "Accion";
+	public static final String T_CHECK_TERROR = "Terror";
+	public static final String T_CHECK_CIENTIFICO = "Cientifico";
+	public static final String T_CHECK_INFANTIL = "Infantil";
+	public static final String T_LABEL_GENERO = "Genero";
 	
 	
 }

@@ -14,12 +14,13 @@ public class Libro implements Serializable {
 	private int numeroCopias;
 	private double precio;
 	private Autor autor;
+	private String nombreAutor;
 	private TipoGenero tipoGenero;
 	private static int consecutivo;
 
 
 	public Libro(String nombre, String descripcion, String imagen, int numeroCopias,
-			double precio, Autor autor, TipoGenero tipoGenero) {
+			double precio, String autor, TipoGenero tipoGenero) {
 		super();
 		this.setNombre(nombre);
 		this.descripcion = descripcion;
@@ -27,7 +28,7 @@ public class Libro implements Serializable {
 		this.imagen = imagen;
 		this.numeroCopias = numeroCopias;
 		this.precio = precio;
-		this.autor = autor;
+		this.nombreAutor = autor;
 		this.tipoGenero = tipoGenero;
 		consecutivo++;
 	}
@@ -100,6 +101,14 @@ public class Libro implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getNombreAutor() {
+		return nombreAutor;
+	}
+
+	public void setNombreAutor(String nombreAutor) {
+		this.nombreAutor = nombreAutor;
 	}
 
 
