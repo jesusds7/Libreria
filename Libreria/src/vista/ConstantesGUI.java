@@ -43,8 +43,8 @@ public class ConstantesGUI {
 	 */
 	
 	public static final String T_BTN_ADMINISTRADOR = "Administardor";
-	public static final int VENTANA_ALTO_PRIMARIA = 700;
-	public static final int VENTANA_ANCHO_PRIMARIA = 700;
+	public static final int VENTANA_ALTO_PRIMARIA = 400;
+	public static final int VENTANA_ANCHO_PRIMARIA =500;
 	public static final String IMG_ADMINISTRADOR = "src/imagenes/administrador.png";
 	public static final String IMG_USUARIO = "src/imagenes/usuario.png";
 	
@@ -53,12 +53,31 @@ public class ConstantesGUI {
 	 */
 	
 	public static final String T_VENTANA_USUARIO = "Tienda de Jesus y Walter - Usuario";
-	public static final int VENTANA_USUARIO_ALTO = 700;
-	public static final int VENTANA_USUARIO_ANCHO = 700;
+	public static final int VENTANA_USUARIO_ALTO = 500;
+	public static final int VENTANA_USUARIO_ANCHO = 600;
+	public static final String T_TABLA_ID = "ID";
+	public static final String T_TABLA_NOMBRE = "NOMBRE";
+	public static final String T_TABLA_DESCRIPCION = "DESCRIPCION";
+	public static final String T_TABLA_VALOR = "PRECIO";
 	
 	/**
 	 * Constantes Barra Herramientas Usuario
 	 */
+	
+	public static final String IMG_COMPRAR_LIBRO = "src/imagenes/barraherramientasus/comprar.png";
+	public static final String IMG_BUSCAR_LIBRO = "src/imagenes/barraherramientasus/buscar.png";
+	public static final String RBTN_BUSCAR_ID = "ID";
+	public static final String RBTN_BUSCAR_NOMBRE = "Nombre";
+	
+	/**
+	 * Constantes Barra Menu Usuario
+	 */
+	
+	public static final String T_MENU_ARCHIVO_US = "Archivo";
+	public static final String T_MENU_ITEM_US_COMPRAR_LIBRO = "Comprar Libro";
+	public static final String T_MENU_ITEM_US_BUSCAR_LIBRO = "Buscar Libro";
+	public static final String T_MENU_ITEM_US_MOSTRAR_LIBROS = "Lista de Libros";
+	
 	
 	
 }

@@ -1,11 +1,14 @@
 package vista;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.UIManager;
 
 import controlador.Controlador;
 
@@ -23,49 +26,40 @@ public class DialogoInicio extends JDialog{
 	
 	
 	public DialogoInicio(Controlador controlador) {
+		
+		UIManager.put("Button.font", new Font(null, 5, 14));
 			
-		setLayout(new GridBagLayout());
+		setLayout(new BorderLayout());
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
 		setLocationRelativeTo(null);
 		setResizable(false);
 
-		GridBagConstraints cons = new GridBagConstraints();
-		cons.fill = GridBagConstraints.CENTER;
-		
-//		JPanelFondo panelFondo = new JPanelFondo("src/imagenes/fondodialogoinicio.jpg");
-//		cons.weightx = 10;
-//		cons.weighty = 10;
-//		add(panelFondo, cons);
-
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);
 		
 		btnAdministrador = new JButton(imgAdministrador);
+		btnAdministrador.setText("Administrador");
 		btnAdministrador.setFocusable(false);
 		btnAdministrador.setOpaque(false);
 		btnAdministrador.setContentAreaFilled(false);
 		btnAdministrador.setBorderPainted(false);
-		cons.gridx = 0;
-		cons.gridy = 0;
-		cons.weightx = 0.5;
-		cons.weighty = 0.5;
 		btnAdministrador.addActionListener(controlador);
 		btnAdministrador.setActionCommand(Controlador.A_BTN_DIALOGO_ADMINISTRADOR);
-		add(btnAdministrador, cons);
+		btnAdministrador.setVisible(true);
+		add(btnAdministrador,BorderLayout.WEST );
 
 		imgUsuario = new ImageIcon(ConstantesGUI.IMG_USUARIO);
 		
 		btnUsuario = new JButton(imgUsuario);
+		btnUsuario.setText("Usuario");
 		btnUsuario.setFocusable(false);
 		btnUsuario.setOpaque(false);
 		btnUsuario.setContentAreaFilled(false);
 		btnUsuario.setBorderPainted(false);
-		cons.gridx = 1;
-		cons.gridy = 0;
-		cons.weightx = 0.6;
-		cons.weighty = 0.6;
 		btnUsuario.addActionListener(controlador);
 		btnUsuario.setActionCommand(Controlador.A_BTN_DIALOGO_USUARIO);
-		add(btnUsuario, cons);		
+		add(btnUsuario, BorderLayout.EAST);		
 	}
+	
+
 }
