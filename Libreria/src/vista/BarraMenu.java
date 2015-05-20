@@ -13,7 +13,6 @@ public class BarraMenu extends JMenuBar {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenu menuArchivo;
-	private JMenuItem itemAgregarLibro;
 	private JMenuItem itemEditarLibro;
 	private JMenuItem itemRemoverLibro;
 	private JMenu menuImportar;
@@ -26,9 +25,6 @@ public class BarraMenu extends JMenuBar {
 	
 	public BarraMenu(Controlador controlador) {
 		menuArchivo = new JMenu(ConstantesGUI.T_MENU_ARCHIVO);
-		itemAgregarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);
-		itemAgregarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
-		menuArchivo.add(itemAgregarLibro);
 		itemRemoverLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_REMOVER_LIBRO);
 		itemRemoverLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_ELIMINAR_LIBRO));
 		menuArchivo.add(itemRemoverLibro);
