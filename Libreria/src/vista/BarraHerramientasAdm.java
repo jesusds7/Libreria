@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import controlador.Controlador;
 
-public class BarraHerramientas extends JToolBar {
+public class BarraHerramientasAdm extends JToolBar {
 
 	/**
 	 * 
@@ -23,7 +23,7 @@ public class BarraHerramientas extends JToolBar {
 	private JButton btnEliminar;
 	private JButton btnEditar;
 	
-	public BarraHerramientas(Controlador controlador) {
+	public BarraHerramientasAdm(Controlador controlador) {
 		setEnabled(false);
 		btnNuevoLibro = new JButton();
 		btnNuevoLibro.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);

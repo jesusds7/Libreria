@@ -2,19 +2,29 @@ package vista;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+
 import controlador.Controlador;
 
-public class DialogoPrimario extends JDialog{
+public class DialogoInicio extends JDialog{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JButton btnAdministrador;
-	private JButton btnusuario;
+	private JButton btnUsuario;
 
-	public DialogoPrimario(Controlador controlador) {
+	private ImageIcon imgAdministrador;
+	private ImageIcon imgUsuario;
+	
+	
+	public DialogoInicio(Controlador controlador) {
+		
+		
 		setLayout(new GridBagLayout());
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
@@ -24,7 +34,13 @@ public class DialogoPrimario extends JDialog{
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
 
-		btnAdministrador = new JButton(ConstantesGUI.T_BTN_ADMINISTRADOR);
+		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);
+		
+		btnAdministrador = new JButton(imgAdministrador);
+		btnAdministrador.setFocusable(false);
+		btnAdministrador.setOpaque(false);
+		btnAdministrador.setContentAreaFilled(false);
+		btnAdministrador.setBorderPainted(false);
 		cons.gridx = 0;
 		cons.gridy = 0;
 		cons.weightx = 0.5;
@@ -33,11 +49,19 @@ public class DialogoPrimario extends JDialog{
 		btnAdministrador.setActionCommand(Controlador.A_BTN_DIALOGO_ADMINISTRADOR);
 		add(btnAdministrador, cons);
 
-		btnusuario = new JButton(ConstantesGUI.T_BTN_USUARIO);
+		imgUsuario = new ImageIcon(ConstantesGUI.IMG_USUARIO);
+		
+		btnUsuario = new JButton(imgUsuario);
+		btnUsuario.setFocusable(false);
+		btnUsuario.setOpaque(false);
+		btnUsuario.setContentAreaFilled(false);
+		btnUsuario.setBorderPainted(false);
 		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.weightx = 0.6;
 		cons.weighty = 0.6;
-		add(btnusuario, cons);		
+		btnUsuario.addActionListener(controlador);
+		btnUsuario.setActionCommand(Controlador.A_BTN_DIALOGO_USUARIO);
+		add(btnUsuario, cons);		
 	}
 }
