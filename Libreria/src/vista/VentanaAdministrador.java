@@ -13,8 +13,8 @@ public class VentanaAdministrador extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private BarraHerramientas barraHerramientas;
-	private BarraMenu barraMenu;
+	private BarraHerramientasAdm barraHerramientas;
+	private BarraMenuAdm barraMenu;
 
 	public VentanaAdministrador(Controlador controlador) {
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
@@ -23,10 +23,10 @@ public class VentanaAdministrador extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		barraMenu = new BarraMenu(controlador);
+		barraMenu = new BarraMenuAdm(controlador);
 		setJMenuBar(barraMenu);	
 
-		barraHerramientas = new BarraHerramientas(controlador);
+		barraHerramientas = new BarraHerramientasAdm(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
 	}
 }

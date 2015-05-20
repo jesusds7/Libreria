@@ -1,16 +1,19 @@
 package vista;
 
 public class ConstantesGUI {
+	
 	/**
-	 * constantes ventana principal
+	 * Constantes Ventana Administrador
 	 */
-	public static final String T_TITULO_VENTANA = "Tienda de libros Jisus y Walter";
+	
+	public static final String T_TITULO_VENTANA = "Tienda de libros Jesus y Walter";
 	public static final int VENTANA_ALTO = 700;
 	public static final int VENTANA_ANCHO = 700;
 
 	/**
-	 * barra herramientas
+	 * Barra Herramientas Administrador
 	 */
+	
 	public static final String T_MENU_ARCHIVO = "Archivo";
 	public static final String T_MENU_EXPORTAR = "Exportar";
 	public static final String T_MENU_IMPORTAR = "Importar";
@@ -34,11 +37,28 @@ public class ConstantesGUI {
 	public static final String I_ICONO_BTN_SALIR = "/imagenes/exit.png";
 	public static final String I_ICONO_BTN_IMPORTAR = "/imagenes/import.png";
 	public static final String I_ICONO_BTN_EXPORTAR = "/imagenes/export.png";
+	
 	/**
-	 * ventana primaria
+	 * Ventana Inicio
 	 */
+	
 	public static final String T_BTN_ADMINISTRADOR = "Administardor";
-	public static final String T_BTN_USUARIO = "Usuario";
 	public static final int VENTANA_ALTO_PRIMARIA = 700;
 	public static final int VENTANA_ANCHO_PRIMARIA = 700;
+	public static final String IMG_ADMINISTRADOR = "src/imagenes/administrador.png";
+	public static final String IMG_USUARIO = "src/imagenes/usuario.png";
+	
+	/**
+	 * Constantes Ventana Usuario
+	 */
+	
+	public static final String T_VENTANA_USUARIO = "Tienda de Jesus y Walter - Usuario";
+	public static final int VENTANA_USUARIO_ALTO = 700;
+	public static final int VENTANA_USUARIO_ANCHO = 700;
+	
+	/**
+	 * Constantes Barra Herramientas Usuario
+	 */
+	
+	
 }
