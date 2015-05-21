@@ -1,11 +1,16 @@
 package vista;
 
+import javafx.beans.binding.ListBinding;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+
+import modelo.entidades.TipoBusqueda;
 import controlador.Controlador;
 
 public class BarraHerramientasAdm extends JToolBar {
@@ -17,9 +22,7 @@ public class BarraHerramientasAdm extends JToolBar {
 	private JButton btnNuevoLibro;
 	private JButton btnBuscarLibro;
 	private JTextField txBuscarLibro;
-	private JRadioButton rBtnNombreLibro;
-	private JRadioButton rBtnIdLibro;
-	protected ButtonGroup grupoBuscarLibro;
+	private JComboBox<String> listaBusqueda;
 	private JButton btnEliminar;
 	private JButton btnEditar;
 	private JButton btnNuevoAutor;
@@ -71,18 +74,20 @@ public class BarraHerramientasAdm extends JToolBar {
 		txBuscarLibro = new JTextField();
 		add(txBuscarLibro);
 		
-		grupoBuscarLibro = new ButtonGroup();
-		rBtnNombreLibro = new JRadioButton(ConstantesGUI.T_RADIO_BTN_NOMBRE_LIBRO);
-		rBtnNombreLibro.addActionListener(controlador);
-		rBtnNombreLibro.setActionCommand(Controlador.A_BUSCAR_NOMBRE_LIBRO);
-		grupoBuscarLibro.add(rBtnNombreLibro);
-		add(rBtnNombreLibro);
-		rBtnIdLibro = new JRadioButton(ConstantesGUI.T_RADIO_BTN_ID_LIBRO);
-		rBtnIdLibro.addActionListener(controlador);
-		rBtnIdLibro.setActionCommand(Controlador.A_BUSCAR_ID_LIBRO);
-		grupoBuscarLibro.add(rBtnIdLibro);
-		add(rBtnIdLibro);		
-		
+		listaBusqueda = new JComboBox<String>();
+		listaBusqueda.addItem(TipoBusqueda.SELLECION_OPCION.toString());
+		listaBusqueda.addItem(TipoBusqueda.LIBRO_NOMBRE.toString());
+		listaBusqueda.addItem(TipoBusqueda.LIBRO_ID.toString());
+		listaBusqueda.addItem(TipoBusqueda.AUTHOR_NOMBRE.toString());
+		listaBusqueda.addItem(TipoBusqueda.AUTHOR_ID.toString());
+		listaBusqueda.addItem(TipoBusqueda.CLIENTE_NOMBRE.toString());
+		listaBusqueda.addItem(TipoBusqueda.CLIENTE_ID.toString());
+		add(listaBusqueda);
+	}
+	
+	public String tipoSeleccionBuscar(){
+		String tipoBusqueda = (String)listaBusqueda.getSelectedItem();
+		return tipoBusqueda;
 	}
 	
 	protected ImageIcon createImageIcon(String path) {
@@ -101,23 +106,4 @@ public class BarraHerramientasAdm extends JToolBar {
 	public void setTxBuscarLibro(JTextField txBuscarLibro) {
 		this.txBuscarLibro = txBuscarLibro;
 	}
-
-	public JRadioButton getrBtnNombreLibro() {
-		return rBtnNombreLibro;
-	}
-
-	public void setrBtnNombreLibro(JRadioButton rBtnNombreLibro) {
-		this.rBtnNombreLibro = rBtnNombreLibro;
-	}
-
-	public JRadioButton getrBtnIdLibro() {
-		return rBtnIdLibro;
-	}
-
-	public void setrBtnIdLibro(JRadioButton rBtnIdLibro) {
-		this.rBtnIdLibro = rBtnIdLibro;
-	}
-	
-	
-
 }

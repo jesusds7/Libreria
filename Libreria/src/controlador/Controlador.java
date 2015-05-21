@@ -2,6 +2,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import modelo.dao.GestorAutor;
@@ -10,6 +11,7 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
+import modelo.entidades.TipoBusqueda;
 import modelo.entidades.TipoGenero;
 import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
 import vista.DialogoAgregarAutor;
@@ -117,8 +119,8 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_BUSCAR_LIBRO:
 			try {
 				seleccionarOpcionBuscar();
-			} catch (ExcepcionLibroNoEncontrado e1) {
-				e1.printStackTrace();
+			} catch (ExcepcionLibroNoEncontrado e3) {
+				e3.printStackTrace();
 			}
 			break;
 		case A_MOSTAR_EDITAR_LIBRO:
@@ -166,13 +168,24 @@ public class Controlador extends JPanel implements ActionListener {
 		}
 	}
 	
-	public void seleccionarOpcionBuscar() throws ExcepcionLibroNoEncontrado{
-		if(ventanaAdministrador.getBarraHerramientas().getrBtnIdLibro().isSelected()){
-			buscarLibroId();
-		}else if (ventanaAdministrador.getBarraHerramientas().getrBtnNombreLibro().isSelected()) {
+	public void seleccionarOpcionBuscar()throws ExcepcionLibroNoEncontrado{
+		String aux = ventanaAdministrador.getBarraHerramientas().tipoSeleccionBuscar();
+		if(aux.equals(TipoBusqueda.LIBRO_NOMBRE.toString())){
 			buscarLibroNombre();
+		}else if (aux.equals(TipoBusqueda.LIBRO_ID.toString())) {
+			buscarLibroId();
+		}else if (aux.equals(TipoBusqueda.AUTHOR_NOMBRE.toString())) {
+			
+		}else if (aux.equals(TipoBusqueda.AUTHOR_ID.toString())) {
+			
+		}else if (aux.equals(TipoBusqueda.CLIENTE_NOMBRE.toString())) {
+			
+		}else if (aux.equals(TipoBusqueda.CLIENTE_ID.toString())) {
+			
+		}else if (aux.equals(TipoBusqueda.SELLECION_OPCION.toString())) {
+			JOptionPane.showMessageDialog(null, "Debe seleccionar una opcion de busqueda", "Advertencia", 2);
 		}
-	}	
+	}
 
 	public void buscarLibroId() throws ExcepcionLibroNoEncontrado {
 		gestorLibro.buscarLibro(Integer.parseInt(ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().getText()));

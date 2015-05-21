@@ -34,6 +34,7 @@ public class DialogoInicio extends JDialog{
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setModal(false);
 		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 		imagenFondo = new ImageIcon("src/imagenes/lib.jpg").getImage();
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);

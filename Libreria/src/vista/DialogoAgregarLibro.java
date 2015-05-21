@@ -170,7 +170,6 @@ public class DialogoAgregarLibro extends JDialog{
 		return aux;
 	}
 
-
 	public void copiarImagen(){
 		Path entrada = Paths.get(txtRutaImagen.getText());
 		Path salida = Paths.get("/src/img");
