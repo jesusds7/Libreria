@@ -25,7 +25,9 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_EDITAR_LIBRO = "Editar Libro";
 	public static final String T_MENU_ITEM_COMPRAR_LIBRO = "Comprar Libro";
 	public static final String T_MENU_ITEM_BUSCAR_LIBRO = "Buscar Libro";
-	public static final String I_ICONO_BTN_NUEVO_LIBRO = "/imagenes/new.png";
+	public static final String I_ICONO_BTN_NUEVO_LIBRO = "/imagenes/book.png";
+	public static final String I_ICONO_BTN_NUEVO_CLIENTE = "/imagenes/cliente.png";
+	public static final String I_ICONO_BTN_NUEVO_AUTOR = "/imagenes/author.png";
 	public static final String I_ICONO_BTN_ELIMINAR_LIBRO = "/imagenes/remove.png";
 	public static final String I_ICONO_BTN_EDITAR = "/imagenes/edit.png";
 	public static final String I_ICONO_BTN_BUSCAR = "/imagenes/search.png";
@@ -42,10 +44,10 @@ public class ConstantesGUI {
 	 */
 	
 	public static final String T_BTN_ADMINISTRADOR = "Administardor";
-	public static final int VENTANA_ALTO_PRIMARIA = 400;
-	public static final int VENTANA_ANCHO_PRIMARIA =500;
-	public static final String IMG_ADMINISTRADOR = "src/imagenes/administrador.png";
-	public static final String IMG_USUARIO = "src/imagenes/usuario.png";
+	public static final int VENTANA_ALTO_PRIMARIA = 600;
+	public static final int VENTANA_ANCHO_PRIMARIA =600;
+	public static final String IMG_ADMINISTRADOR = "src/imagenes/admin.png";
+	public static final String IMG_USUARIO = "src/imagenes/user.png";
 	
 	/**
 	 * Constantes Ventana Usuario

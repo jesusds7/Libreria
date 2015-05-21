@@ -50,14 +50,14 @@ public class BarraHerramientasAdm extends JToolBar {
 		
 		btnNuevoAutor = new JButton();
 		btnNuevoAutor.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
-		btnNuevoAutor.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
+		btnNuevoAutor.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_AUTOR));
 		btnNuevoAutor.addActionListener(controlador);
 		btnNuevoAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
 		add(btnNuevoAutor);
 		
 		btnNuevoCliente = new JButton();
 		btnNuevoCliente.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_CLIENTE);
-		btnNuevoCliente.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
+		btnNuevoCliente.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_CLIENTE));
 		btnNuevoCliente.addActionListener(controlador);
 		btnNuevoCliente.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE);
 		add(btnNuevoCliente);

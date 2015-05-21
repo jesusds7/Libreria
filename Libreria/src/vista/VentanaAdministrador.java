@@ -42,9 +42,9 @@ public class VentanaAdministrador extends JFrame {
 	public VentanaAdministrador(Controlador controlador) {
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setLayout(new BorderLayout());
+		setExtendedState(VentanaAdministrador.MAXIMIZED_BOTH);
 		setSize(ConstantesGUI.VENTANA_ALTO,ConstantesGUI.VENTANA_ANCHO);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		barraMenu = new BarraMenuAdm(controlador);

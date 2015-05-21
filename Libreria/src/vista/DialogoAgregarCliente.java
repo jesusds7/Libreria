@@ -4,11 +4,14 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+
 import modelo.entidades.Cliente;
 import controlador.Controlador;
 
@@ -34,7 +37,7 @@ public class DialogoAgregarCliente extends JDialog{
 		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
 		setModal(true);
-//		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
+		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
@@ -92,5 +95,13 @@ public class DialogoAgregarCliente extends JDialog{
 		txtDinero.setText("");
 		dispose();
 	}
-
+	
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
+	}
 }

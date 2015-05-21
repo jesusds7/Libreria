@@ -4,12 +4,15 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+
 import controlador.Controlador;
 import modelo.entidades.Autor;
 
@@ -32,11 +35,11 @@ public class DialogoAgregarAutor extends JDialog{
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
 		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
-		setTitle("Ingresar Datos Ciudad");
+		setTitle("Ingresar Datos Autor");
 		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
 		setModal(true);
-//		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
+		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
@@ -107,5 +110,13 @@ public class DialogoAgregarAutor extends JDialog{
 		txtRutaImagen.setText("");
 		dispose();
 	}
-
+	
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
+	}
 }

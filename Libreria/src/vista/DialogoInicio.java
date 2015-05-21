@@ -1,11 +1,17 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
+
 import controlador.Controlador;
 
 public class DialogoInicio extends JDialog{
@@ -16,7 +22,7 @@ public class DialogoInicio extends JDialog{
 
 	private JButton btnAdministrador;
 	private JButton btnUsuario;
-
+	private Image imagenFondo;
 	private ImageIcon imgAdministrador;
 	private ImageIcon imgUsuario;
 
@@ -25,15 +31,19 @@ public class DialogoInicio extends JDialog{
 
 		UIManager.put("Button.font", new Font(null, 5, 14));
 
-		setLayout(new BorderLayout());
+		setLayout(new GridBagLayout());
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
-
+		imagenFondo = new ImageIcon("src/imagenes/lib.jpg").getImage();
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);
-
+		imgUsuario = new ImageIcon(ConstantesGUI.IMG_USUARIO);
+		
+		GridBagConstraints cons = new GridBagConstraints();
+		cons.fill = GridBagConstraints.CENTER;
+		
 		btnAdministrador = new JButton(imgAdministrador);
 		btnAdministrador.setText("Administrador");
 		btnAdministrador.setFocusable(false);
@@ -43,9 +53,8 @@ public class DialogoInicio extends JDialog{
 		btnAdministrador.addActionListener(controlador);
 		btnAdministrador.setActionCommand(Controlador.A_BTN_DIALOGO_ADMINISTRADOR);
 		btnAdministrador.setVisible(true);
-		add(btnAdministrador,BorderLayout.WEST );
+		add(btnAdministrador, cons );
 
-		imgUsuario = new ImageIcon(ConstantesGUI.IMG_USUARIO);
 
 		btnUsuario = new JButton(imgUsuario);
 		btnUsuario.setText("Usuario");
@@ -55,9 +64,16 @@ public class DialogoInicio extends JDialog{
 		btnUsuario.setBorderPainted(false);
 		btnUsuario.addActionListener(controlador);
 		btnUsuario.setActionCommand(Controlador.A_BTN_DIALOGO_USUARIO);
-		add(btnUsuario, BorderLayout.EAST);		
+		add(btnUsuario, cons);	
+		
 	}
-
+	
+//	@Override
+//	public void paint(Graphics g) {
+//		super.paint(g);
+//		g.drawImage(imagenFondo, 0, 0, this);
+//	}
+	
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

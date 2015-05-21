@@ -50,7 +50,7 @@ public class DialogoAgregarLibro extends JDialog{
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
 		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
-		setTitle("Ingresar Datos Ciudad");
+		setTitle("Ingresar Datos Libro");
 		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
 		setModal(true);
