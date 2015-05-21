@@ -1,9 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,15 +12,14 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
 import modelo.entidades.Autor;
+import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import modelo.util.Util;
 import controlador.Controlador;
 
 public class VentanaAdministrador extends JFrame {
-
 	/**
 	 * 
 	 */
@@ -33,8 +30,10 @@ public class VentanaAdministrador extends JFrame {
 	private DefaultTableModel modeloTablaLibros;
 	private JTable tablaAutores;
 	private DefaultTableModel modeloTablaAutores;
+	private JTable tablaClientes;
+	private DefaultTableModel modeloTablaClientes;
 	private JPanel panelLibros;
-//	private JPanel panelCliente;
+	private JPanel panelCliente;
 	private JPanel panelAutor;
 	private JPanel panelClase;
 	private PanelFotos panelFotos;
@@ -53,11 +52,9 @@ public class VentanaAdministrador extends JFrame {
 
 		barraHerramientas = new BarraHerramientasAdm(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
-		
-		panelClase = new JPanel(new GridBagLayout());
-		GridBagConstraints cons = new GridBagConstraints();
-		cons.fill = GridBagConstraints.BOTH;
-		
+
+		panelClase = new JPanel(new GridLayout(1,3));
+
 		panelLibros = new JPanel();
 
 		modeloTablaLibros = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"}, 0);
@@ -78,8 +75,8 @@ public class VentanaAdministrador extends JFrame {
 		});
 		panelLibros.setBorder(BorderFactory.createTitledBorder("Libros"));
 		panelLibros.add(new JScrollPane(tablalibros));
-		panelClase.add(panelLibros, cons);
-		
+		panelClase.add(panelLibros);
+
 		panelAutor = new JPanel();
 		modeloTablaAutores = new DefaultTableModel(new String[]{"N°Orden" , "Nombre"}, 0);
 		tablaAutores = new JTable(modeloTablaAutores);
@@ -98,16 +95,39 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelAutor.setBorder(BorderFactory.createTitledBorder("Autor"));
-		panelAutor.add(new JScrollPane(tablaAutores), cons);
-		panelClase.add(panelAutor, cons);
-		
-//		panelCliente = new JPanel();
-//		panelCliente.setBorder(BorderFactory.createTitledBorder("Clientes"));
-//		panelClase.add(panelCliente, cons);
+		panelAutor.add(new JScrollPane(tablaAutores));
+		panelClase.add(panelAutor);
+
+		panelCliente = new JPanel();
+		modeloTablaClientes = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Dinero"}, 0);
+		tablaClientes = new JTable(modeloTablaClientes);
+		tablaClientes.getTableHeader().setReorderingAllowed(false);
+		tablaClientes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(modeloTablaClientes.getRowCount() > 0){
+					//					try {
+					//						panelFotos.setRutaImagen(controlador.buscarSitioTuristico(retornarIdSeleccion()).getImagen());
+					//						panelFotos.repaint();
+					//					} catch (ExcepcionSitioNoEncontrado e1) {
+					//						e1.printStackTrace();
+					//					}
+				}
+			}
+		});
+		panelCliente.setBorder(BorderFactory.createTitledBorder("Cliente"));
+		panelCliente.add(new JScrollPane(tablaClientes));
+		panelClase.add(panelCliente);
+
+		//		panelCliente = new JPanel();
+		//		panelCliente.setBorder(BorderFactory.createTitledBorder("Clientes"));
+		//		panelClase.add(panelCliente, cons);
 		add(panelClase);
 
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
 		dialogoAgregarLibro.setVisible(false);
+
+
 	}
 
 	public void seleccionarLibro(int id){
@@ -144,15 +164,19 @@ public class VentanaAdministrador extends JFrame {
 	public void agregarLibroTabla(Libro libro, TipoGenero genero){
 		modeloTablaLibros.addRow(Util.sitioAVector(libro, genero));
 	}
-	
+
 	public void agregarAutorTabla(Autor autor){
 		modeloTablaAutores.addRow(Util.sitioAVectorAutor(autor));
+	}
+
+	public void agregarClienteTabla(Cliente cliente){
+		modeloTablaClientes.addRow(Util.sitioAVectorCliente(cliente));
 	}
 
 	public void mostrarDialogo(){
 		dialogoAgregarLibro.setVisible(true);
 	}
-	
+
 	public void actualizarTabla (Libro s, int fila){
 		modeloTablaLibros.setValueAt(s.getId(), fila, 0);
 		modeloTablaLibros.setValueAt(s.getNombre(), fila, 1);

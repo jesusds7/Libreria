@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import modelo.dao.GestorAutor;
+import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
+import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
 import vista.DialogoAgregarAutor;
+import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
 import vista.DialogoInicio;
 import vista.EditDialogoAgregarLibro;
@@ -38,9 +41,12 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_AGREGAR_IMAGEN_AUTOR = "Agregar_imagen_AUTOR";
 	public static final String A_CANCELAR_LIBRO = "CANCELAR_LIBRO";
 	public static final String A_CANCELAR_AUTOR = "CANCELAR_AUTOR";
+	public static final String A_CANCELAR_CLIENTE = "CANCELAR_CLIENTE";
 	public static final String A_AGREGAR_LIBRO = "ACCION_AGREGAR_LIBRO";
 	public static final String A_AGREGAR_AUTOR = "ACCION_AGREGAR_AUTOR";
+	public static final String A_AGREGAR_CLIENTE = "ACCION_AGREGAR_CLIENTE";
 	public static final String A_MOSTRAR_DIALOGO_AGREGAR_LIBRO = "ACCION_MOSTAR_AGREGAR_LIBRO";
+	public static final String A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE = "ACCION_MOSTAR_AGREGAR_CLIENTE";
 	public static final String A_SALIR = "SALIR";
 	public static final String A_EDITAR_LIBRO = "EDITAR_LIBRO";
 	private VentanaAdministrador ventanaAdministrador;
@@ -51,11 +57,14 @@ public class Controlador extends JPanel implements ActionListener {
 	private EditDialogoAgregarLibro editDialogoAgregarLibro;
 	private DialogoAgregarAutor dialogoAgregarAutor;
 	private GestorAutor gestorAutor;
-	
+	private GestorCliente gestorCliente;
+	private DialogoAgregarCliente dialogoAgregarCliente;
 	public Controlador() {
+		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
 		gestorAutor = new GestorAutor();
 		dialogoPrimario = new DialogoInicio(this);
+		dialogoAgregarCliente = new DialogoAgregarCliente(ventanaAdministrador, this);
 		dialogoAgregarLibro = new DialogoAgregarLibro(ventanaAdministrador, this);
 		dialogoAgregarAutor = new DialogoAgregarAutor(ventanaAdministrador, this);
 		editDialogoAgregarLibro = new EditDialogoAgregarLibro(ventanaAdministrador, this);
@@ -85,6 +94,12 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_CANCELAR_LIBRO:
 			dialogoAgregarLibro.cancelar();
+			break;
+		case A_CANCELAR_AUTOR:
+			dialogoAgregarAutor.cancelar();
+			break;
+		case A_CANCELAR_CLIENTE:
+			dialogoAgregarCliente.cancelar();
 			break;
 		case A_SALIR:
 			ventanaAdministrador.setVisible(false);
@@ -124,6 +139,12 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_AGREGAR_AUTOR:
 			agregarAutor();
+			break;
+		case A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE:
+			dialogoAgregarCliente.setVisible(true);
+			break;
+		case A_AGREGAR_CLIENTE:
+			agregarCliente();
 			break;
 		default:
 			break;
@@ -183,6 +204,18 @@ public class Controlador extends JPanel implements ActionListener {
 		if(autor != null){
 			gestorAutor.agregarAutor(autor);
 			ventanaAdministrador.agregarAutorTabla(autor);
+		}
+	}
+	
+	public void agregarCliente(){
+		Cliente cliente = dialogoAgregarCliente.crearCliente();
+		crearCliente(cliente);
+	}
+	
+	public void crearCliente(Cliente cliente){
+		if(cliente != null){
+			gestorCliente.agregarCliente(cliente);
+			ventanaAdministrador.agregarClienteTabla(cliente);
 		}
 	}
 	

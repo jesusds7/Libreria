@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.Checkbox;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,7 +19,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import controlador.Controlador;
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
@@ -44,7 +41,7 @@ public class EditDialogoAgregarLibro extends JDialog {
 	protected JButton btnEdit;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
-	
+
 	public EditDialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
@@ -153,10 +150,10 @@ public class EditDialogoAgregarLibro extends JDialog {
 		cons.gridy = 7;
 		cons.insets = new Insets(0, 0, 0, 100);
 		btnEdit.addActionListener(controlador);
-		btnEdit.setActionCommand(controlador.A_EDITAR_LIBRO);
+		btnEdit.setActionCommand(Controlador.A_EDITAR_LIBRO);
 		add(btnEdit, cons);
 	}
-	
+
 	public Libro  editarLibro(Libro libro){
 		libro.setImagen(txtNombre.getText());
 		libro.setDescripcion(txtADescripcion.getText());
@@ -168,7 +165,7 @@ public class EditDialogoAgregarLibro extends JDialog {
 		dispose();
 		return libro;	
 	}
-	
+
 	public void cambiarValores(Libro libro){
 		txtNombre.setText(libro.getNombre());
 		txtADescripcion.setText(libro.getDescripcion());
@@ -177,7 +174,7 @@ public class EditDialogoAgregarLibro extends JDialog {
 		txtNumeroCopias.setText(Integer.toString(libro.getNumeroCopias()));
 		txtAutor.setText(libro.getNombreAutor());
 	}
-	
+
 	public void copiarImagen(){
 		Path entrada = Paths.get(txtRutaImagen.getText());
 		Path salida = Paths.get("/src/img");
@@ -224,5 +221,4 @@ public class EditDialogoAgregarLibro extends JDialog {
 			return null;
 		}
 	}
-
 }

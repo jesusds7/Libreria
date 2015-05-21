@@ -5,34 +5,32 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import modelo.entidades.Cliente;
 import controlador.Controlador;
-import modelo.entidades.Autor;
 
-public class DialogoAgregarAutor extends JDialog{
+public class DialogoAgregarCliente extends JDialog{
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
-	private JTextField txtRutaImagen;
+	private JTextField txtDinero;
 	private JLabel lbNombre;
-	private JLabel lbGenero;
-	protected JButton btnCrearAutor;
+	protected JButton btnCrearCliente;
 	private JButton btnCancelar;
-	private JButton btnAgregarImagen;
-	private JComboBox<Autor> listaAutores;
-	
-	public DialogoAgregarAutor(VentanaAdministrador administrador, Controlador controlador) {
+	private JLabel lbDinero;
+
+	public DialogoAgregarCliente(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
 		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
-		setTitle("Ingresar Datos Ciudad");
+		setTitle("Ingresar Datos Cliente");
 		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -52,59 +50,46 @@ public class DialogoAgregarAutor extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
-
-
-		lbGenero = new JLabel(ConstantesGUI.T_LABEL_GENERO);
+		
+		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
 		cons.gridx = 0;
 		cons.gridy = 1;
-		add(lbGenero, cons);
-
-		listaAutores = new JComboBox<Autor>();
+		add(lbDinero, cons);
+		
+		txtDinero = new JTextField(10);
 		cons.gridx = 1;
-		cons.gridy = 1;		
-		add(listaAutores, cons);
-
-		btnAgregarImagen = new JButton(ConstantesGUI.T_BTN_CARGAR_IMAGEN);
-		btnAgregarImagen.setActionCommand(Controlador.A_AGREGAR_IMAGEN_AUTOR);
-		btnAgregarImagen.addActionListener(controlador);
-		cons.gridx = 0;
-		cons.gridy = 2;
-		cons.insets = new Insets(0, 20, 0, 0);
-		add(btnAgregarImagen, cons);
-
-		txtRutaImagen = new JTextField(10);
-		cons.gridx = 1;
-		cons.gridy = 2;
+		cons.gridy = 1;
 		cons.insets = new Insets(0, 0, 0, 0);
-		add(txtRutaImagen, cons);
+		add(txtDinero, cons);
+		
 
 		btnCancelar = new JButton(ConstantesGUI.T_BTN_CANCELAR);
 		btnCancelar.addActionListener(controlador);
-		btnCancelar.setActionCommand(Controlador.A_CANCELAR_AUTOR);
+		btnCancelar.setActionCommand(Controlador.A_CANCELAR_CLIENTE);
 		cons.gridx = 0;
-		cons.gridy = 3;
+		cons.gridy = 2;
 		cons.insets = new Insets(0, 100, 0, 0);
 		add(btnCancelar, cons);
 
-		btnCrearAutor = new JButton(ConstantesGUI.T_BTN_CREAR);
+		btnCrearCliente = new JButton(ConstantesGUI.T_BTN_CREAR);
 		cons.gridx = 1;
-		cons.gridy = 3;
+		cons.gridy = 2;
 		cons.insets = new Insets(0, 0, 0, 100);
-		btnCrearAutor.addActionListener(controlador);
-		btnCrearAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
-		add(btnCrearAutor, cons);
+		btnCrearCliente.addActionListener(controlador);
+		btnCrearCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
+		add(btnCrearCliente, cons);
 	}
 	
-	public Autor crearAutor(){
-		Autor autor = new Autor(txtNombre.getText(), txtRutaImagen.getText());
+	public Cliente crearCliente(){
+		Cliente cliente = new Cliente(txtNombre.getText(), Double.parseDouble(txtDinero.getText()));
 		dispose();
 		cancelar();
-		return autor;
+		return cliente;
 	}
 
 	public void cancelar(){
 		txtNombre.setText("");
-		txtRutaImagen.setText("");
+		txtDinero.setText("");
 		dispose();
 	}
 
