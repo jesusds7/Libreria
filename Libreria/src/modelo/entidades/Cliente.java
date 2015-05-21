@@ -14,9 +14,9 @@ public class Cliente {
 	public Cliente(String nombre, double dinero) {
 		super();
 		this.id = consecutivo;
-		consecutivo++;
 		this.nombre = nombre;
 		this.dinero = dinero;
+		consecutivo++;
 	}
 
 	public String getNombre() {

@@ -22,6 +22,8 @@ public class BarraHerramientasAdm extends JToolBar {
 	protected ButtonGroup grupoBuscarLibro;
 	private JButton btnEliminar;
 	private JButton btnEditar;
+	private JButton btnNuevoAutor;
+	private JButton btnNuevoCliente;
 	
 	public BarraHerramientasAdm(Controlador controlador) {
 		setEnabled(false);
@@ -29,7 +31,7 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnNuevoLibro.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);
 		btnNuevoLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
 		btnNuevoLibro.addActionListener(controlador);
-		btnNuevoLibro.setActionCommand(Controlador.A_MOSTAR_AGREGAR_LIBRO);
+		btnNuevoLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_LIBRO);
 		add(btnNuevoLibro);
 
 		btnEliminar = new JButton();
@@ -45,6 +47,20 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnEditar.setToolTipText(ConstantesGUI.T_MENU_ITEM_EDITAR_LIBRO);
 		btnEditar.setActionCommand(Controlador.A_MOSTAR_EDITAR_LIBRO);
 		add(btnEditar);
+		
+		btnNuevoAutor = new JButton();
+		btnNuevoAutor.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
+		btnNuevoAutor.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_AUTOR));
+		btnNuevoAutor.addActionListener(controlador);
+		btnNuevoAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
+		add(btnNuevoAutor);
+		
+		btnNuevoCliente = new JButton();
+		btnNuevoCliente.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_CLIENTE);
+		btnNuevoCliente.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_CLIENTE));
+		btnNuevoCliente.addActionListener(controlador);
+		btnNuevoCliente.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE);
+		add(btnNuevoCliente);
 		
 		btnBuscarLibro = new JButton();
 		btnBuscarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_BUSCAR));
@@ -77,5 +93,31 @@ public class BarraHerramientasAdm extends JToolBar {
 			return null;
 		}
 	}
+
+	public JTextField getTxBuscarLibro() {
+		return txBuscarLibro;
+	}
+
+	public void setTxBuscarLibro(JTextField txBuscarLibro) {
+		this.txBuscarLibro = txBuscarLibro;
+	}
+
+	public JRadioButton getrBtnNombreLibro() {
+		return rBtnNombreLibro;
+	}
+
+	public void setrBtnNombreLibro(JRadioButton rBtnNombreLibro) {
+		this.rBtnNombreLibro = rBtnNombreLibro;
+	}
+
+	public JRadioButton getrBtnIdLibro() {
+		return rBtnIdLibro;
+	}
+
+	public void setrBtnIdLibro(JRadioButton rBtnIdLibro) {
+		this.rBtnIdLibro = rBtnIdLibro;
+	}
+	
+	
 
 }

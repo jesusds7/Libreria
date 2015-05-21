@@ -1,5 +1,4 @@
 package vista;
-
 public class ConstantesGUI {
 	
 	/**
@@ -26,7 +25,9 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_EDITAR_LIBRO = "Editar Libro";
 	public static final String T_MENU_ITEM_COMPRAR_LIBRO = "Comprar Libro";
 	public static final String T_MENU_ITEM_BUSCAR_LIBRO = "Buscar Libro";
-	public static final String I_ICONO_BTN_NUEVO_LIBRO = "/imagenes/new.png";
+	public static final String I_ICONO_BTN_NUEVO_LIBRO = "/imagenes/book.png";
+	public static final String I_ICONO_BTN_NUEVO_CLIENTE = "/imagenes/cliente.png";
+	public static final String I_ICONO_BTN_NUEVO_AUTOR = "/imagenes/author.png";
 	public static final String I_ICONO_BTN_ELIMINAR_LIBRO = "/imagenes/remove.png";
 	public static final String I_ICONO_BTN_EDITAR = "/imagenes/edit.png";
 	public static final String I_ICONO_BTN_BUSCAR = "/imagenes/search.png";
@@ -43,10 +44,10 @@ public class ConstantesGUI {
 	 */
 	
 	public static final String T_BTN_ADMINISTRADOR = "Administardor";
-	public static final int VENTANA_ALTO_PRIMARIA = 400;
-	public static final int VENTANA_ANCHO_PRIMARIA =500;
-	public static final String IMG_ADMINISTRADOR = "src/imagenes/administrador.png";
-	public static final String IMG_USUARIO = "src/imagenes/usuario.png";
+	public static final int VENTANA_ALTO_PRIMARIA = 600;
+	public static final int VENTANA_ANCHO_PRIMARIA =600;
+	public static final String IMG_ADMINISTRADOR = "src/imagenes/admin.png";
+	public static final String IMG_USUARIO = "src/imagenes/user.png";
 	
 	/**
 	 * Constantes Ventana Usuario
@@ -78,7 +79,27 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_US_COMPRAR_LIBRO = "Comprar Libro";
 	public static final String T_MENU_ITEM_US_BUSCAR_LIBRO = "Buscar Libro";
 	public static final String T_MENU_ITEM_US_MOSTRAR_LIBROS = "Lista de Libros";
-	
+	/**
+	 * dialogoAgregarLibro
+	 */
+	public static final String IMG_ICONO_LIBRO = "/imagenes/library.png";
+	public static final String T_LABEL_NOMBRE = "Nombre";
+	public static final String T_LABEL_DESCRIPCION = "Descripcion";
+	public static final String T_LABEL_SITIO_VALOR = "Precio";
+	public static final String T_BTN_CARGAR_IMAGEN = "Cargar imagen";
+	public static final String T_BTN_CANCELAR = "Cancelar";
+	public static final String T_BTN_CREAR = "Crear";
+	public static final String T_LABEL_NUMERO_COPIAS = "Numero de Copias";
+	public static final String T_LABEL_AUTOR = "Autor";
+	public static final String T_CHECK_AVENTURA = "Aventura";
+	public static final String T_CHECK_ACCION = "Accion";
+	public static final String T_CHECK_TERROR = "Terror";
+	public static final String T_CHECK_CIENTIFICO = "Cientifico";
+	public static final String T_CHECK_INFANTIL = "Infantil";
+	public static final String T_LABEL_GENERO = "Genero";
+	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "Agregar Autor";
+	public static final String T_MENU_ITEM_AGREGAR_CLIENTE = "Agregar Cliente";
+	public static final String T_LABEL_DINERO = "Dinero";
 	
 	
 }

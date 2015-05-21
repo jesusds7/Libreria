@@ -27,7 +27,8 @@ public class VentanaUsuario extends JFrame{
 		this.setSize(ConstantesGUI.VENTANA_USUARIO_ANCHO, ConstantesGUI.VENTANA_USUARIO_ALTO);
 		this.setLocationRelativeTo(null);
 		this.setIconImage(new ImageIcon(ConstantesGUI.IMG_ICONO_VENTANA_USUARIO).getImage());
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setExtendedState(VentanaUsuario.MAXIMIZED_BOTH);
+		this.setIconImage(new ImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		barraMenu = new BarraMenuUs(controlador);
 		setJMenuBar(barraMenu);
