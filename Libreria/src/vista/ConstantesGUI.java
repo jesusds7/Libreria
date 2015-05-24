@@ -107,6 +107,10 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "Agregar Autor";
 	public static final String T_MENU_ITEM_AGREGAR_CLIENTE = "Agregar Cliente";
 	public static final String T_LABEL_DINERO = "Dinero";
+	/**
+	 * dialogo editar autor
+	 */
+	public static final String T_MENU_ITEM_EDITAR_CLIENTE = "Editar Cliente";
 	
 	
 }

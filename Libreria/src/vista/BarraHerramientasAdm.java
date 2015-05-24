@@ -15,8 +15,8 @@ public class BarraHerramientasAdm extends JToolBar {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton btnNuevoLibro;
-	private JButton btnBuscarLibro;
-	private JTextField txBuscarLibro;
+	private JButton btnBuscar;
+	private JTextField txBuscar;
 	private JComboBox<String> listaBusqueda;
 	private JButton btnEliminar;
 	private JButton btnNuevoAutor;
@@ -69,14 +69,14 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnRemoverCliente.setActionCommand(Controlador.A_REMOVER_CLIENTE);
 		add(btnRemoverCliente);
 		
-		btnBuscarLibro = new JButton();
-		btnBuscarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_BUSCAR));
-		btnBuscarLibro.setToolTipText(ConstantesGUI.T_MENU_ITEM_BUSCAR_LIBRO);
-		btnBuscarLibro.addActionListener(controlador);
-		btnBuscarLibro.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		add(btnBuscarLibro);
-		txBuscarLibro = new JTextField();
-		add(txBuscarLibro);
+		btnBuscar = new JButton();
+		btnBuscar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_BUSCAR));
+		btnBuscar.setToolTipText(ConstantesGUI.T_MENU_ITEM_BUSCAR_LIBRO);
+		btnBuscar.addActionListener(controlador);
+		btnBuscar.setActionCommand(Controlador.A_BUSCAR_LIBRO);
+		add(btnBuscar);
+		txBuscar = new JTextField();
+		add(txBuscar);
 		
 		listaBusqueda = new JComboBox<String>();
 		listaBusqueda.addItem(TipoBusqueda.SELLECION_OPCION.toString());
@@ -103,11 +103,7 @@ public class BarraHerramientasAdm extends JToolBar {
 		}
 	}
 
-	public JTextField getTxBuscarLibro() {
-		return txBuscarLibro;
-	}
-
-	public void setTxBuscarLibro(JTextField txBuscarLibro) {
-		this.txBuscarLibro = txBuscarLibro;
+	public JTextField getTxBuscar() {
+		return txBuscar;
 	}
 }

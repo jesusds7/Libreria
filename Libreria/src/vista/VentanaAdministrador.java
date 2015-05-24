@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.Iterator;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
@@ -150,20 +153,58 @@ public class VentanaAdministrador extends JFrame {
 		}
 	}
 
+	public void seleccionarAutor(int id){
+		for (int i = 0; i < tablaAutores.getRowCount(); i++) {
+			int aux = Integer.parseInt((String) modeloTablaAutores.getValueAt(i, 0));
+			if(id == aux){
+				tablaAutores.setRowSelectionInterval(i, i);
+				break;
+			}
+		}
+	}
+
+	public void seleccionarAutor(String nombre){
+		for (int i = 0; i < tablaAutores.getRowCount(); i++) {
+			String aux = (String) modeloTablaAutores.getValueAt(i, 1);
+			if(aux.equalsIgnoreCase(nombre)){
+				tablaAutores.setRowSelectionInterval(i, i);
+				break;
+			}
+		}
+	}
+
+	public void seleccionarCliente(int id){
+		for (int i = 0; i < tablaClientes.getRowCount(); i++) {
+			int aux = Integer.parseInt((String)modeloTablaClientes.getValueAt(i, 0));
+			if(aux == id){
+				tablaClientes.setRowSelectionInterval(i, i);
+			}
+		}
+	}
+
+	public void seleccionarCliente(String nombre){
+		for (int i = 0; i < tablaClientes.getRowCount(); i++) {
+			String aux = (String)modeloTablaClientes.getValueAt(i, 1);
+			if(aux.equalsIgnoreCase(nombre)){
+				tablaClientes.setRowSelectionInterval(i, i);
+			}
+		}
+	}
+
 	public void elimiarFilaLibro(){
 		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Libro?.", "", 1, 0);
 		if(pregunta == JOptionPane.YES_OPTION){
 			modeloTablaLibros.removeRow(tablalibros.getSelectedRow());
 		}
 	}
-	
+
 	public void elimiarFilaAutor(){
 		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Autor?.", "", 1, 0);
 		if(pregunta == JOptionPane.YES_OPTION){
 			modeloTablaAutores.removeRow(tablaAutores.getSelectedRow());
 		}
 	}
-	
+
 	public void elimiarFilaCliente(){
 		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Cliente?.", "", 1, 0);
 		if(pregunta == JOptionPane.YES_OPTION){
@@ -174,11 +215,11 @@ public class VentanaAdministrador extends JFrame {
 	public int retornarIdSeleccionLibro(){
 		return Integer.parseInt((String) modeloTablaLibros.getValueAt(tablalibros.getSelectedRow(), 0));
 	}
-	
+
 	public int retornarIdSeleccionAutor(){
 		return Integer.parseInt((String) modeloTablaAutores.getValueAt(tablaAutores.getSelectedRow(), 0));
 	}
-	
+
 	public int retornarIdSeleccionCliente(){
 		return Integer.parseInt((String) modeloTablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
 	}
@@ -199,15 +240,26 @@ public class VentanaAdministrador extends JFrame {
 		dialogoAgregarLibro.setVisible(true);
 	}
 
-	public void actualizarTabla (Libro s, int fila){
-		modeloTablaLibros.setValueAt(s.getId(), fila, 0);
+	public void actualizarTablaLibro(Libro s, int fila){
 		modeloTablaLibros.setValueAt(s.getNombre(), fila, 1);
 		modeloTablaLibros.setValueAt(s.getDescripcion(), fila, 2);
 		modeloTablaLibros.setValueAt(s.getPrecio(), fila, 3);
 		modeloTablaLibros.setValueAt(s.getNumeroCopias(), fila, 4);
 		modeloTablaLibros.setValueAt(s.getNombreAutor(), fila, 5);		
-		panelFotos.setRutaImagen(s.getImagen());
+		//		panelFotos.setRutaImagen(s.getImagen());
 		modeloTablaLibros.fireTableDataChanged();
+	}
+
+	public void actualizarTablaAutor(Autor s, int fila){
+		modeloTablaAutores.setValueAt(s.getNombre(), fila, 1);
+		//		panelFotos.setRutaImagen(s.getImagen());
+		modeloTablaAutores.fireTableDataChanged();
+	}
+
+	public void actualizarTablaCliente(Cliente s, int fila){
+		modeloTablaClientes.setValueAt(s.getNombre(), fila, 1);
+		modeloTablaClientes.setValueAt(s.getDinero(), fila, 2);
+		modeloTablaClientes.fireTableDataChanged();
 	}
 
 	protected ImageIcon createImageIcon(String path) {

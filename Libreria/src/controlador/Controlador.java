@@ -20,6 +20,8 @@ import vista.DialogoAgregarAutor;
 import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
 import vista.DialogoInicio;
+import vista.EditDialogoAgregarAutor;
+import vista.EditDialogoAgregarCliente;
 import vista.EditDialogoAgregarLibro;
 import vista.VentanaAdministrador;
 import vista.VentanaUsuario;
@@ -56,12 +58,16 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE = "ACCION_MOSTAR_AGREGAR_CLIENTE";
 	public static final String A_SALIR = "SALIR";
 	public static final String A_EDITAR_LIBRO = "EDITAR_LIBRO";
+	public static final String A_EDITAR_AUTOR = "EDITAR_AUTOR";
+	public static final String A_EDITAR_CLIENTE = "EDITAR_CLIENTE";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
 	private VentanaUsuario ventanaUsuario;
 	private GestorLibro gestorLibro;
 	private EditDialogoAgregarLibro editDialogoAgregarLibro;
+	private EditDialogoAgregarAutor editDialogoAgregarAutor;
+	private EditDialogoAgregarCliente editDialogoAgregarCliente;
 	private DialogoAgregarAutor dialogoAgregarAutor;
 	private GestorAutor gestorAutor;
 	private GestorCliente gestorCliente;
@@ -75,6 +81,8 @@ public class Controlador extends JPanel implements ActionListener {
 		dialogoAgregarLibro = new DialogoAgregarLibro(ventanaAdministrador, this);
 		dialogoAgregarAutor = new DialogoAgregarAutor(ventanaAdministrador, this);
 		editDialogoAgregarLibro = new EditDialogoAgregarLibro(ventanaAdministrador, this);
+		editDialogoAgregarAutor = new EditDialogoAgregarAutor(ventanaAdministrador, this);
+		editDialogoAgregarCliente = new EditDialogoAgregarCliente(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
 		ventanaUsuario = new VentanaUsuario(this);
 		dialogoPrimario.setVisible(true);
@@ -138,7 +146,8 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_BUSCAR_LIBRO:
 			try {
 				seleccionarOpcionBuscar();
-			} catch (ExcepcionLibroNoEncontrado e3) {
+			} catch (ExcepcionLibroNoEncontrado | ExcepcionAutorNoEncontrado
+					| ExcepcionClienteNoEncontrado e3) {
 				e3.printStackTrace();
 			}
 			break;
@@ -155,6 +164,39 @@ public class Controlador extends JPanel implements ActionListener {
 			} catch (ExcepcionLibroNoEncontrado e1) {
 				e1.printStackTrace();
 			}
+			break;
+		case A_MOSTAR_EDITAR_AUTOR:
+			try {
+				mostarDialogoEditarAutor();
+			} catch (ExcepcionAutorNoEncontrado e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
+		case A_EDITAR_AUTOR:
+			try {
+				editarAutor();
+			} catch (ExcepcionAutorNoEncontrado e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
+		case A_MOSTAR_EDITAR_CLIENTE:
+			try {
+				mostrarDialogoEditarCliente();
+			} catch (ExcepcionClienteNoEncontrado e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
+		case A_EDITAR_CLIENTE:
+			try {
+				editarCliente();
+			} catch (ExcepcionClienteNoEncontrado e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
 		case A_MOSTAR_AGREGAR_AUTOR:
 			dialogoAgregarAutor.setVisible(true);
 			break;
@@ -176,46 +218,94 @@ public class Controlador extends JPanel implements ActionListener {
 		editDialogoAgregarLibro.cambiarValores(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
 		editDialogoAgregarLibro.setVisible(true);
 	}
+	
+	public void mostarDialogoEditarAutor()throws ExcepcionAutorNoEncontrado{
+		editDialogoAgregarAutor.cambiarValores(buscarAutor(ventanaAdministrador.retornarIdSeleccionAutor()));
+		editDialogoAgregarAutor.setVisible(true);
+	}
+	
+	public void mostrarDialogoEditarCliente()throws ExcepcionClienteNoEncontrado{
+		editDialogoAgregarCliente.cambiarValores(buscarCliente(ventanaAdministrador.retornarIdSeleccionCliente()));
+		editDialogoAgregarCliente.setVisible(true);
+	}
 
 	
 	public void editarLibro() throws ExcepcionLibroNoEncontrado{
 		editDialogoAgregarLibro.editarLibro(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
-		try {
-			ventanaAdministrador.actualizarTabla(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()), ventanaAdministrador.retornarIdSeleccionLibro());
-			
-		} catch (Exception e) {
-		}
+			ventanaAdministrador.actualizarTablaLibro(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()), ventanaAdministrador.retornarIdSeleccionLibro());
 	}
 	
-	public void seleccionarOpcionBuscar()throws ExcepcionLibroNoEncontrado{
+	public void editarAutor()throws ExcepcionAutorNoEncontrado{
+		editDialogoAgregarAutor.editarAutor(buscarAutor(ventanaAdministrador.retornarIdSeleccionAutor()));
+		ventanaAdministrador.actualizarTablaAutor(buscarAutor(ventanaAdministrador.retornarIdSeleccionAutor()), ventanaAdministrador.retornarIdSeleccionAutor());
+	}
+	
+	public void editarCliente()throws ExcepcionClienteNoEncontrado{
+		editDialogoAgregarCliente.editarCliente(buscarCliente(ventanaAdministrador.retornarIdSeleccionCliente()));
+		ventanaAdministrador.actualizarTablaCliente(buscarCliente(ventanaAdministrador.retornarIdSeleccionCliente()),ventanaAdministrador.retornarIdSeleccionCliente());
+	}
+	
+	public void seleccionarOpcionBuscar()throws ExcepcionLibroNoEncontrado, ExcepcionAutorNoEncontrado, ExcepcionClienteNoEncontrado{
 		String aux = ventanaAdministrador.getBarraHerramientas().tipoSeleccionBuscar();
 		if(aux.equals(TipoBusqueda.LIBRO_NOMBRE.toString())){
 			buscarLibroNombre();
 		}else if (aux.equals(TipoBusqueda.LIBRO_ID.toString())) {
 			buscarLibroId();
 		}else if (aux.equals(TipoBusqueda.AUTHOR_NOMBRE.toString())) {
-			
+			buscarAutorNombre();
 		}else if (aux.equals(TipoBusqueda.AUTHOR_ID.toString())) {
-			
+			buscarAutorId();
 		}else if (aux.equals(TipoBusqueda.CLIENTE_NOMBRE.toString())) {
-			
+			buscarClienteNombre();
 		}else if (aux.equals(TipoBusqueda.CLIENTE_ID.toString())) {
-			
+			buscarClienteId();
 		}else if (aux.equals(TipoBusqueda.SELLECION_OPCION.toString())) {
 			JOptionPane.showMessageDialog(null, "Debe seleccionar una opcion de busqueda", "Advertencia", 2);
 		}
 	}
+	
+	public String selecionBarraHerraientas(){
+		return ventanaAdministrador.getBarraHerramientas().getTxBuscar().getText();
+	}
+	
+	public void limpiarCampoBuscar(){
+		ventanaAdministrador.getBarraHerramientas().getTxBuscar().setText("");
+	}
 
 	public void buscarLibroId() throws ExcepcionLibroNoEncontrado {
-		gestorLibro.buscarLibro(Integer.parseInt(ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().getText()));
-		ventanaAdministrador.seleccionarLibro(Integer.parseInt(ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().getText()));
-		ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().setText("");
+		gestorLibro.buscarLibro(Integer.parseInt(selecionBarraHerraientas()));
+		ventanaAdministrador.seleccionarLibro(Integer.parseInt(selecionBarraHerraientas()));
+		limpiarCampoBuscar();
 	}	
 
 	public void buscarLibroNombre() throws ExcepcionLibroNoEncontrado{
-		gestorLibro.buscarLibro(ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().getText());
-		ventanaAdministrador.seleccionarLibro(ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().getText());
-		ventanaAdministrador.getBarraHerramientas().getTxBuscarLibro().setText("");
+		gestorLibro.buscarLibro(selecionBarraHerraientas());
+		ventanaAdministrador.seleccionarLibro(selecionBarraHerraientas());
+		limpiarCampoBuscar();
+	}
+	
+	public void buscarAutorId()throws ExcepcionAutorNoEncontrado{
+		gestorAutor.buscarAutor(Integer.parseInt(selecionBarraHerraientas()));
+		ventanaAdministrador.seleccionarAutor(Integer.parseInt(selecionBarraHerraientas()));
+		limpiarCampoBuscar();
+	}
+	
+	public void buscarAutorNombre()throws ExcepcionAutorNoEncontrado{
+		gestorAutor.buscarAutor(selecionBarraHerraientas());
+		ventanaAdministrador.seleccionarAutor(selecionBarraHerraientas());
+		limpiarCampoBuscar();
+	}
+	
+	public void buscarClienteId()throws ExcepcionClienteNoEncontrado{
+		gestorCliente.buscarCliente(Integer.parseInt(selecionBarraHerraientas()));
+		ventanaAdministrador.seleccionarCliente(Integer.parseInt(selecionBarraHerraientas()));
+		limpiarCampoBuscar();
+	}
+	
+	public void buscarClienteNombre()throws ExcepcionClienteNoEncontrado{
+		gestorCliente.buscarCliente(selecionBarraHerraientas());
+		ventanaAdministrador.seleccionarCliente(selecionBarraHerraientas());
+		limpiarCampoBuscar();
 	}
 	
 	public void borrarLibro() throws ExcepcionLibroNoEncontrado {
