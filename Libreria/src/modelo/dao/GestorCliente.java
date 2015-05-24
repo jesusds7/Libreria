@@ -6,7 +6,9 @@ import java.util.ArrayList;
  * @author JESUS
  */
 
+
 import modelo.entidades.Cliente;
+import modelo.excepcionLibroNoEncontrado.ExcepcionClienteNoEncontrado;
 import modelo.util.Util;
 
 public class GestorCliente {
@@ -25,22 +27,22 @@ public class GestorCliente {
 		listaClientes.remove(cliente);
 	}
 
-	public Cliente buscarCliente(int id){
+	public Cliente buscarCliente(int id)throws ExcepcionClienteNoEncontrado{
 		for (Cliente cliente: listaClientes) {
 			if (cliente.getId() == id) {
 				return cliente;
 			}
 		}
-		return null;
+		throw new  ExcepcionClienteNoEncontrado(id);
 	}
 
-	public Cliente buscarCliente(String nombre){
+	public Cliente buscarCliente(String nombre)throws ExcepcionClienteNoEncontrado{
 		for (Cliente cliente: listaClientes) {
 			if (cliente.getNombre().equals(nombre)) {
 				return cliente;
 			}
 		}
-		return null;
+		throw new ExcepcionClienteNoEncontrado(nombre);
 	}
 
 	public static Cliente crearCliente(String nombre,String dinero) {

@@ -13,22 +13,17 @@ public class ConstantesGUI {
 	 * Barra Herramientas Administrador
 	 */
 	
-	public static final String T_MENU_ARCHIVO = "Archivo";
-	public static final String T_MENU_EXPORTAR = "Exportar";
-	public static final String T_MENU_IMPORTAR = "Importar";
-	public static final String T_MENU_PREFERENCIAS = "Preferencias";
-	public static final String T_MENU_AYUDA = "Ayuda";
-	public static final String T_MENU_ESTADISTICAS = "Estadisticas";
-	public static final String T_MENU_ITEM_SALIR = "Salir";
-	public static final String T_MENU_ITEM_AGREGAR_lIBRO = "Agregar Libro";
-	public static final String T_MENU_ITEM_REMOVER_LIBRO = "Remover libro";
 	public static final String T_MENU_ITEM_EDITAR_LIBRO = "Editar Libro";
-	public static final String T_MENU_ITEM_COMPRAR_LIBRO = "Comprar Libro";
+	public static final String T_MENU_ITEM_REMOVER_LIBRO = "Remover libro";
+	public static final String T_MENU_ITEM_REMOVER_AUTOR = "Remover Autor";
+	public static final String T_MENU_ITEM_REMOVER_CLIENTE = "Remover Cliente";
 	public static final String T_MENU_ITEM_BUSCAR_LIBRO = "Buscar Libro";
 	public static final String I_ICONO_BTN_NUEVO_LIBRO = "/imagenes/book.png";
 	public static final String I_ICONO_BTN_NUEVO_CLIENTE = "/imagenes/cliente.png";
 	public static final String I_ICONO_BTN_NUEVO_AUTOR = "/imagenes/author.png";
 	public static final String I_ICONO_BTN_ELIMINAR_LIBRO = "/imagenes/remove.png";
+	public static final String I_ICONO_BTN_ELIMINAR_AUTOR = "/imagenes/deleteAuthor.png";
+	public static final String I_ICONO_BTN_ELIMINAR_CLIENTE = "/imagenes/removeCliente.png";
 	public static final String I_ICONO_BTN_EDITAR = "/imagenes/edit.png";
 	public static final String I_ICONO_BTN_BUSCAR = "/imagenes/search.png";
 	public static final String T_RADIO_BTN_NOMBRE_LIBRO = "Libro";
@@ -38,6 +33,18 @@ public class ConstantesGUI {
 	public static final String I_ICONO_BTN_SALIR = "/imagenes/exit.png";
 	public static final String I_ICONO_BTN_IMPORTAR = "/imagenes/import.png";
 	public static final String I_ICONO_BTN_EXPORTAR = "/imagenes/export.png";
+	/**
+	 * barra menu administrador
+	 */
+	public static final String T_MENU_ITEM_EDITAR_AUTOR = "Editar Autor";
+	public static final String T_MENU_ARCHIVO = "Archivo";
+	public static final String T_MENU_EXPORTAR = "Exportar";
+	public static final String T_MENU_IMPORTAR = "Importar";
+	public static final String T_MENU_PREFERENCIAS = "Preferencias";
+	public static final String T_MENU_AYUDA = "Ayuda";
+	public static final String T_MENU_ESTADISTICAS = "Estadisticas";
+	public static final String T_MENU_ITEM_SALIR = "Salir";
+	public static final String T_MENU_ITEM_AGREGAR_lIBRO = "Agregar Libro";
 	
 	/**
 	 * Ventana Inicio

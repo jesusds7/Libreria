@@ -150,15 +150,37 @@ public class VentanaAdministrador extends JFrame {
 		}
 	}
 
-	public void elimiarFila(){
+	public void elimiarFilaLibro(){
 		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Libro?.", "", 1, 0);
 		if(pregunta == JOptionPane.YES_OPTION){
 			modeloTablaLibros.removeRow(tablalibros.getSelectedRow());
 		}
 	}
+	
+	public void elimiarFilaAutor(){
+		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Autor?.", "", 1, 0);
+		if(pregunta == JOptionPane.YES_OPTION){
+			modeloTablaAutores.removeRow(tablaAutores.getSelectedRow());
+		}
+	}
+	
+	public void elimiarFilaCliente(){
+		int pregunta = JOptionPane.showConfirmDialog(this, "Seguro quiere eliminar el Cliente?.", "", 1, 0);
+		if(pregunta == JOptionPane.YES_OPTION){
+			modeloTablaClientes.removeRow(tablaClientes.getSelectedRow());
+		}
+	}
 
-	public int retornarIdSeleccion(){
+	public int retornarIdSeleccionLibro(){
 		return Integer.parseInt((String) modeloTablaLibros.getValueAt(tablalibros.getSelectedRow(), 0));
+	}
+	
+	public int retornarIdSeleccionAutor(){
+		return Integer.parseInt((String) modeloTablaAutores.getValueAt(tablaAutores.getSelectedRow(), 0));
+	}
+	
+	public int retornarIdSeleccionCliente(){
+		return Integer.parseInt((String) modeloTablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
 	}
 
 	public void agregarLibroTabla(Libro libro, TipoGenero genero){

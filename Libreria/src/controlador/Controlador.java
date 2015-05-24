@@ -13,6 +13,8 @@ import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoBusqueda;
 import modelo.entidades.TipoGenero;
+import modelo.excepcionLibroNoEncontrado.ExcepcionAutorNoEncontrado;
+import modelo.excepcionLibroNoEncontrado.ExcepcionClienteNoEncontrado;
 import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
 import vista.DialogoAgregarAutor;
 import vista.DialogoAgregarCliente;
@@ -31,9 +33,12 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_MOSTAR_AGREGAR_LIBRO = "A_MOSTRAR_AGREGAR_LIBRO";
 	public static final String A_MOSTAR_AGREGAR_AUTOR = "A_MOSTRAR_AGREGAR_AUTOR";
 	public static final String A_REMOVER_LIBRO = "REMOVER_LIBRO";
+	public static final String A_REMOVER_AUTOR = "REMOVER_AUTOR";
+	public static final String A_REMOVER_CLIENTE = "REMOVER_CLIENTE";
 	public static final String A_MOSTAR_EDITAR_LIBRO = "MOSTAR_EDITAR_LIBRO";
+	public static final String A_MOSTAR_EDITAR_AUTOR = "MOSTAR_EDITAR_AUTOR";
+	public static final String A_MOSTAR_EDITAR_CLIENTE = "MOSTAR_EDITAR_CLIENTE";
 	public static final String A_BUSCAR_LIBRO = "BUSCAR_LIBRO";
-	public static final String A_BUSCAR_NOMBRE_LIBRO = "RADIO_LIBRO";
 	public static final String A_BUSCAR_ID_LIBRO = "RADIO_ID_LIBRO";
 	public static final String A_BUSCAR_NOMBRE_USUARIO = "RADIO_USUARIO";
 	public static final String A_BUSCAR_ID_USUARIO = "RADIO_ID_USUARIO";
@@ -116,6 +121,20 @@ public class Controlador extends JPanel implements ActionListener {
 				e1.printStackTrace();
 			}
 			break;
+		case A_REMOVER_AUTOR:
+			try {
+				borrarAutor();
+			} catch (ExcepcionAutorNoEncontrado e4) {
+				e4.printStackTrace();
+			}
+			break;
+		case A_REMOVER_CLIENTE:
+			try {
+				borrarCliente();
+			} catch (ExcepcionClienteNoEncontrado e4) {
+				e4.printStackTrace();
+			}
+			break;
 		case A_BUSCAR_LIBRO:
 			try {
 				seleccionarOpcionBuscar();
@@ -154,15 +173,15 @@ public class Controlador extends JPanel implements ActionListener {
 	}
 	
 	public void mostartDialogoEditarLibro() throws ExcepcionLibroNoEncontrado{		
-		editDialogoAgregarLibro.cambiarValores(buscarLibro(ventanaAdministrador.retornarIdSeleccion()));
+		editDialogoAgregarLibro.cambiarValores(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
 		editDialogoAgregarLibro.setVisible(true);
 	}
 
 	
 	public void editarLibro() throws ExcepcionLibroNoEncontrado{
-		editDialogoAgregarLibro.editarLibro(buscarLibro(ventanaAdministrador.retornarIdSeleccion()));
+		editDialogoAgregarLibro.editarLibro(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
 		try {
-			ventanaAdministrador.actualizarTabla(buscarLibro(ventanaAdministrador.retornarIdSeleccion()), ventanaAdministrador.retornarIdSeleccion());
+			ventanaAdministrador.actualizarTabla(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()), ventanaAdministrador.retornarIdSeleccionLibro());
 			
 		} catch (Exception e) {
 		}
@@ -200,12 +219,30 @@ public class Controlador extends JPanel implements ActionListener {
 	}
 	
 	public void borrarLibro() throws ExcepcionLibroNoEncontrado {
-		gestorLibro.removerLibro(buscarLibro(ventanaAdministrador.retornarIdSeleccion()));
-		ventanaAdministrador.elimiarFila();
+		gestorLibro.removerLibro(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
+		ventanaAdministrador.elimiarFilaLibro();
+	}
+	
+	public void borrarAutor()throws ExcepcionAutorNoEncontrado{
+		gestorAutor.removerAutor(buscarAutor(ventanaAdministrador.retornarIdSeleccionAutor()));
+		ventanaAdministrador.elimiarFilaAutor();
+	}
+	
+	public void borrarCliente()throws ExcepcionClienteNoEncontrado{
+		gestorCliente.removerCliente(buscarCliente(ventanaAdministrador.retornarIdSeleccionCliente()));
+		ventanaAdministrador.elimiarFilaCliente();
 	}
 	
 	public Libro buscarLibro(int id) throws ExcepcionLibroNoEncontrado{
 		return gestorLibro.buscarLibro(id);
+	}
+	
+	public Autor buscarAutor(int id)throws ExcepcionAutorNoEncontrado{
+		return gestorAutor.buscarAutor(id);
+	}
+	
+	public Cliente buscarCliente(int id)throws ExcepcionClienteNoEncontrado{
+		return gestorCliente.buscarCliente(id);
 	}
 	
 	public void agregarAutor(){

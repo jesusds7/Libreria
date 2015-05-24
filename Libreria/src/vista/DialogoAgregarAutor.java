@@ -4,15 +4,12 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
 import controlador.Controlador;
 import modelo.entidades.Autor;
 
@@ -24,11 +21,9 @@ public class DialogoAgregarAutor extends JDialog{
 	private JTextField txtNombre;
 	private JTextField txtRutaImagen;
 	private JLabel lbNombre;
-	private JLabel lbGenero;
 	protected JButton btnCrearAutor;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
-	private JComboBox<Autor> listaAutores;
 	
 	public DialogoAgregarAutor(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
@@ -55,17 +50,6 @@ public class DialogoAgregarAutor extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
-
-
-		lbGenero = new JLabel(ConstantesGUI.T_LABEL_GENERO);
-		cons.gridx = 0;
-		cons.gridy = 1;
-		add(lbGenero, cons);
-
-		listaAutores = new JComboBox<Autor>();
-		cons.gridx = 1;
-		cons.gridy = 1;		
-		add(listaAutores, cons);
 
 		btnAgregarImagen = new JButton(ConstantesGUI.T_BTN_CARGAR_IMAGEN);
 		btnAgregarImagen.setActionCommand(Controlador.A_AGREGAR_IMAGEN_AUTOR);

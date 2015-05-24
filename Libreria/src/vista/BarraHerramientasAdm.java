@@ -1,15 +1,10 @@
 package vista;
 
-import javafx.beans.binding.ListBinding;
-
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-
 import modelo.entidades.TipoBusqueda;
 import controlador.Controlador;
 
@@ -24,9 +19,10 @@ public class BarraHerramientasAdm extends JToolBar {
 	private JTextField txBuscarLibro;
 	private JComboBox<String> listaBusqueda;
 	private JButton btnEliminar;
-	private JButton btnEditar;
 	private JButton btnNuevoAutor;
 	private JButton btnNuevoCliente;
+	private JButton btnRemoverAutor;
+	private JButton btnRemoverCliente;
 	
 	public BarraHerramientasAdm(Controlador controlador) {
 		setEnabled(false);
@@ -44,12 +40,6 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnEliminar.setActionCommand(Controlador.A_REMOVER_LIBRO);
 		add(btnEliminar);
 
-		btnEditar = new JButton();
-		btnEditar.addActionListener(controlador);
-		btnEditar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_EDITAR));
-		btnEditar.setToolTipText(ConstantesGUI.T_MENU_ITEM_EDITAR_LIBRO);
-		btnEditar.setActionCommand(Controlador.A_MOSTAR_EDITAR_LIBRO);
-		add(btnEditar);
 		
 		btnNuevoAutor = new JButton();
 		btnNuevoAutor.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
@@ -58,12 +48,26 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnNuevoAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
 		add(btnNuevoAutor);
 		
+		btnRemoverAutor = new JButton();
+		btnRemoverAutor.setToolTipText(ConstantesGUI.T_MENU_ITEM_REMOVER_AUTOR);
+		btnRemoverAutor.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_ELIMINAR_AUTOR));
+		btnRemoverAutor.addActionListener(controlador);
+		btnRemoverAutor.setActionCommand(Controlador.A_REMOVER_AUTOR);
+		add(btnRemoverAutor);
+		
 		btnNuevoCliente = new JButton();
 		btnNuevoCliente.setToolTipText(ConstantesGUI.T_MENU_ITEM_AGREGAR_CLIENTE);
 		btnNuevoCliente.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_CLIENTE));
 		btnNuevoCliente.addActionListener(controlador);
 		btnNuevoCliente.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE);
 		add(btnNuevoCliente);
+		
+		btnRemoverCliente = new JButton();
+		btnRemoverCliente.setToolTipText(ConstantesGUI.T_MENU_ITEM_REMOVER_CLIENTE);
+		btnRemoverCliente.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_ELIMINAR_CLIENTE));
+		btnRemoverCliente.addActionListener(controlador);
+		btnRemoverCliente.setActionCommand(Controlador.A_REMOVER_CLIENTE);
+		add(btnRemoverCliente);
 		
 		btnBuscarLibro = new JButton();
 		btnBuscarLibro.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_BUSCAR));

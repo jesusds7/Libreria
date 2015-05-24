@@ -17,13 +17,11 @@ public class DialogoInicio extends JDialog{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private JButton btnAdministrador;
 	private JButton btnUsuario;
 	private Image imagenFondo;
 	private ImageIcon imgAdministrador;
 	private ImageIcon imgUsuario;
-
 
 	public DialogoInicio(Controlador controlador) {
 
@@ -81,5 +79,4 @@ public class DialogoInicio extends JDialog{
 			return null;
 		}
 	}
-
 }

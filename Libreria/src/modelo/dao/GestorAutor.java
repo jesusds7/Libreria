@@ -2,7 +2,7 @@ package modelo.dao;
 
 import java.util.ArrayList;
 import modelo.entidades.Autor;
-import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
+import modelo.excepcionLibroNoEncontrado.ExcepcionAutorNoEncontrado;
 
 public class GestorAutor {
 	private ArrayList<Autor> listaAutores;
@@ -23,22 +23,22 @@ public class GestorAutor {
 		return new Autor(nombre, imagen);
 	}
 
-	public Autor buscarAutor(int id)throws ExcepcionLibroNoEncontrado {
+	public Autor buscarAutor(int id)throws ExcepcionAutorNoEncontrado {
 		for (Autor autor : listaAutores) {
 			if(autor.getId() == id){
 				return autor;
 			}
 		}
-		throw new ExcepcionLibroNoEncontrado(id);
+		throw new ExcepcionAutorNoEncontrado(id);
 	}
 
-	public Autor buscarAutor(String nombre)throws ExcepcionLibroNoEncontrado {
+	public Autor buscarAutor(String nombre)throws ExcepcionAutorNoEncontrado {
 		for (Autor autor : listaAutores) {
 			if(autor.getNombre().equalsIgnoreCase(nombre)){
 				return autor;
 			}
 		}
-		throw new ExcepcionLibroNoEncontrado(nombre);
+		throw new ExcepcionAutorNoEncontrado(nombre);
 	}
 
 	public ArrayList<Autor> getListaAutores() {
