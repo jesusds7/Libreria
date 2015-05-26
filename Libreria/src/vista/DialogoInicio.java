@@ -8,11 +8,12 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import controlador.Controlador;
 
-public class DialogoInicio extends JDialog{
+public class DialogoInicio extends JFrame{
 	/**
 	 * 
 	 */
@@ -28,11 +29,11 @@ public class DialogoInicio extends JDialog{
 		UIManager.put("Button.font", new Font(null, 5, 14));
 
 		setLayout(new GridBagLayout());
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA, ConstantesGUI.VENTANA_ALTO_PRIMARIA);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		setModal(false);
 		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 		imagenFondo = new ImageIcon("src/imagenes/lib.jpg").getImage();
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);

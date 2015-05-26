@@ -51,4 +51,8 @@ public class GestorCliente {
 		}
 		return null;
 	}
+
+	public ArrayList<Cliente> getListaClientes() {
+		return listaClientes;
+	}
 }

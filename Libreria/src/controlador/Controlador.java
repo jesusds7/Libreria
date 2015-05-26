@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import persistencia.GestorArchivoXMLCliente;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -185,7 +186,6 @@ public class Controlador extends JPanel implements ActionListener {
 			try {
 				mostrarDialogoEditarCliente();
 			} catch (ExcepcionClienteNoEncontrado e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -193,7 +193,6 @@ public class Controlador extends JPanel implements ActionListener {
 			try {
 				editarCliente();
 			} catch (ExcepcionClienteNoEncontrado e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -208,6 +207,7 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_AGREGAR_CLIENTE:
 			agregarCliente();
+			GestorArchivoXMLCliente.exportarArchivoXML(dialogoAgregarCliente.crearCliente());
 			break;
 		default:
 			break;
