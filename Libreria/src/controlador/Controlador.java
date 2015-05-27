@@ -21,6 +21,7 @@ import vista.DialogoAgregarAutor;
 import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
 import vista.DialogoInicio;
+import vista.DialogoLoginUsuario;
 import vista.EditDialogoAgregarAutor;
 import vista.EditDialogoAgregarCliente;
 import vista.EditDialogoAgregarLibro;
@@ -64,6 +65,8 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_EDITAR_CLIENTE = "EDITAR_CLIENTE";
 	public static final String A_RDBUTTON_FILTRAR_AUTOR = "FILTRAR AUTOR EN USUARIO";
 	public static final String A_RDBUTTON_FILTRAR_TITULO = "FILTRAR TITULO EN USUARIO";
+	public static final String AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO = "VERIFICAR Y ENTRAR LOGIN USUARIO";
+	public static final String AC_BTN_CANCELAR_DIALOGO = "Cancelar";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -76,6 +79,7 @@ public class Controlador extends JPanel implements ActionListener {
 	private GestorAutor gestorAutor;
 	private GestorCliente gestorCliente;
 	private DialogoAgregarCliente dialogoAgregarCliente;
+	private DialogoLoginUsuario dialogoLoginUsuario;
 	public Controlador() {
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
@@ -90,6 +94,7 @@ public class Controlador extends JPanel implements ActionListener {
 		ventanaAdministrador = new VentanaAdministrador(this);
 		ventanaUsuario = new VentanaUsuario(this);
 		dialogoPrimario.setVisible(true);
+		dialogoLoginUsuario = new DialogoLoginUsuario(this);
 	}
 	
 	public static void main(String[] args) {
@@ -103,7 +108,11 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.setVisible(true);
 			break;
 		case A_BTN_DIALOGO_USUARIO:
+			dialogoLoginUsuario.setVisible(true);
+			break;
+		case AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO:
 			ventanaUsuario.setVisible(true);
+			dialogoLoginUsuario.dispose();
 			break;
 		case A_MOSTRAR_DIALOGO_AGREGAR_LIBRO:
 			dialogoAgregarLibro.setVisible(true);
@@ -218,6 +227,9 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_RDBUTTON_FILTRAR_AUTOR:
 			ventanaUsuario.filtrarAutor();
+			break;
+		case AC_BTN_CANCELAR_DIALOGO:
+			dialogoLoginUsuario.setVisible(false);
 		}
 	}
 	

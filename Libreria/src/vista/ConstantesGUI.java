@@ -112,6 +112,14 @@ public class ConstantesGUI {
 	 * dialogo editar autor
 	 */
 	public static final String T_MENU_ITEM_EDITAR_CLIENTE = "Editar Cliente";
+	/**
+	 * constantes dialogo login usuario
+	 */
+	public static final String TITLE_LOGIN_USER = "lOGIN USER";
+	public static final String BTN_INGRESAR_LOGIN_USER = "INGRESAR";
+	public static final String BTN_CANCELAR_LOGIN_USER = "CANCELAR";
+	public static final String LBL_NAME_LOGIN_USER = "Nombre";
+	public static final String LBL_PASSWORD_LOGIN_USER = "Contraseña";
 	
 	
 }
