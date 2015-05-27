@@ -26,9 +26,9 @@ public class DialogoLoginUsuario extends JDialog {
 	private JButton btnCancelar;
 	private JPanel panelBotones;
 	private JLabel labelNombre;
-	private JLabel labelContraseña;
+	private JLabel labelContrasenia;
 	private JTextField textFielNombre;
-	private JPasswordField textFielContraseña;
+	private JPasswordField textFielContrasenia;
 	private JPanel panelCampos;
 
 	public DialogoLoginUsuario(Controlador controlador) {
@@ -60,16 +60,16 @@ public class DialogoLoginUsuario extends JDialog {
 		panelCampos.add(textFielNombre, gb);
 
 
-		labelContraseña = new JLabel();
-		labelContraseña.setText(ConstantesGUI.LBL_PASSWORD_LOGIN_USER);
+		labelContrasenia = new JLabel();
+		labelContrasenia.setText(ConstantesGUI.LBL_PASSWORD_LOGIN_USER);
 		gb.gridx = 0;
 		gb.gridy = 1;
-		panelCampos.add(labelContraseña, gb);
+		panelCampos.add(labelContrasenia, gb);
 
-		textFielContraseña = new JPasswordField(20);
+		textFielContrasenia = new JPasswordField(20);
 		gb.gridx = 1;
 		gb.gridy = 1;
-		panelCampos.add(textFielContraseña, gb);
+		panelCampos.add(textFielContrasenia, gb);
 
 		add(panelCampos);
 
@@ -105,13 +105,11 @@ public class DialogoLoginUsuario extends JDialog {
 		this.textFielNombre = textFielNombre;
 	}
 
-	public JPasswordField getTextFielContraseña() {
-		return textFielContraseña;
+	public JPasswordField getTextFielContrasenia() {
+		return textFielContrasenia;
 	}
 
-	public void setTextFielContraseña(JPasswordField textFielContraseña) {
-		this.textFielContraseña = textFielContraseña;
+	public void setTextFielContrasenia(JPasswordField textFielContrasenia) {
+		this.textFielContrasenia = textFielContrasenia;
 	}
-	
-
 }
