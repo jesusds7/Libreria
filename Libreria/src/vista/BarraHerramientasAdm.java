@@ -21,7 +21,7 @@ public class BarraHerramientasAdm extends JToolBar {
 	private JButton btnNuevoLibro;
 	private JButton btnBuscar;
 	private JTextField txBuscar;
-	private JComboBox<String> listaBusqueda;
+	private JComboBox<TipoBusqueda> listaBusqueda;
 	private JButton btnEliminar;
 	private JButton btnNuevoAutor;
 	private JButton btnNuevoCliente;
@@ -91,14 +91,7 @@ public class BarraHerramientasAdm extends JToolBar {
 		txBuscar = new JTextField();
 		add(txBuscar);
 
-		listaBusqueda = new JComboBox<String>();
-		listaBusqueda.addItem(TipoBusqueda.SELLECION_OPCION.toString());
-		listaBusqueda.addItem(TipoBusqueda.LIBRO_NOMBRE.toString());
-		listaBusqueda.addItem(TipoBusqueda.LIBRO_ID.toString());
-		listaBusqueda.addItem(TipoBusqueda.AUTHOR_NOMBRE.toString());
-		listaBusqueda.addItem(TipoBusqueda.AUTHOR_ID.toString());
-		listaBusqueda.addItem(TipoBusqueda.CLIENTE_NOMBRE.toString());
-		listaBusqueda.addItem(TipoBusqueda.CLIENTE_ID.toString());
+		listaBusqueda = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
 		add(listaBusqueda);
 		listaBusqueda.addActionListener(controlador);
 	}
@@ -121,11 +114,11 @@ public class BarraHerramientasAdm extends JToolBar {
 		return txBuscar;
 	}
 
-	public JComboBox<String> getListaBusqueda() {
+	public JComboBox<TipoBusqueda> getListaBusqueda() {
 		return listaBusqueda;
 	}
 
-	public void setListaBusqueda(JComboBox<String> listaBusqueda) {
+	public void setListaBusqueda(JComboBox<TipoBusqueda> listaBusqueda) {
 		this.listaBusqueda = listaBusqueda;
 	}
 
