@@ -92,7 +92,7 @@ public class Controlador extends JPanel implements ActionListener {
 	
 	public static void main(String[] args) {
 		SplashLibrary controlador = new SplashLibrary();
-		controlador.setVisible(true);
+//		controlador.setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent e) {

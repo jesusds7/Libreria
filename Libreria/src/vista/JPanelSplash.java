@@ -49,11 +49,9 @@ public class JPanelSplash extends JPanel {
     @Override
     public void paint(Graphics g) {
         Dimension tamanio = this.getSize();
-        // Pintamos la imagen de fondo...
         if (image != null) {
             g.drawImage(image, 0, 0, tamanio.width, tamanio.height, null);
         }
-        // Y pintamos el resto de cosas que pueda tener el panel
         super.paint(g);
 
     }
