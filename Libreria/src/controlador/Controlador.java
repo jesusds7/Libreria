@@ -24,6 +24,7 @@ import vista.DialogoInicio;
 import vista.EditDialogoAgregarAutor;
 import vista.EditDialogoAgregarCliente;
 import vista.EditDialogoAgregarLibro;
+import vista.SplashLibrary;
 import vista.VentanaAdministrador;
 import vista.VentanaUsuario;
 
@@ -90,7 +91,7 @@ public class Controlador extends JPanel implements ActionListener {
 	}
 	
 	public static void main(String[] args) {
-		Controlador controlador = new Controlador();
+		SplashLibrary controlador = new SplashLibrary();
 		controlador.setVisible(true);
 	}
 
