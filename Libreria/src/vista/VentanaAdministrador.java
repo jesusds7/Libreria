@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
@@ -11,9 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
@@ -41,7 +46,8 @@ public class VentanaAdministrador extends JFrame {
 	private JPanel panelClase;
 	private PanelFotos panelFotos;
 	private DialogoAgregarLibro dialogoAgregarLibro;
-
+	private TableRowSorter<TableModel> trsfiltro;
+	
 	public VentanaAdministrador(Controlador controlador) {
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setLayout(new BorderLayout());
@@ -101,6 +107,7 @@ public class VentanaAdministrador extends JFrame {
 		panelAutor.add(new JScrollPane(tablaAutores));
 		panelClase.add(panelAutor);
 
+		
 		panelCliente = new JPanel();
 		modeloTablaClientes = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Dinero"}, 0);
 		tablaClientes = new JTable(modeloTablaClientes);
@@ -286,4 +293,21 @@ public class VentanaAdministrador extends JFrame {
 	public void setBarraMenu(BarraMenuAdm barraMenu) {
 		this.barraMenu = barraMenu;
 	}
+	
+	public void filtroAutor(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 2));
+	}
+	public void filtrarAutor() {
+		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxBuscar().getText());
+				barraHerramientas.getTxBuscar().setText(cadena);
+				repaint();
+				filtroAutor();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablaAutores.getModel());
+		tablaAutores.setRowSorter(trsfiltro);
+	}
+	
 }

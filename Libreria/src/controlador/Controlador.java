@@ -62,6 +62,8 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_EDITAR_LIBRO = "EDITAR_LIBRO";
 	public static final String A_EDITAR_AUTOR = "EDITAR_AUTOR";
 	public static final String A_EDITAR_CLIENTE = "EDITAR_CLIENTE";
+	public static final String A_RDBUTTON_FILTRAR_AUTOR = "FILTRAR AUTOR EN USUARIO";
+	public static final String A_RDBUTTON_FILTRAR_TITULO = "FILTRAR TITULO EN USUARIO";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -111,6 +113,7 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_CANCELAR_LIBRO:
 			dialogoAgregarLibro.cancelar();
+			dialogoAgregarLibro.setVisible(false);
 			break;
 		case A_CANCELAR_AUTOR:
 			dialogoAgregarAutor.cancelar();
@@ -123,6 +126,7 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_AGREGAR_LIBRO:
 			agregarLibro();
+			dialogoAgregarLibro.dispose();
 			break;
 		case A_REMOVER_LIBRO:
 			try {
@@ -212,6 +216,8 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		default:
 			break;
+		case A_RDBUTTON_FILTRAR_AUTOR:
+			ventanaUsuario.filtrarAutor();
 		}
 	}
 	

@@ -192,7 +192,7 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), TipoGenero.INFANTIL);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), TipoGenero.ACCION);
 		dispose();
 		cancelar();
 		return libro;
@@ -203,7 +203,7 @@ public class DialogoAgregarLibro extends JDialog{
 		txtADescripcion.setText("");
 		txtValor.setText("");
 		txtRutaImagen.setText("");
-		txtAutor.setText("");
+//		txtAutor.setText("");
 		txtNumeroCopias.setText("");
 		dispose();
 	}

@@ -1,12 +1,17 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import controlador.Controlador;
 
@@ -18,7 +23,8 @@ public class VentanaUsuario extends JFrame{
 	private BarraMenuUs barraMenu;
 	
 	private DefaultTableModel modelo;
-	private JTable tablaSitios;
+	private JTable tablaLibros;
+	private TableRowSorter<TableModel> trsfiltro;
 	
 	public VentanaUsuario(Controlador controlador) {
 		
@@ -46,17 +52,49 @@ public class VentanaUsuario extends JFrame{
 		};
 
 		modelo.setColumnIdentifiers(new String[] {
-				ConstantesGUI.T_TABLA_ID,
 				ConstantesGUI.T_TABLA_NOMBRE,
+				ConstantesGUI.T_TABLA_AUTOR,
 				ConstantesGUI.T_TABLA_DESCRIPCION,
 				ConstantesGUI.T_TABLA_VALOR });
 		
-		tablaSitios = new JTable(modelo);
-		tablaSitios.getTableHeader().setReorderingAllowed(false);
-		add(new JScrollPane(tablaSitios), BorderLayout.CENTER);
+		tablaLibros = new JTable(modelo);
+		tablaLibros.getTableHeader().setReorderingAllowed(false);
+		add(new JScrollPane(tablaLibros), BorderLayout.CENTER);
 
 		barraHerramientas = new BarraHerramientasUs(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
+		
+	}
+	public void filtroTitulo(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxtBuscar().getText(), 0));
+	}
+
+	public void filtroAutor(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxtBuscar().getText(), 1));
+	}
+	public void filtrarTitulo() {
+		barraHerramientas.getTxtBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxtBuscar().getText());
+				barraHerramientas.getTxtBuscar().setText(cadena);
+				repaint();
+				filtroTitulo();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablaLibros.getModel());
+		tablaLibros.setRowSorter(trsfiltro);
+	}
+	public void filtrarAutor() {
+		barraHerramientas.getTxtBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxtBuscar().getText());
+				barraHerramientas.getTxtBuscar().setText(cadena);
+				repaint();
+				filtroAutor();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablaLibros.getModel());
+		tablaLibros.setRowSorter(trsfiltro);
 	}
 
 }

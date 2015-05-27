@@ -20,7 +20,7 @@ public class BarraHerramientasUs extends JToolBar{
 	private JButton btnBuscar;
 
 	private JRadioButton rBtnNombre;
-	private JRadioButton rBtnId;
+	private JRadioButton rBtnAutor;
 	private ButtonGroup grBuscar;
 
 	private JTextField txtBuscar;
@@ -50,17 +50,21 @@ public class BarraHerramientasUs extends JToolBar{
 		rBtnNombre.setOpaque(false);
 		rBtnNombre.setContentAreaFilled(false);
 		rBtnNombre.setBorderPainted(false);
+		rBtnNombre.addActionListener(controlador);
+		rBtnNombre.setActionCommand(Controlador.A_RDBUTTON_FILTRAR_TITULO);
 		grBuscar.add(rBtnNombre);
 		add(rBtnNombre);
 
-		rBtnId = new JRadioButton();
-		rBtnId.setText(ConstantesGUI.RBTN_BUSCAR_ID);
-		rBtnId.setFocusable(false);
-		rBtnId.setOpaque(false);
-		rBtnId.setContentAreaFilled(false);
-		rBtnId.setBorderPainted(false);
-		grBuscar.add(rBtnId);
-		add(rBtnId);
+		rBtnAutor = new JRadioButton();
+		rBtnAutor.setText(ConstantesGUI.RBTN_BUSCAR_ID);
+		rBtnAutor.setFocusable(false);
+		rBtnAutor.setOpaque(false);
+		rBtnAutor.setContentAreaFilled(false);
+		rBtnAutor.setBorderPainted(false);
+		rBtnAutor.addActionListener(controlador);
+		rBtnAutor.setActionCommand(Controlador.A_RDBUTTON_FILTRAR_AUTOR);
+		grBuscar.add(rBtnAutor);
+		add(rBtnAutor);
 
 		txtBuscar = new JTextField();
 		txtBuscar.setVisible(true);
@@ -78,6 +82,16 @@ public class BarraHerramientasUs extends JToolBar{
 		add(btnBuscar);
 
 
+	}
+
+
+	public JTextField getTxtBuscar() {
+		return txtBuscar;
+	}
+
+
+	public void setTxtBuscar(JTextField txtBuscar) {
+		this.txtBuscar = txtBuscar;
 	}
 
 }

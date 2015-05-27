@@ -75,7 +75,7 @@ public class ConstantesGUI {
 	
 	public static final String IMG_COMPRAR_LIBRO = "src/imagenes/barraherramientasus/comprar.png";
 	public static final String IMG_BUSCAR_LIBRO = "src/imagenes/barraherramientasus/buscar.png";
-	public static final String RBTN_BUSCAR_ID = "ID";
+	public static final String RBTN_BUSCAR_ID = "Autor";
 	public static final String RBTN_BUSCAR_NOMBRE = "Nombre";
 	
 	/**
@@ -106,6 +106,7 @@ public class ConstantesGUI {
 	public static final String T_LABEL_GENERO = "Genero";
 	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "Agregar Autor";
 	public static final String T_MENU_ITEM_AGREGAR_CLIENTE = "Agregar Cliente";
+	public static final String T_TABLA_AUTOR = "AUTOR";
 	public static final String T_LABEL_DINERO = "Dinero";
 	/**
 	 * dialogo editar autor
