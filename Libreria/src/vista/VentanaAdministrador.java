@@ -136,8 +136,12 @@ public class VentanaAdministrador extends JFrame {
 
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
 		dialogoAgregarLibro.setVisible(false);
-
-
+		filtrarAutor();
+		filtrarAutorID();
+		filtrarClienteID();
+		filtrarClienteNombre();
+		filtrarLibroID();
+		filtrarLibroTitulo();
 	}
 
 	public void seleccionarLibro(int id){
@@ -295,7 +299,7 @@ public class VentanaAdministrador extends JFrame {
 	}
 	
 	public void filtroAutor(){
-		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 2));
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
 	}
 	public void filtrarAutor() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
@@ -308,6 +312,81 @@ public class VentanaAdministrador extends JFrame {
 		});
 		trsfiltro = new TableRowSorter<TableModel>(tablaAutores.getModel());
 		tablaAutores.setRowSorter(trsfiltro);
+	}
+	public void filtroAutorID(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 0));
+	}
+	public void filtrarAutorID() {
+		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxBuscar().getText());
+				barraHerramientas.getTxBuscar().setText(cadena);
+				repaint();
+				filtroAutorID();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablaAutores.getModel());
+		tablaAutores.setRowSorter(trsfiltro);
+	}
+	public void filtroClienteID(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 0));
+	}
+	public void filtrarClienteID() {
+		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxBuscar().getText());
+				barraHerramientas.getTxBuscar().setText(cadena);
+				repaint();
+				filtroAutorID();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablaClientes.getModel());
+		tablaClientes.setRowSorter(trsfiltro);
+	}
+	public void filtroClienteNombre(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
+	}
+	public void filtrarClienteNombre() {
+		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxBuscar().getText());
+				barraHerramientas.getTxBuscar().setText(cadena);
+				repaint();
+				filtroAutorID();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablaClientes.getModel());
+		tablaClientes.setRowSorter(trsfiltro);
+	}
+	public void filtroLibroTitulo(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
+	}
+	public void filtrarLibroTitulo() {
+		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxBuscar().getText());
+				barraHerramientas.getTxBuscar().setText(cadena);
+				repaint();
+				filtroLibroTitulo();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablalibros.getModel());
+		tablalibros.setRowSorter(trsfiltro);
+	}
+	public void filtroLibroID(){
+		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 0));
+	}
+	public void filtrarLibroID() {
+		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
+			public void keyReleased(final KeyEvent e) {
+				String cadena = (barraHerramientas.getTxBuscar().getText());
+				barraHerramientas.getTxBuscar().setText(cadena);
+				repaint();
+				filtroLibroTitulo();
+			}
+		});
+		trsfiltro = new TableRowSorter<TableModel>(tablalibros.getModel());
+		tablalibros.setRowSorter(trsfiltro);
 	}
 	
 }

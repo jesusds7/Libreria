@@ -100,32 +100,7 @@ public class BarraHerramientasAdm extends JToolBar {
 		listaBusqueda.addItem(TipoBusqueda.CLIENTE_NOMBRE.toString());
 		listaBusqueda.addItem(TipoBusqueda.CLIENTE_ID.toString());
 		add(listaBusqueda);
-		listaBusqueda.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String auxiliar = listaBusqueda.getItemAt(listaBusqueda
-						.getSelectedIndex());
-				System.out.println(auxiliar);
-				switch (auxiliar) {
-				case "Nombre Autor":
-					System.out.println("la cogio");
-					// VentanaAdministrador.class
-					break;
-				case "Nombre libro":
-					break;
-				case "Nombre cliente":
-					break;
-				case "Id libro":
-					break;
-				case "Id Cliente":
-					break;
-				case "Id Autor":
-				default:
-					break;
-				}
-			}
-		});
+		listaBusqueda.addActionListener(controlador);
 	}
 
 	public String tipoSeleccionBuscar() {

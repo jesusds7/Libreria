@@ -265,21 +265,23 @@ public class Controlador extends JPanel implements ActionListener {
 	}
 	
 	public void seleccionarOpcionBuscar()throws ExcepcionLibroNoEncontrado, ExcepcionAutorNoEncontrado, ExcepcionClienteNoEncontrado{
-		String aux = ventanaAdministrador.getBarraHerramientas().tipoSeleccionBuscar();
-		if(aux.equals(TipoBusqueda.LIBRO_NOMBRE.toString())){
-			buscarLibroNombre();
-		}else if (aux.equals(TipoBusqueda.LIBRO_ID.toString())) {
-			buscarLibroId();
-		}else if (aux.equals(TipoBusqueda.AUTHOR_NOMBRE.toString())) {
-			buscarAutorNombre();
-		}else if (aux.equals(TipoBusqueda.AUTHOR_ID.toString())) {
-			buscarAutorId();
-		}else if (aux.equals(TipoBusqueda.CLIENTE_NOMBRE.toString())) {
-			buscarClienteNombre();
-		}else if (aux.equals(TipoBusqueda.CLIENTE_ID.toString())) {
-			buscarClienteId();
-		}else if (aux.equals(TipoBusqueda.SELLECION_OPCION.toString())) {
-			JOptionPane.showMessageDialog(null, "Debe seleccionar una opcion de busqueda", "Advertencia", 2);
+		String auxiliar = ventanaAdministrador.getBarraHerramientas().getListaBusqueda().getItemAt(ventanaAdministrador.getBarraHerramientas().getListaBusqueda().getSelectedIndex());
+		System.out.println(auxiliar);
+		switch (auxiliar) {
+		case "Nombre Autor":
+			ventanaAdministrador.filtrarAutor();
+			break;
+		case "Nombre libro":
+			break;
+		case "Nombre cliente":
+			break;
+		case "Id libro":
+			break;
+		case "Id Cliente":
+			break;
+		case "Id Autor":
+		default:
+			break;
 		}
 	}
 	
