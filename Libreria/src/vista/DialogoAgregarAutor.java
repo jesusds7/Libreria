@@ -18,12 +18,13 @@ public class DialogoAgregarAutor extends JDialog{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField txtNombre;
+	protected JTextField txtNombre;
 	private JTextField txtRutaImagen;
 	private JLabel lbNombre;
 	protected JButton btnCrearAutor;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
+	private DialogoAgregarLibro dialogoAgregarLibro;
 	
 	public DialogoAgregarAutor(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
@@ -77,6 +78,7 @@ public class DialogoAgregarAutor extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 3;
 		cons.insets = new Insets(0, 0, 0, 100);
+//		dialogoAgregarLibro.listaAutor.addItem(txtNombre.getText());
 		btnCrearAutor.addActionListener(controlador);
 		btnCrearAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
 		add(btnCrearAutor, cons);

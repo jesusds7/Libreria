@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
@@ -43,8 +45,10 @@ public class DialogoAgregarLibro extends JDialog{
 	protected JButton btnCrear;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
+	private JButton btnAgregarAutor;
 	private JComboBox<TipoGenero> listaGenero;
-
+	protected JComboBox<String> listaAutor;
+	
 	public DialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
@@ -111,10 +115,17 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridy = 4;
 		add(lbAutor, cons);
 
-		txtAutor = new JTextField(10);
+		listaAutor = new JComboBox<String>();
 		cons.gridx = 1;
 		cons.gridy = 4;
-		add(txtAutor, cons);
+		add(listaAutor, cons);
+		
+		btnAgregarAutor = new JButton(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
+		cons.gridx = 2;
+		cons.gridy = 4;
+		btnAgregarAutor.addActionListener(controlador);
+		btnAgregarAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
+		add(btnAgregarAutor, cons);
 
 		lbGenero = new JLabel(ConstantesGUI.T_LABEL_GENERO);
 		cons.gridx = 0;
@@ -130,7 +141,6 @@ public class DialogoAgregarLibro extends JDialog{
 		listaGenero.addItem(TipoGenero.INFANTIL);
 		listaGenero.addItem(TipoGenero.TERROR);
 		add(listaGenero, cons);
-
 
 
 		btnAgregarImagen = new JButton(ConstantesGUI.T_BTN_CARGAR_IMAGEN);
