@@ -15,35 +15,30 @@ import javax.swing.table.TableRowSorter;
 
 import controlador.Controlador;
 
-public class VentanaUsuario extends JFrame{
+public class VentanaUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
 	private BarraHerramientasUs barraHerramientas;
 	private BarraMenuUs barraMenu;
-	
 	private DefaultTableModel modelo;
 	private JTable tablaLibros;
 	private TableRowSorter<TableModel> trsfiltro;
-	
+
 	public VentanaUsuario(Controlador controlador) {
-		
+
 		this.setTitle(ConstantesGUI.T_VENTANA_USUARIO);
 		this.setLayout(new BorderLayout());
-		this.setSize(ConstantesGUI.VENTANA_USUARIO_ANCHO, ConstantesGUI.VENTANA_USUARIO_ALTO);
+		this.setSize(ConstantesGUI.VENTANA_USUARIO_ANCHO,ConstantesGUI.VENTANA_USUARIO_ALTO);
 		this.setLocationRelativeTo(null);
 		this.setIconImage(new ImageIcon(ConstantesGUI.IMG_ICONO_VENTANA_USUARIO).getImage());
 		this.setExtendedState(VentanaUsuario.MAXIMIZED_BOTH);
-		this.setIconImage(new ImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
 
 		barraMenu = new BarraMenuUs(controlador);
 		setJMenuBar(barraMenu);
-		
+
 		modelo = new DefaultTableModel() {
 
 			private static final long serialVersionUID = 1L;
-			
-			
 
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -52,26 +47,26 @@ public class VentanaUsuario extends JFrame{
 		};
 
 		modelo.setColumnIdentifiers(new String[] {
-				ConstantesGUI.T_TABLA_NOMBRE,
-				ConstantesGUI.T_TABLA_AUTOR,
-				ConstantesGUI.T_TABLA_DESCRIPCION,
-				ConstantesGUI.T_TABLA_VALOR });
-		
+				ConstantesGUI.T_TABLA_NOMBRE, ConstantesGUI.T_TABLA_AUTOR,
+				ConstantesGUI.T_TABLA_DESCRIPCION, ConstantesGUI.T_TABLA_VALOR });
+
 		tablaLibros = new JTable(modelo);
 		tablaLibros.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tablaLibros), BorderLayout.CENTER);
 
 		barraHerramientas = new BarraHerramientasUs(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
-		
+
 	}
-	public void filtroTitulo(){
+
+	public void filtroTitulo() {
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxtBuscar().getText(), 0));
 	}
 
-	public void filtroAutor(){
+	public void filtroAutor() {
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxtBuscar().getText(), 1));
 	}
+
 	public void filtrarTitulo() {
 		barraHerramientas.getTxtBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -84,6 +79,7 @@ public class VentanaUsuario extends JFrame{
 		trsfiltro = new TableRowSorter<TableModel>(tablaLibros.getModel());
 		tablaLibros.setRowSorter(trsfiltro);
 	}
+
 	public void filtrarAutor() {
 		barraHerramientas.getTxtBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {

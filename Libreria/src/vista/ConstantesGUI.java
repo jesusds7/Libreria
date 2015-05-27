@@ -5,9 +5,9 @@ public class ConstantesGUI {
 	 * Constantes Ventana Administrador
 	 */
 	
-	public static final String T_TITULO_VENTANA = "Tienda de libros Jesus y Walter";
-	public static final int VENTANA_ALTO = 700;
-	public static final int VENTANA_ANCHO = 700;
+	public static final String T_TITULO_VENTANA = "Café y Libros";
+	public static final int VENTANA_ALTO = 600;
+	public static final int VENTANA_ANCHO = 500;
 
 	/**
 	 * Barra Herramientas Administrador
@@ -60,7 +60,7 @@ public class ConstantesGUI {
 	 * Constantes Ventana Usuario
 	 */
 	
-	public static final String T_VENTANA_USUARIO = "Tienda de Jesus y Walter - Usuario";
+	public static final String T_VENTANA_USUARIO = "Café y Libros - Usuario";
 	public static final int VENTANA_USUARIO_ALTO = 500;
 	public static final int VENTANA_USUARIO_ANCHO = 600;
 	public static final String T_TABLA_ID = "ID";
@@ -115,11 +115,17 @@ public class ConstantesGUI {
 	/**
 	 * constantes dialogo login usuario
 	 */
-	public static final String TITLE_LOGIN_USER = "lOGIN USER";
+	public static final String TITLE_LOGIN_USER = "Inicio Sesión";
 	public static final String BTN_INGRESAR_LOGIN_USER = "INGRESAR";
 	public static final String BTN_CANCELAR_LOGIN_USER = "CANCELAR";
 	public static final String LBL_NAME_LOGIN_USER = "Nombre";
 	public static final String LBL_PASSWORD_LOGIN_USER = "Contraseña";
+	/**
+	 * Constantes Dialogo Estaditicas
+	 */
+	public static final String T_TITULO_DIA_ESTA = "Estadisticas";
+	public static final int ANCHO_DIA_ESTA = 800;
+	public static final int ALTO_DIA_ESTA = 600;
 	
 	
 }

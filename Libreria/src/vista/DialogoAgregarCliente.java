@@ -31,7 +31,6 @@ public class DialogoAgregarCliente extends JDialog{
 	public DialogoAgregarCliente(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
-		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
 		setTitle("Ingresar Datos Cliente");
 		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);

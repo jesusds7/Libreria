@@ -16,12 +16,11 @@ public class SplashLibrary extends JWindow implements Runnable{
     private JProgressBar jProgressBarMain;
     private JPanelSplash jPanelInformation;
     private Controlador controlador = new Controlador();
+	private int[] auxVariables;
 
     public SplashLibrary() {
         super();
-	this.setSize((int) (Toolkit.getDefaultToolkit().getScreenSize()
-                .getWidth() * 0.3), (int) (Toolkit.getDefaultToolkit()
-                .getScreenSize().getHeight() * 0.3));
+	this.setSize((int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.3), (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * 0.3));
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         this.setAlwaysOnTop(true);
@@ -41,13 +40,21 @@ public class SplashLibrary extends JWindow implements Runnable{
     public void run() {
         this.setVisible(true);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(5000);
         } catch (Exception e) {
             e.printStackTrace();
         }
         this.dispose();
-        int[] auxVariable = new int[2];
+        setAuxVariables(new int[5]);
        DialogoInicio jFrameLibrary = new DialogoInicio(controlador);
-//        jFrameLibrary.setVisible(true);
+        jFrameLibrary.setVisible(true);
     }
+
+	public int[] getAuxVariables() {
+		return auxVariables;
+	}
+
+	public void setAuxVariables(int[] auxVariables) {
+		this.auxVariables = auxVariables;
+	}
 }

@@ -7,16 +7,13 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import controlador.Controlador;
 
-public class DialogoInicio extends JFrame{
-	/**
-	 * 
-	 */
+public class DialogoInicio extends JFrame implements Runnable{
+
 	private static final long serialVersionUID = 1L;
 	private JButton btnAdministrador;
 	private JButton btnUsuario;
@@ -27,7 +24,6 @@ public class DialogoInicio extends JFrame{
 	public DialogoInicio(Controlador controlador) {
 
 		UIManager.put("Button.font", new Font(null, 5, 14));
-
 		setLayout(new GridBagLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
@@ -66,12 +62,6 @@ public class DialogoInicio extends JFrame{
 		
 	}
 	
-//	@Override
-//	public void paint(Graphics g) {
-//		super.paint(g);
-//		g.drawImage(imagenFondo, 0, 0, this);
-//	}
-	
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
@@ -80,4 +70,16 @@ public class DialogoInicio extends JFrame{
 			return null;
 		}
 	}
+
+	@Override
+	public void run() {
+	     this.setVisible(true);
+	        try {
+	            Thread.sleep(5000);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+		
+	
 }

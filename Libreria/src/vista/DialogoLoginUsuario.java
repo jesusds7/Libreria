@@ -35,6 +35,7 @@ public class DialogoLoginUsuario extends JDialog {
 		this.setTitle(ConstantesGUI.TITLE_LOGIN_USER);
 		this.setSize(ConstantesGUI.VENTANA_ANCHO_PRIMARIA,ConstantesGUI.VENTANA_USUARIO_ALTO);
 		this.setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
+		this.setLocationRelativeTo(null);
 		
 		GridBagConstraints gb = new GridBagConstraints();
 		gb.fill = GridBagConstraints.BOTH;
