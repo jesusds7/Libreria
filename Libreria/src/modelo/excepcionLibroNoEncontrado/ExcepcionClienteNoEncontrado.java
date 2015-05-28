@@ -1,5 +1,7 @@
 package modelo.excepcionLibroNoEncontrado;
 
+import javax.swing.JOptionPane;
+
 public class ExcepcionClienteNoEncontrado extends Exception{
 	/**
 	 * 
@@ -10,6 +12,7 @@ public class ExcepcionClienteNoEncontrado extends Exception{
 
 	public ExcepcionClienteNoEncontrado(String nombreCliente) {
 		super(ERROR_CLIENTE_NO_ENCONTRADO + "-" + nombreCliente + "-");
+		JOptionPane.showMessageDialog(null, "No encontrado");
 	}
 
 	public ExcepcionClienteNoEncontrado(int id) {

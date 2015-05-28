@@ -133,12 +133,9 @@ public class VentanaAdministrador extends JFrame {
 
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
 		dialogoAgregarLibro.setVisible(false);
-		filtrarAutor();
-		filtrarAutorID();
-		filtrarClienteID();
-		filtrarClienteNombre();
-		filtrarLibroID();
-		filtrarLibroTitulo();
+//		filtrarAutor();
+//		filtrarClienteNombre();
+//		filtrarLibroTitulo();
 	}
 
 	public void seleccionarLibro(int id){
