@@ -231,8 +231,11 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case AC_BTN_CANCELAR_DIALOGO:
 			dialogoLoginUsuario.setVisible(false);
+		case A_AGREGAR_IMAGEN_AUTOR:
+			dialogoAgregarAutor.importarImagenAutor();
 		}
 	}
+	
 	
 	public void mostartDialogoEditarLibro() throws ExcepcionLibroNoEncontrado{		
 		editDialogoAgregarLibro.cambiarValores(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));

@@ -4,12 +4,17 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.File;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileSystemView;
+
 import controlador.Controlador;
 import modelo.entidades.Autor;
 
@@ -25,6 +30,7 @@ public class DialogoAgregarAutor extends JDialog{
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
 	private DialogoAgregarLibro dialogoAgregarLibro;
+	private ImageIcon image;
 	
 	public DialogoAgregarAutor(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
@@ -32,7 +38,7 @@ public class DialogoAgregarAutor extends JDialog{
 		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
 		setTitle("Ingresar Datos Autor");
-		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
+		setSize(400,350);
 		setLocationRelativeTo(null);
 		setModal(true);
 		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
@@ -96,6 +102,18 @@ public class DialogoAgregarAutor extends JDialog{
 		txtRutaImagen.setText("");
 		dispose();
 	}
+	
+	public ImageIcon importarImagenAutor(){
+		JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView());
+		fc.showOpenDialog(null);
+		File file = fc.getSelectedFile();
+		if (file != null){
+			txtRutaImagen.setText(file.getPath());
+			image = new ImageIcon(file.getPath());
+		}
+		return image;
+	}
+
 	
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
