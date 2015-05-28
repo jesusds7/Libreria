@@ -93,14 +93,13 @@ public class BarraHerramientasAdm extends JToolBar {
 
 		listaBusqueda = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
 		add(listaBusqueda);
-		listaBusqueda.addActionListener(controlador);
 	}
 
-	public String tipoSeleccionBuscar() {
-		String tipoBusqueda = (String) listaBusqueda.getSelectedItem();
+	public String tipoSeleccionBuscar(){
+		String tipoBusqueda = (String)listaBusqueda.getSelectedItem().toString();
 		return tipoBusqueda;
 	}
-
+	
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

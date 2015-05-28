@@ -1,13 +1,13 @@
 package modelo.entidades;
 
 public enum TipoBusqueda {
+	SELLECION_OPCION("Seleccione Opcion"),
 	LIBRO_NOMBRE("Nombre libro"),
 	LIBRO_ID("Id libro"),
 	CLIENTE_NOMBRE("Nombre cliente"),
 	CLIENTE_ID("Id Cliente"),
 	AUTHOR_NOMBRE("Nombre Autor"),
-	AUTHOR_ID("Id Autor"),
-	SELLECION_OPCION("Seleccione Opcion");
+	AUTHOR_ID("Id Autor");
 	
 	private String busqueda;
 	

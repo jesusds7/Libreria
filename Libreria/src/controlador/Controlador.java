@@ -96,6 +96,7 @@ public class Controlador extends JPanel implements ActionListener {
 		ventanaUsuario = new VentanaUsuario(this);
 //		dialogoPrimario.setVisible(true); Se hace un comentario para que salga primero el Splash luego el panel Principal
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
+		dialogoAgregarLibro.setNombreAutor(dialogoAgregarAutor.getTxtNombre().getText());
 	}
 	
 	public static void main(String[] args) {
@@ -226,9 +227,9 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		default:
 			break;
-		case A_RDBUTTON_FILTRAR_AUTOR:
-			ventanaUsuario.filtrarAutor();
-			break;
+//		case A_RDBUTTON_FILTRAR_AUTOR:
+//			ventanaUsuario.filtrarAutor();
+//			break;
 		case AC_BTN_CANCELAR_DIALOGO:
 			dialogoLoginUsuario.setVisible(false);
 		case A_AGREGAR_IMAGEN_AUTOR:

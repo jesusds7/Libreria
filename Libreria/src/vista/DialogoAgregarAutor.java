@@ -23,7 +23,7 @@ public class DialogoAgregarAutor extends JDialog{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	protected JTextField txtNombre;
+	private  JTextField txtNombre;
 	private JTextField txtRutaImagen;
 	private JLabel lbNombre;
 	protected JButton btnCrearAutor;
@@ -90,6 +90,8 @@ public class DialogoAgregarAutor extends JDialog{
 		add(btnCrearAutor, cons);
 	}
 	
+
+	
 	public Autor crearAutor(){
 		Autor autor = new Autor(txtNombre.getText(), txtRutaImagen.getText());
 		dispose();
@@ -122,5 +124,9 @@ public class DialogoAgregarAutor extends JDialog{
 		} else {
 			return null;
 		}
+	}
+	
+	public JTextField getTxtNombre() {
+		return txtNombre;
 	}
 }
