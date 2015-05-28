@@ -5,7 +5,7 @@ public class ConstantesGUI {
 	 * Constantes Ventana Administrador
 	 */
 	
-	public static final String T_TITULO_VENTANA = "CafÈ y Libros";
+	public static final String T_TITULO_VENTANA = "Caf√© y Libros";
 	public static final int VENTANA_ALTO = 600;
 	public static final int VENTANA_ANCHO = 500;
 
@@ -60,12 +60,12 @@ public class ConstantesGUI {
 	 * Constantes Ventana Usuario
 	 */
 	
-	public static final String T_VENTANA_USUARIO = "CafÈ y Libros - Usuario";
+	public static final String T_VENTANA_USUARIO = "Caf√© y Libros - Usuario";
 	public static final int VENTANA_USUARIO_ALTO = 500;
 	public static final int VENTANA_USUARIO_ANCHO = 600;
 	public static final String T_TABLA_ID = "ID";
-	public static final String T_TABLA_NOMBRE = "NOMBRE";
-	public static final String T_TABLA_DESCRIPCION = "DESCRIPCION";
+	public static final String T_TABLA_NOMBRE = "Nombre";
+	public static final String T_TABLA_DESCRIPCION = "Descripci√≥n";
 	public static final String T_TABLA_VALOR = "PRECIO";
 	public static final String IMG_ICONO_VENTANA_USUARIO = "src/imagenes/iconoventanausuario.png";
 	
@@ -91,7 +91,7 @@ public class ConstantesGUI {
 	 */
 	public static final String IMG_ICONO_LIBRO = "/imagenes/library.png";
 	public static final String T_LABEL_NOMBRE = "Nombre";
-	public static final String T_LABEL_DESCRIPCION = "Descripcion";
+	public static final String T_LABEL_DESCRIPCION = "Descripci√≥n";
 	public static final String T_LABEL_SITIO_VALOR = "Precio";
 	public static final String T_BTN_CARGAR_IMAGEN = "Cargar imagen";
 	public static final String T_BTN_CANCELAR = "Cancelar";
@@ -99,14 +99,14 @@ public class ConstantesGUI {
 	public static final String T_LABEL_NUMERO_COPIAS = "Numero de Copias";
 	public static final String T_LABEL_AUTOR = "Autor";
 	public static final String T_CHECK_AVENTURA = "Aventura";
-	public static final String T_CHECK_ACCION = "Accion";
+	public static final String T_CHECK_ACCION = "Acci√≥n";
 	public static final String T_CHECK_TERROR = "Terror";
 	public static final String T_CHECK_CIENTIFICO = "Cientifico";
 	public static final String T_CHECK_INFANTIL = "Infantil";
 	public static final String T_LABEL_GENERO = "Genero";
 	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "Agregar Autor";
 	public static final String T_MENU_ITEM_AGREGAR_CLIENTE = "Agregar Cliente";
-	public static final String T_TABLA_AUTOR = "AUTOR";
+	public static final String T_TABLA_AUTOR = "Autor";
 	public static final String T_LABEL_DINERO = "Dinero";
 	/**
 	 * dialogo editar autor
@@ -115,11 +115,11 @@ public class ConstantesGUI {
 	/**
 	 * constantes dialogo login usuario
 	 */
-	public static final String TITLE_LOGIN_USER = "Inicio SesiÛn";
-	public static final String BTN_INGRESAR_LOGIN_USER = "INGRESAR";
-	public static final String BTN_CANCELAR_LOGIN_USER = "CANCELAR";
+	public static final String TITLE_LOGIN_USER = "Inicio Sesi√≥n";
+	public static final String BTN_INGRESAR_LOGIN_USER = "Ingresar";
+	public static final String BTN_CANCELAR_LOGIN_USER = "Cancelar";
 	public static final String LBL_NAME_LOGIN_USER = "Nombre";
-	public static final String LBL_PASSWORD_LOGIN_USER = "ContraseÒa";
+	public static final String LBL_PASSWORD_LOGIN_USER = "Contrase√±a";
 	/**
 	 * Constantes Dialogo Estaditicas
 	 */
