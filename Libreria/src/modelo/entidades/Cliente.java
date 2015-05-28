@@ -7,7 +7,7 @@ public class Cliente {
 	private String nombre;
 	private double dinero;
 	private int id;
-	private static int consecutivo;	
+	private static int consecutivo;
 
 	public Cliente(String nombre, double dinero) {
 		super();

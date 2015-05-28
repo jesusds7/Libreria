@@ -224,15 +224,15 @@ public class Controlador extends JPanel implements ActionListener {
 			agregarCliente();
 			GestorArchivoXMLCliente.exportarArchivoXML(dialogoAgregarCliente.crearCliente());
 			break;
-		default:
-			break;
 		case A_RDBUTTON_FILTRAR_AUTOR:
 			ventanaUsuario.filtrarAutor();
 			break;
 		case AC_BTN_CANCELAR_DIALOGO:
 			dialogoLoginUsuario.setVisible(false);
+			break;
 		case A_AGREGAR_IMAGEN_AUTOR:
 			dialogoAgregarAutor.importarImagenAutor();
+			break;
 		}
 	}
 
