@@ -16,7 +16,6 @@ import javax.swing.table.TableRowSorter;
 import controlador.Controlador;
 
 public class VentanaUsuario extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 	private BarraHerramientasUs barraHerramientas;
 	private BarraMenuUs barraMenu;
@@ -92,5 +91,4 @@ public class VentanaUsuario extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablaLibros.getModel());
 		tablaLibros.setRowSorter(trsfiltro);
 	}
-
 }

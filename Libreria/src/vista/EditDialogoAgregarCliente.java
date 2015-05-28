@@ -4,20 +4,16 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
-import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import controlador.Controlador;
 
 public class EditDialogoAgregarCliente extends JDialog {
-
 	/**
 	 * 
 	 */
@@ -41,7 +37,7 @@ public class EditDialogoAgregarCliente extends JDialog {
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
-		
+
 		lbNombre = new JLabel(ConstantesGUI.T_LABEL_NOMBRE);
 		cons.gridx = 0;
 		cons.gridy = 0;
@@ -53,18 +49,18 @@ public class EditDialogoAgregarCliente extends JDialog {
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
-		
+
 		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
 		cons.gridx = 0;
 		cons.gridy = 1;
 		add(lbDinero, cons);
-		
+
 		txtDinero = new JTextField(10);
 		cons.gridx = 1;
 		cons.gridy = 1;
 		cons.insets = new Insets(0, 0, 0, 0);
 		add(txtDinero, cons);
-		
+
 
 		btnCancelar = new JButton(ConstantesGUI.T_BTN_CANCELAR);
 		btnCancelar.addActionListener(controlador);
@@ -82,7 +78,7 @@ public class EditDialogoAgregarCliente extends JDialog {
 		btnEditarCliente.setActionCommand(Controlador.A_EDITAR_CLIENTE);
 		add(btnEditarCliente, cons);
 	}
-	
+
 	public Cliente  editarCliente(Cliente cliente){
 		cliente.setNombre(txtNombre.getText());
 		cliente.setDinero(Double.parseDouble(txtDinero.getText()));
@@ -95,12 +91,12 @@ public class EditDialogoAgregarCliente extends JDialog {
 		txtNombre.setText(cliente.getNombre());
 		txtDinero.setText(Double.toString(cliente.getDinero()));
 	}
-	
+
 	public void cancelar(){
 		txtNombre.setText("");
 		txtDinero.setText("");
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

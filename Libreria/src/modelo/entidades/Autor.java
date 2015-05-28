@@ -15,7 +15,7 @@ public class Autor {
 
 	@Override
 	public String toString() {
-		return id + "," + nombre + "," + imagen;
+		return nombre;
 	}
 
 	public int getId() {
@@ -36,6 +36,4 @@ public class Autor {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 }

@@ -6,13 +6,13 @@ public enum TipoGenero {
 	CIENTIFICO("Cientifico"),
 	INFANTIL("Infantil"),
 	TERROR("Terror");
-	
+
 	private String genero;
 
 	private TipoGenero(String genero) {
 		this.setGenero(genero);
 	}
-	
+
 	@Override
 	public String toString() {
 		return genero;

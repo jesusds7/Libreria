@@ -1,9 +1,7 @@
 package modelo.entidades;
-
 /** 
  * @author JESUS
  */
-
 public class Cliente {
 	
 	private String nombre;

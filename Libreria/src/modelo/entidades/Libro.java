@@ -110,7 +110,4 @@ public class Libro implements Serializable {
 	public void setNombreAutor(String nombreAutor) {
 		this.nombreAutor = nombreAutor;
 	}
-
-
-
 }

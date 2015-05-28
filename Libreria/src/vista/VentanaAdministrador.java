@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -19,7 +17,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
@@ -47,7 +44,7 @@ public class VentanaAdministrador extends JFrame {
 	private PanelFotos panelFotos;
 	private DialogoAgregarLibro dialogoAgregarLibro;
 	private TableRowSorter<TableModel> trsfiltro;
-	
+
 	public VentanaAdministrador(Controlador controlador) {
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
 		setLayout(new BorderLayout());
@@ -107,7 +104,7 @@ public class VentanaAdministrador extends JFrame {
 		panelAutor.add(new JScrollPane(tablaAutores));
 		panelClase.add(panelAutor);
 
-		
+
 		panelCliente = new JPanel();
 		modeloTablaClientes = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Dinero"}, 0);
 		tablaClientes = new JTable(modeloTablaClientes);
@@ -297,7 +294,7 @@ public class VentanaAdministrador extends JFrame {
 	public void setBarraMenu(BarraMenuAdm barraMenu) {
 		this.barraMenu = barraMenu;
 	}
-	
+
 	public void filtroAutor(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
 	}
@@ -388,5 +385,5 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablalibros.getModel());
 		tablalibros.setRowSorter(trsfiltro);
 	}
-	
+
 }

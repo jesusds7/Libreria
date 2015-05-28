@@ -1,7 +1,6 @@
 package modelo.excepcionLibroNoEncontrado;
 
 public class ExcepcionAutorNoEncontrado extends Exception {
-
 	/**
 	 * 
 	 */
@@ -15,5 +14,4 @@ public class ExcepcionAutorNoEncontrado extends Exception {
 	public ExcepcionAutorNoEncontrado(int id) {
 		super(ERROR_AUTOR_NO_ENCONTRADO + "-" + id + "-");
 	}
-
 }

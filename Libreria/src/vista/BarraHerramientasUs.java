@@ -12,27 +12,19 @@ import controlador.Controlador;
 public class BarraHerramientasUs extends JToolBar{
 
 	private static final long serialVersionUID = 1L;
-
 	private ImageIcon imgComprar;
 	private ImageIcon imgBuscar;
-
 	private JButton btnComprar;
 	private JButton btnBuscar;
-
 	private JRadioButton rBtnNombre;
 	private JRadioButton rBtnAutor;
 	private ButtonGroup grBuscar;
-
 	private JTextField txtBuscar;
 
-
 	public BarraHerramientasUs(Controlador controlador) {
-
 		this.setFloatable(false);
 		this.setRollover(true);
-
 		imgComprar = new ImageIcon(ConstantesGUI.IMG_COMPRAR_LIBRO);
-
 		btnComprar = new JButton(imgComprar);
 		btnComprar.setActionCommand(Controlador.A_COMPRAR_LIBRO);
 		btnComprar.addActionListener(controlador);
@@ -41,9 +33,7 @@ public class BarraHerramientasUs extends JToolBar{
 		btnComprar.setContentAreaFilled(false);
 		btnComprar.setBorderPainted(false);
 		add(btnComprar);
-
 		grBuscar = new ButtonGroup();
-
 		rBtnNombre = new JRadioButton();
 		rBtnNombre.setText(ConstantesGUI.RBTN_BUSCAR_NOMBRE);
 		rBtnNombre.setFocusable(false);
@@ -80,18 +70,13 @@ public class BarraHerramientasUs extends JToolBar{
 		btnBuscar.setContentAreaFilled(false);
 		btnBuscar.setBorderPainted(false);
 		add(btnBuscar);
-
-
 	}
-
 
 	public JTextField getTxtBuscar() {
 		return txtBuscar;
 	}
 
-
 	public void setTxtBuscar(JTextField txtBuscar) {
 		this.txtBuscar = txtBuscar;
 	}
-
 }

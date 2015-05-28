@@ -34,10 +34,10 @@ public class DialogoInicio extends JFrame implements Runnable{
 		imagenFondo = new ImageIcon("src/imagenes/lib.jpg").getImage();
 		imgAdministrador = new ImageIcon(ConstantesGUI.IMG_ADMINISTRADOR);
 		imgUsuario = new ImageIcon(ConstantesGUI.IMG_USUARIO);
-		
+
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
-		
+
 		btnAdministrador = new JButton(imgAdministrador);
 		btnAdministrador.setText("Administrador");
 		btnAdministrador.setFocusable(false);
@@ -49,7 +49,6 @@ public class DialogoInicio extends JFrame implements Runnable{
 		btnAdministrador.setVisible(true);
 		add(btnAdministrador, cons );
 
-
 		btnUsuario = new JButton(imgUsuario);
 		btnUsuario.setText("Usuario");
 		btnUsuario.setFocusable(false);
@@ -59,9 +58,9 @@ public class DialogoInicio extends JFrame implements Runnable{
 		btnUsuario.addActionListener(controlador);
 		btnUsuario.setActionCommand(Controlador.A_BTN_DIALOGO_USUARIO);
 		add(btnUsuario, cons);	
-		
+
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
@@ -73,13 +72,11 @@ public class DialogoInicio extends JFrame implements Runnable{
 
 	@Override
 	public void run() {
-	     this.setVisible(true);
-	        try {
-	            Thread.sleep(5000);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-		
-	
+		this.setVisible(true);
+		try {
+			Thread.sleep(5000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

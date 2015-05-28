@@ -4,20 +4,16 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
 import modelo.entidades.Autor;
-import modelo.entidades.Libro;
 import controlador.Controlador;
 
 public class EditDialogoAgregarAutor extends JDialog{
-
 	/**
 	 * 
 	 */
@@ -41,7 +37,7 @@ public class EditDialogoAgregarAutor extends JDialog{
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
-		
+
 		lbNombre = new JLabel(ConstantesGUI.T_LABEL_NOMBRE);
 		cons.gridx = 0;
 		cons.gridy = 0;
@@ -84,7 +80,7 @@ public class EditDialogoAgregarAutor extends JDialog{
 		btnEditarAutor.setActionCommand(Controlador.A_EDITAR_AUTOR);
 		add(btnEditarAutor, cons);
 	}
-	
+
 	public Autor  editarAutor(Autor autor){
 		autor.setNombre(txtNombre.getText());
 		autor.setImagen(txtRutaImagen.getText());
@@ -97,12 +93,12 @@ public class EditDialogoAgregarAutor extends JDialog{
 		txtNombre.setText(autor.getNombre());
 		txtRutaImagen.setText(autor.getImagen());
 	}
-	
+
 	public void cancelar(){
 		txtNombre.setText("");
 		txtRutaImagen.setText("");
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
@@ -111,5 +107,4 @@ public class EditDialogoAgregarAutor extends JDialog{
 			return null;
 		}
 	}
-
 }

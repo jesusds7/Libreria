@@ -29,9 +29,8 @@ public class DialogoAgregarAutor extends JDialog{
 	protected JButton btnCrearAutor;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
-	private DialogoAgregarLibro dialogoAgregarLibro;
 	private ImageIcon image;
-	
+
 	public DialogoAgregarAutor(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
@@ -45,7 +44,7 @@ public class DialogoAgregarAutor extends JDialog{
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
-		
+
 		lbNombre = new JLabel(ConstantesGUI.T_LABEL_NOMBRE);
 		cons.gridx = 0;
 		cons.gridy = 0;
@@ -84,14 +83,11 @@ public class DialogoAgregarAutor extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 3;
 		cons.insets = new Insets(0, 0, 0, 100);
-//		dialogoAgregarLibro.listaAutor.addItem(txtNombre.getText());
 		btnCrearAutor.addActionListener(controlador);
 		btnCrearAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
-		add(btnCrearAutor, cons);
+		add(btnCrearAutor, cons);		
 	}
-	
 
-	
 	public Autor crearAutor(){
 		Autor autor = new Autor(txtNombre.getText(), txtRutaImagen.getText());
 		dispose();
@@ -104,7 +100,7 @@ public class DialogoAgregarAutor extends JDialog{
 		txtRutaImagen.setText("");
 		dispose();
 	}
-	
+
 	public ImageIcon importarImagenAutor(){
 		JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView());
 		fc.showOpenDialog(null);
@@ -116,7 +112,6 @@ public class DialogoAgregarAutor extends JDialog{
 		return image;
 	}
 
-	
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
@@ -125,7 +120,7 @@ public class DialogoAgregarAutor extends JDialog{
 			return null;
 		}
 	}
-	
+
 	public JTextField getTxtNombre() {
 		return txtNombre;
 	}

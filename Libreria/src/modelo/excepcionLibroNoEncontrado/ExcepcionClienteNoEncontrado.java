@@ -1,7 +1,6 @@
 package modelo.excepcionLibroNoEncontrado;
 
 public class ExcepcionClienteNoEncontrado extends Exception{
-
 	/**
 	 * 
 	 */
@@ -16,5 +15,4 @@ public class ExcepcionClienteNoEncontrado extends Exception{
 	public ExcepcionClienteNoEncontrado(int id) {
 		super(ERROR_CLIENTE_NO_ENCONTRADO + "-" + id + "-");
 	}
-
 }

@@ -23,11 +23,11 @@ public class Util {
 				Double.toString(libro.getPrecio()), Integer.toString(libro.getNumeroCopias()),
 				libro.getNombreAutor(), genero.toString() };
 	}
-	
+
 	public static String[] sitioAVectorAutor(Autor autor){
 		return new String[]{Integer.toString( autor.getId()),  autor.getNombre()};
 	}
-	
+
 	public static String[] sitioAVectorCliente(Cliente cliente){
 		return new String[]{Integer.toString( cliente.getId()),  cliente.getNombre(), Double.toString(cliente.getDinero())};
 	}

@@ -1,18 +1,14 @@
 package vista;
 public class ConstantesGUI {
-	
 	/**
 	 * Constantes Ventana Administrador
 	 */
-	
 	public static final String T_TITULO_VENTANA = "Café y Libros";
 	public static final int VENTANA_ALTO = 600;
 	public static final int VENTANA_ANCHO = 500;
-
 	/**
 	 * Barra Herramientas Administrador
 	 */
-	
 	public static final String T_MENU_ITEM_EDITAR_LIBRO = "Editar Libro";
 	public static final String T_MENU_ITEM_REMOVER_LIBRO = "Remover libro";
 	public static final String T_MENU_ITEM_REMOVER_AUTOR = "Remover Autor";
@@ -45,21 +41,17 @@ public class ConstantesGUI {
 	public static final String T_MENU_ESTADISTICAS = "Estadisticas";
 	public static final String T_MENU_ITEM_SALIR = "Salir";
 	public static final String T_MENU_ITEM_AGREGAR_lIBRO = "Agregar Libro";
-	
 	/**
 	 * Ventana Inicio
 	 */
-	
 	public static final String T_BTN_ADMINISTRADOR = "Administardor";
 	public static final int VENTANA_ALTO_PRIMARIA = 600;
 	public static final int VENTANA_ANCHO_PRIMARIA =600;
 	public static final String IMG_ADMINISTRADOR = "src/imagenes/admin.png";
 	public static final String IMG_USUARIO = "src/imagenes/user.png";
-	
 	/**
 	 * Constantes Ventana Usuario
 	 */
-	
 	public static final String T_VENTANA_USUARIO = "Café y Libros - Usuario";
 	public static final int VENTANA_USUARIO_ALTO = 500;
 	public static final int VENTANA_USUARIO_ANCHO = 600;
@@ -68,20 +60,16 @@ public class ConstantesGUI {
 	public static final String T_TABLA_DESCRIPCION = "Descripción";
 	public static final String T_TABLA_VALOR = "PRECIO";
 	public static final String IMG_ICONO_VENTANA_USUARIO = "src/imagenes/iconoventanausuario.png";
-	
 	/**
 	 * Constantes Barra Herramientas Usuario
 	 */
-	
 	public static final String IMG_COMPRAR_LIBRO = "src/imagenes/barraherramientasus/comprar.png";
 	public static final String IMG_BUSCAR_LIBRO = "src/imagenes/barraherramientasus/buscar.png";
 	public static final String RBTN_BUSCAR_ID = "Autor";
 	public static final String RBTN_BUSCAR_NOMBRE = "Nombre";
-	
 	/**
 	 * Constantes Barra Menu Usuario
 	 */
-	
 	public static final String T_MENU_ARCHIVO_US = "Archivo";
 	public static final String T_MENU_ITEM_US_COMPRAR_LIBRO = "Comprar Libro";
 	public static final String T_MENU_ITEM_US_BUSCAR_LIBRO = "Buscar Libro";
@@ -126,6 +114,4 @@ public class ConstantesGUI {
 	public static final String T_TITULO_DIA_ESTA = "Estadisticas";
 	public static final int ANCHO_DIA_ESTA = 800;
 	public static final int ALTO_DIA_ESTA = 600;
-	
-	
 }

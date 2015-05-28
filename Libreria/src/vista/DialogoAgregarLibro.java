@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,7 +18,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
@@ -35,7 +33,6 @@ public class DialogoAgregarLibro extends JDialog{
 	private JTextField txtValor;
 	private JTextField txtRutaImagen;
 	private JTextField txtNumeroCopias;
-	private JTextField txtAutor;
 	private String nombreAutor;
 	private JLabel lbNombre;
 	private JLabel lbDescripcion;
@@ -49,7 +46,7 @@ public class DialogoAgregarLibro extends JDialog{
 	private JButton btnAgregarAutor;
 	private JComboBox<TipoGenero> listaGenero;
 	protected JComboBox<String> listaAutor;
-	
+
 	public DialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
@@ -120,12 +117,7 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 4;
 		add(listaAutor, cons);
-		
-//		txtAutor = new JTextField(10);
-//		cons.gridx = 1;
-//		cons.gridy = 4;
-//		add(txtAutor, cons);
-		
+
 		btnAgregarAutor = new JButton(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
 		cons.gridx = 2;
 		cons.gridy = 4;
@@ -147,7 +139,6 @@ public class DialogoAgregarLibro extends JDialog{
 		listaGenero.addItem(TipoGenero.INFANTIL);
 		listaGenero.addItem(TipoGenero.TERROR);
 		add(listaGenero, cons);
-
 
 		btnAgregarImagen = new JButton(ConstantesGUI.T_BTN_CARGAR_IMAGEN);
 		btnAgregarImagen.setActionCommand(Controlador.A_AGREGAR_IMAGEN);
@@ -195,10 +186,10 @@ public class DialogoAgregarLibro extends JDialog{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), nombreAutor.toString(), TipoGenero.ACCION);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), nombreAutor, TipoGenero.ACCION);
 		dispose();
 		cancelar();
 		return libro;
@@ -209,7 +200,6 @@ public class DialogoAgregarLibro extends JDialog{
 		txtADescripcion.setText("");
 		txtValor.setText("");
 		txtRutaImagen.setText("");
-//		txtAutor.setText("");
 		txtNumeroCopias.setText("");
 		dispose();
 	}
@@ -239,7 +229,5 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public void setNombreAutor(String nombreAutor) {
 		this.nombreAutor = nombreAutor;
-	}
-	
-	
+	}	
 }

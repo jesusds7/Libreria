@@ -16,7 +16,5 @@ public class DialogoEstadisticas extends JDialog {
 		setSize(ConstantesGUI.ANCHO_DIA_ESTA, ConstantesGUI.ALTO_DIA_ESTA);
 		setFocusable(true);
 		setTitle(ConstantesGUI.T_TITULO_DIA_ESTA);
-
 	}
-
 }

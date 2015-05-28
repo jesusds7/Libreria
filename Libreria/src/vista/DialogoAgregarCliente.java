@@ -16,7 +16,6 @@ import modelo.entidades.Cliente;
 import controlador.Controlador;
 
 public class DialogoAgregarCliente extends JDialog{
-	
 	/**
 	 * 
 	 */
@@ -40,7 +39,7 @@ public class DialogoAgregarCliente extends JDialog{
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
-		
+
 		lbNombre = new JLabel(ConstantesGUI.T_LABEL_NOMBRE);
 		cons.gridx = 0;
 		cons.gridy = 0;
@@ -52,18 +51,18 @@ public class DialogoAgregarCliente extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
-		
+
 		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
 		cons.gridx = 0;
 		cons.gridy = 1;
 		add(lbDinero, cons);
-		
+
 		txtDinero = new JTextField(10);
 		cons.gridx = 1;
 		cons.gridy = 1;
 		cons.insets = new Insets(0, 0, 0, 0);
 		add(txtDinero, cons);
-		
+
 
 		btnCancelar = new JButton(ConstantesGUI.T_BTN_CANCELAR);
 		btnCancelar.addActionListener(controlador);
@@ -81,7 +80,7 @@ public class DialogoAgregarCliente extends JDialog{
 		btnCrearCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
 		add(btnCrearCliente, cons);
 	}
-	
+
 	public Cliente crearCliente(){
 		Cliente cliente = new Cliente(txtNombre.getText(), Double.parseDouble(txtDinero.getText()));
 		dispose();
@@ -94,7 +93,7 @@ public class DialogoAgregarCliente extends JDialog{
 		txtDinero.setText("");
 		dispose();
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

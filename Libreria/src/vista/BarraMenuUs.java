@@ -7,11 +7,8 @@ import javax.swing.JMenuItem;
 import controlador.Controlador;
 
 public class BarraMenuUs extends JMenuBar{
-
 	private static final long serialVersionUID = 1L;
-
 	private JMenu menuArchivo;
-
 	private JMenuItem itemComprar;
 	private JMenuItem itemBuscar;
 	private JMenuItem itemMostrarLibros;
@@ -33,7 +30,5 @@ public class BarraMenuUs extends JMenuBar{
 		itemBuscar = new JMenuItem();
 		itemBuscar.setText(ConstantesGUI.T_MENU_ITEM_US_BUSCAR_LIBRO);
 		menuArchivo.add(itemBuscar);
-
 	}
-
 }

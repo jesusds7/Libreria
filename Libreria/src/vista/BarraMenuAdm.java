@@ -46,7 +46,7 @@ public class BarraMenuAdm extends JMenuBar {
 		itemEditarLibro.setActionCommand(Controlador.A_MOSTAR_EDITAR_LIBRO);
 		itemEditarLibro.addActionListener(controlador);
 		menuArchivo.add(itemEditarLibro);
-		
+
 		itemAgregarAutor = new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
 		itemAgregarAutor.addActionListener(controlador);
 		itemAgregarAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
@@ -62,7 +62,7 @@ public class BarraMenuAdm extends JMenuBar {
 		itemEditarAutor.setActionCommand(Controlador.A_MOSTAR_EDITAR_AUTOR);
 		itemEditarAutor.addActionListener(controlador);
 		menuArchivo.add(itemEditarAutor);
-		
+
 		itemAgregarCliente= new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_CLIENTE);
 		itemAgregarCliente.addActionListener(controlador);
 		itemAgregarCliente.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE);
@@ -78,7 +78,7 @@ public class BarraMenuAdm extends JMenuBar {
 		itemEditarCliente.addActionListener(controlador);
 		itemEditarCliente.setActionCommand(Controlador.A_MOSTAR_EDITAR_CLIENTE);
 		menuArchivo.add(itemEditarCliente);
-		
+
 		menuImportar = new JMenu(ConstantesGUI.T_MENU_IMPORTAR);
 		menuImportar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_IMPORTAR));
 		menuArchivo.add(menuImportar);
