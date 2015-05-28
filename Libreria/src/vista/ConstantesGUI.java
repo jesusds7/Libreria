@@ -114,4 +114,7 @@ public class ConstantesGUI {
 	public static final String T_TITULO_DIA_ESTA = "Estadisticas";
 	public static final int ANCHO_DIA_ESTA = 800;
 	public static final int ALTO_DIA_ESTA = 600;
+	public static final String T_MENU_AGREGAR_DE_ARCHIVO = "Agregar";
+	public static final String T_MENU_EDITAR_DE_MENU = "Editar";
+	public static final String T_MENU_ELIMINAR_DE_MENU = "Eliminar";
 }
