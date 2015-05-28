@@ -31,7 +31,8 @@ import vista.VentanaUsuario;
 
 public class Controlador extends JPanel implements ActionListener {
 	/**
-	 * 
+	 * Clase donde se van a manejar todos los eventos de los 
+	 * botones y de las tablas
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final String A_BTN_DIALOGO_ADMINISTRADOR = "DIALOGO_ADMINISTRADOR";
@@ -93,7 +94,7 @@ public class Controlador extends JPanel implements ActionListener {
 		editDialogoAgregarCliente = new EditDialogoAgregarCliente(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
 		ventanaUsuario = new VentanaUsuario(this);
-		dialogoPrimario.setVisible(true);
+//		dialogoPrimario.setVisible(true); Se hace un comentario para que salga primero el Splash luego el panel Principal
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
 	}
 	
