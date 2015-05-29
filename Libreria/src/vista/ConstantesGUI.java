@@ -117,4 +117,5 @@ public class ConstantesGUI {
 	public static final String T_MENU_AGREGAR_DE_ARCHIVO = "Agregar";
 	public static final String T_MENU_EDITAR_DE_MENU = "Editar";
 	public static final String T_MENU_ELIMINAR_DE_MENU = "Eliminar";
+	public static final String T_LABEL_PASSWORD = "Constraseña";
 }

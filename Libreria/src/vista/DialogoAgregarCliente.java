@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -22,6 +23,8 @@ public class DialogoAgregarCliente extends JDialog{
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextField txtDinero;
+	private JLabel labelPassword;
+	private JPasswordField password;
 	private JLabel lbNombre;
 	protected JButton btnCrearCliente;
 	private JButton btnCancelar;
@@ -32,7 +35,7 @@ public class DialogoAgregarCliente extends JDialog{
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
 		setTitle("Ingresar Datos Cliente");
-		setSize(ConstantesGUI.VENTANA_ANCHO, ConstantesGUI.VENTANA_ALTO);
+		setSize(600,350);
 		setLocationRelativeTo(null);
 		setModal(true);
 		setIconImage(createImageIcon(ConstantesGUI.IMG_ICONO_LIBRO).getImage());
@@ -51,30 +54,39 @@ public class DialogoAgregarCliente extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
-
-		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
+		
+		labelPassword = new JLabel(ConstantesGUI.T_LABEL_PASSWORD);
 		cons.gridx = 0;
 		cons.gridy = 1;
+		add(labelPassword, cons);
+		
+		password = new JPasswordField(20);
+		cons.gridx=1;
+		cons.gridy=1;
+		add(password, cons);
+		
+
+		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
+		cons.gridx = 0 ;
+		cons.gridy = 2;
 		add(lbDinero, cons);
 
 		txtDinero = new JTextField(10);
-		cons.gridx = 1;
-		cons.gridy = 1;
-		cons.insets = new Insets(0, 0, 0, 0);
+		cons.gridx = 2;
+		cons.gridy = 2;
 		add(txtDinero, cons);
-
 
 		btnCancelar = new JButton(ConstantesGUI.T_BTN_CANCELAR);
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_CANCELAR_CLIENTE);
 		cons.gridx = 0;
-		cons.gridy = 2;
+		cons.gridy = 3;
 		cons.insets = new Insets(0, 100, 0, 0);
 		add(btnCancelar, cons);
 
 		btnCrearCliente = new JButton(ConstantesGUI.T_BTN_CREAR);
-		cons.gridx = 1;
-		cons.gridy = 2;
+		cons.gridx = 3;
+		cons.gridy = 3;
 		cons.insets = new Insets(0, 0, 0, 100);
 		btnCrearCliente.addActionListener(controlador);
 		btnCrearCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);

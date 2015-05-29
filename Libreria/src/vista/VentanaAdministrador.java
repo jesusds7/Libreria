@@ -47,7 +47,7 @@ public class VentanaAdministrador extends JFrame {
 
 	public VentanaAdministrador(Controlador controlador) {
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
-		setLayout(new BorderLayout());
+//		setLayout(new BorderLayout());
 		setExtendedState(VentanaAdministrador.MAXIMIZED_BOTH);
 		setSize(ConstantesGUI.VENTANA_ALTO,ConstantesGUI.VENTANA_ANCHO);
 		setLocationRelativeTo(null);
@@ -60,7 +60,7 @@ public class VentanaAdministrador extends JFrame {
 		add(barraHerramientas, BorderLayout.PAGE_START);
 
 		panelClase = new JPanel(new GridLayout(1,3));
-
+		panelClase = new JPanel(new BorderLayout());
 		panelLibros = new JPanel();
 
 		modeloTablaLibros = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"}, 0);
@@ -81,7 +81,7 @@ public class VentanaAdministrador extends JFrame {
 		});
 		panelLibros.setBorder(BorderFactory.createTitledBorder("Libros"));
 		panelLibros.add(new JScrollPane(tablalibros));
-		panelClase.add(panelLibros);
+		panelClase.add(panelLibros, BorderLayout.CENTER);
 
 		panelAutor = new JPanel();
 		modeloTablaAutores = new DefaultTableModel(new String[]{"N°Orden" , "Nombre"}, 0);
@@ -102,7 +102,7 @@ public class VentanaAdministrador extends JFrame {
 		});
 		panelAutor.setBorder(BorderFactory.createTitledBorder("Autor"));
 		panelAutor.add(new JScrollPane(tablaAutores));
-		panelClase.add(panelAutor);
+		panelClase.add(panelAutor, BorderLayout.WEST);
 
 
 		panelCliente = new JPanel();
@@ -124,7 +124,7 @@ public class VentanaAdministrador extends JFrame {
 		});
 		panelCliente.setBorder(BorderFactory.createTitledBorder("Cliente"));
 		panelCliente.add(new JScrollPane(tablaClientes));
-		panelClase.add(panelCliente);
+		panelClase.add(panelCliente, BorderLayout.EAST);
 
 		//		panelCliente = new JPanel();
 		//		panelCliente.setBorder(BorderFactory.createTitledBorder("Clientes"));
