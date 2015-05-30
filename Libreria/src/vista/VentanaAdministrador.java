@@ -25,9 +25,7 @@ import modelo.util.Util;
 import controlador.Controlador;
 
 public class VentanaAdministrador extends JFrame {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private BarraHerramientasAdm barraHerramientas;
 	private BarraMenuAdm barraMenu;
@@ -47,7 +45,7 @@ public class VentanaAdministrador extends JFrame {
 
 	public VentanaAdministrador(Controlador controlador) {
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);
-//		setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		setExtendedState(VentanaAdministrador.MAXIMIZED_BOTH);
 		setSize(ConstantesGUI.VENTANA_ALTO,ConstantesGUI.VENTANA_ANCHO);
 		setLocationRelativeTo(null);
@@ -80,8 +78,8 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelLibros.setBorder(BorderFactory.createTitledBorder("Libros"));
-		panelLibros.add(new JScrollPane(tablalibros));
-		panelClase.add(panelLibros, BorderLayout.CENTER);
+		add(new JScrollPane(tablalibros), BorderLayout.SOUTH);
+//		panelClase.add(panelLibros);
 
 		panelAutor = new JPanel();
 		modeloTablaAutores = new DefaultTableModel(new String[]{"N°Orden" , "Nombre"}, 0);
@@ -101,8 +99,7 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelAutor.setBorder(BorderFactory.createTitledBorder("Autor"));
-		panelAutor.add(new JScrollPane(tablaAutores));
-		panelClase.add(panelAutor, BorderLayout.WEST);
+		add(new JScrollPane(tablaAutores), BorderLayout.EAST);
 
 
 		panelCliente = new JPanel();
@@ -123,12 +120,8 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelCliente.setBorder(BorderFactory.createTitledBorder("Cliente"));
-		panelCliente.add(new JScrollPane(tablaClientes));
-		panelClase.add(panelCliente, BorderLayout.EAST);
+		add(new JScrollPane(tablaClientes), BorderLayout.WEST);
 
-		//		panelCliente = new JPanel();
-		//		panelCliente.setBorder(BorderFactory.createTitledBorder("Clientes"));
-		//		panelClase.add(panelCliente, cons);
 		add(panelClase);
 
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
