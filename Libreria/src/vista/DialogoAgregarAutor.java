@@ -89,12 +89,12 @@ public class DialogoAgregarAutor extends JDialog{
 	}
 
 	public Autor crearAutor(){
-		Autor autor = new Autor(txtNombre.getText(), txtRutaImagen.getText());
+		Autor autor = new Autor(txtNombre.getText());
 		dispose();
 		cancelar();
 		return autor;
 	}
-
+	
 	public void cancelar(){
 		txtNombre.setText("");
 		txtRutaImagen.setText("");

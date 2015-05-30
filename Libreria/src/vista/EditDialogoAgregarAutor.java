@@ -4,12 +4,15 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+
+import modelo.dao.GestorAutor;
 import modelo.entidades.Autor;
 import controlador.Controlador;
 
@@ -81,7 +84,14 @@ public class EditDialogoAgregarAutor extends JDialog{
 		btnEditarAutor.setActionCommand(Controlador.A_EDITAR_AUTOR);
 		add(btnEditarAutor, cons);
 	}
-
+	
+	public Autor crearAutor(){
+		Autor autor = GestorAutor.crearAutor(txtNombre.getText());
+		dispose();
+		cancelar();
+		return autor;
+	}
+	
 	public Autor  editarAutor(Autor autor){
 		autor.setNombre(txtNombre.getText());
 		autor.setImagen(txtRutaImagen.getText());

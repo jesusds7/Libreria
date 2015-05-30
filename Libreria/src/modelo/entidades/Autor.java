@@ -6,10 +6,9 @@ public class Autor {
 	private String imagen;
 	private String nombre;
 
-	public Autor(String nombre, String imagen) {
+	public Autor(String nombre) {
 		this.id = consecutivo;
 		this.nombre = nombre;
-		this.imagen = imagen;
 		consecutivo++;
 	}
 

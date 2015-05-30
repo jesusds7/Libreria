@@ -189,7 +189,7 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), nombreAutor, TipoGenero.ACCION);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), nombreAutor,listaGenero.toString() );
 		dispose();
 		cancelar();
 		return libro;
@@ -229,5 +229,14 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public void setNombreAutor(String nombreAutor) {
 		this.nombreAutor = nombreAutor;
-	}	
+	}
+
+	public JComboBox<String> getListaAutor() {
+		return listaAutor;
+	}
+
+	public void setListaAutor(JComboBox<String> listaAutor) {
+		this.listaAutor = listaAutor;
+	}
+	
 }

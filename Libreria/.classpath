@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Libreria-master (2)/Libreria-master/Libreria/jespxml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/parra/Downloads/jespxml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

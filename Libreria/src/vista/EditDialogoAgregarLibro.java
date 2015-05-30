@@ -187,7 +187,7 @@ public class EditDialogoAgregarLibro extends JDialog {
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), TipoGenero.ACCION);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), txtAutor.getText(), listaGenero.toString());
 		dispose();
 		cancelar();
 		return libro;

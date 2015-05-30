@@ -19,8 +19,8 @@ public class GestorAutor {
 		listaAutores.remove(autor);
 	}
 
-	public Autor crearAutor(String nombre, String imagen){
-		return new Autor(nombre, imagen);
+	public static  Autor crearAutor(String nombre){
+		return new Autor(nombre);
 	}
 
 	public Autor buscarAutor(int id)throws ExcepcionAutorNoEncontrado {

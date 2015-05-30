@@ -1,9 +1,12 @@
 package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import persistencia.GestorArchivoXMLCliente;
+import persistencia.XmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -135,6 +138,7 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.setVisible(false);
 			break;
 		case A_AGREGAR_LIBRO:
+			XmlLibro.EscribirXML(gestorLibro.getListaLibros(),"/src/data/arraylibros.xml");
 			agregarLibro();
 			dialogoAgregarLibro.dispose();
 			break;
@@ -357,13 +361,16 @@ public class Controlador extends JPanel implements ActionListener {
 
 	public void agregarAutor(){
 		Autor autor = dialogoAgregarAutor.crearAutor();
-		crearAutor(autor);
-	}
-
-	public void crearAutor(Autor autor){
-		if(autor != null){
+		if (autor != null) {
 			gestorAutor.agregarAutor(autor);
 			ventanaAdministrador.agregarAutorTabla(autor);
+			agregarAutorCheck();
+		}
+	}
+
+	public void agregarAutorCheck(){
+		for (int i = 0; i < gestorAutor.getListaAutores().size(); i++) {
+			dialogoAgregarLibro.getListaAutor().addItem(gestorAutor.getListaAutores().get(i).getNombre());
 		}
 	}
 

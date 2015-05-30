@@ -16,7 +16,7 @@ public class GestorLibro {
 		listaLibros.add(libro);
 	}
 
-	public static Libro crearLibro(String nombre, String descripcion, String imagen, int numeroCopias, double precio, String autor, TipoGenero tipoGenero){
+	public static Libro crearLibro(String nombre, String descripcion, String imagen, int numeroCopias, double precio, String autor, String tipoGenero){
 		return new Libro(nombre, descripcion, imagen, numeroCopias, precio, autor, tipoGenero);
 	}
 
