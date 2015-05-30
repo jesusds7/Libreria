@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import controlador.Controlador;
 
 public class DialogoLoginUsuario extends JDialog {
-
 	/**
 	 * @author Ruth Rojas
 	 */

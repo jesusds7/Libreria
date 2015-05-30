@@ -24,6 +24,7 @@ public class EditDialogoAgregarAutor extends JDialog{
 	protected JButton btnEditarAutor;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
+
 	public EditDialogoAgregarAutor(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));

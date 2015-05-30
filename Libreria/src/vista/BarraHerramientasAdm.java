@@ -8,7 +8,6 @@ import modelo.entidades.TipoBusqueda;
 import controlador.Controlador;
 
 public class BarraHerramientasAdm extends JToolBar {
-
 	/**
 	 * 
 	 */

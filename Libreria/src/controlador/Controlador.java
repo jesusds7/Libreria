@@ -273,15 +273,15 @@ public class Controlador extends JPanel implements ActionListener {
 			buscarLibroNombre();
 		}else if (aux.equals(TipoBusqueda.LIBRO_ID.toString())) {
 			buscarLibroId();
-		}else if (aux.equals(TipoBusqueda.AUTHOR_NOMBRE.toString())) {
+		}else if (aux.equals(TipoBusqueda.AUTOR_NOMBRE.toString())) {
 			buscarAutorNombre();
-		}else if (aux.equals(TipoBusqueda.AUTHOR_ID.toString())) {
+		}else if (aux.equals(TipoBusqueda.AUTOR_ID.toString())) {
 			buscarAutorId();
 		}else if (aux.equals(TipoBusqueda.CLIENTE_NOMBRE.toString())) {
 			buscarClienteNombre();
 		}else if (aux.equals(TipoBusqueda.CLIENTE_ID.toString())) {
 			buscarClienteId();
-		}else if (aux.equals(TipoBusqueda.SELLECION_OPCION.toString())) {
+		}else if (aux.equals(TipoBusqueda.SELECION_OPCION.toString())) {
 			JOptionPane.showMessageDialog(null, "Debe seleccionar una opcion de busqueda", "Advertencia", 2);
 		}
 	}

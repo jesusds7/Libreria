@@ -54,17 +54,17 @@ public class DialogoAgregarCliente extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
-		
+
 		labelPassword = new JLabel(ConstantesGUI.T_LABEL_PASSWORD);
 		cons.gridx = 0;
 		cons.gridy = 1;
 		add(labelPassword, cons);
-		
+
 		password = new JPasswordField(20);
 		cons.gridx=1;
 		cons.gridy=1;
 		add(password, cons);
-		
+
 
 		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
 		cons.gridx = 0 ;

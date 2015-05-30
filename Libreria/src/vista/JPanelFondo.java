@@ -7,9 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class JPanelFondo extends JPanel{
-
 	private static final long serialVersionUID = 1L;
-	
 	ImageIcon imagen;
 	String nombre;
 

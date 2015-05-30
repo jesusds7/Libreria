@@ -31,56 +31,56 @@ public class BarraMenuAdm extends JMenuBar {
 	private JMenu menuAyuda;
 
 	public BarraMenuAdm(Controlador controlador) {
-		
+
 		menuArchivo = new JMenu(ConstantesGUI.T_MENU_ARCHIVO);
 		menuAgregar = new JMenu(ConstantesGUI.T_MENU_AGREGAR_DE_ARCHIVO);
 		menuAgregar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_NUEVO_LIBRO));
 		itemAgregarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_lIBRO);
 		itemAgregarLibro.addActionListener(controlador);
 		itemAgregarLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_LIBRO);
-		
+
 		itemAgregarAutor = new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_AUTOR);
 		itemAgregarAutor.addActionListener(controlador);
 		itemAgregarAutor.setActionCommand(Controlador.A_MOSTAR_AGREGAR_AUTOR);
-		
+
 		itemAgregarCliente= new JMenuItem(ConstantesGUI.T_MENU_ITEM_AGREGAR_CLIENTE);
 		itemAgregarCliente.addActionListener(controlador);
 		itemAgregarCliente.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE);
-	
+
 		menuAgregar.add(itemAgregarCliente);		
 		menuAgregar.add(itemAgregarAutor);		
 		menuAgregar.add(itemAgregarLibro);	
 		menuArchivo.add(menuAgregar);
-		
+
 		menuEditar = new JMenu(ConstantesGUI.T_MENU_EDITAR_DE_MENU);
 		menuEditar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_EDITAR));
 		itemEditarAutor = new JMenuItem(ConstantesGUI.T_MENU_ITEM_EDITAR_AUTOR);
 		itemEditarAutor.setActionCommand(Controlador.A_MOSTAR_EDITAR_AUTOR);
 		itemEditarAutor.addActionListener(controlador);
-	
+
 		itemEditarLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_EDITAR_LIBRO);
 		itemEditarLibro.setActionCommand(Controlador.A_MOSTAR_EDITAR_LIBRO);
 		itemEditarLibro.addActionListener(controlador);
-		
+
 		itemEditarCliente = new JMenuItem(ConstantesGUI.T_MENU_ITEM_EDITAR_CLIENTE);
 		itemEditarCliente.addActionListener(controlador);
 		itemEditarCliente.setActionCommand(Controlador.A_MOSTAR_EDITAR_CLIENTE);
-		
+
 		menuEditar.add(itemEditarCliente);
 		menuEditar.add(itemEditarLibro);
 		menuEditar.add(itemEditarAutor);
 		menuArchivo.add(menuEditar);
-		
+
 		menuEliminar = new JMenu(ConstantesGUI.T_MENU_ELIMINAR_DE_MENU);
 		menuEliminar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_ELIMINAR_CLIENTE));
 		itemRemoverLibro = new JMenuItem(ConstantesGUI.T_MENU_ITEM_REMOVER_LIBRO);
 		itemRemoverLibro.addActionListener(controlador);
 		itemRemoverLibro.setActionCommand(Controlador.A_REMOVER_LIBRO);
-		
+
 		itemRemoverAutor = new JMenuItem(ConstantesGUI.T_MENU_ITEM_REMOVER_AUTOR);
 		itemRemoverAutor.addActionListener(controlador);
 		itemRemoverAutor.setActionCommand(Controlador.A_REMOVER_AUTOR);
-		
+
 		itemRemoverCliente = new JMenuItem(ConstantesGUI.T_MENU_ITEM_REMOVER_CLIENTE);
 		itemRemoverCliente.addActionListener(controlador);
 		itemRemoverCliente.setActionCommand(Controlador.A_REMOVER_CLIENTE);
