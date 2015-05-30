@@ -185,7 +185,6 @@ public class Controlador extends JPanel implements ActionListener {
 			try {
 				mostarDialogoEditarAutor();
 			} catch (ExcepcionAutorNoEncontrado e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -193,7 +192,6 @@ public class Controlador extends JPanel implements ActionListener {
 			try {
 				editarAutor();
 			} catch (ExcepcionAutorNoEncontrado e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
