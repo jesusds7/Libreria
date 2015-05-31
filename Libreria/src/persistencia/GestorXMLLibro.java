@@ -70,8 +70,6 @@ public class GestorXMLLibro {
 			Element genero = archivo.createElement(C_GENERO);
 			genero.appendChild(archivo.createTextNode(libro.getTipoGenero().toString()));
 			cuerpo.appendChild(genero);
-			
-
 			/**
 			 * crear el archivo xml, transformar de DOM a xml
 			 */
