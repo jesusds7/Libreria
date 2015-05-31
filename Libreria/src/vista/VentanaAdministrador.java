@@ -1,9 +1,11 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
@@ -59,9 +62,18 @@ public class VentanaAdministrador extends JFrame {
 		panelClase = new JPanel(new GridLayout(1,3));
 		panelClase = new JPanel(new BorderLayout());
 		panelLibros = new JPanel();
+		
+		modeloTablaLibros = new DefaultTableModel(){
+			private static final long serialVersionUID = 1L;
 
-		modeloTablaLibros = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"}, 0);
+			public boolean isCellEditable (int fila, int columna) {
+				return false;
+			}
+		};
+		modeloTablaLibros.setColumnIdentifiers(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"});
+		
 		tablalibros = new JTable(modeloTablaLibros);
+		tablalibros.setBackground(Color.decode("#5882FA"));
 		tablalibros.getTableHeader().setReorderingAllowed(false);
 		tablalibros.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
@@ -81,8 +93,18 @@ public class VentanaAdministrador extends JFrame {
 		//		panelClase.add(panelLibros);
 
 		panelAutor = new JPanel();
-		modeloTablaAutores = new DefaultTableModel(new String[]{"N°Orden" , "Nombre"}, 0);
+		
+		modeloTablaAutores = new DefaultTableModel(){
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable (int fila, int columna) {
+				return false;
+			}
+		};
+		modeloTablaAutores.setColumnIdentifiers(new String[]{"N°Orden" , "Nombre"});
+		
 		tablaAutores = new JTable(modeloTablaAutores);
+		tablaAutores.setBackground(Color.decode("#F3F781"));
 		tablaAutores.getTableHeader().setReorderingAllowed(false);
 		tablaAutores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
@@ -102,8 +124,16 @@ public class VentanaAdministrador extends JFrame {
 
 
 		panelCliente = new JPanel();
-		modeloTablaClientes = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Dinero"}, 0);
+		modeloTablaClientes = new DefaultTableModel(){
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable (int fila, int columna) {
+				return false;
+			}
+		};
+		modeloTablaClientes.setColumnIdentifiers(new String[]{"N°Orden" , "Nombre", "Dinero"});
 		tablaClientes = new JTable(modeloTablaClientes);
+		tablaClientes.setBackground(Color.decode("#F7BE81"));
 		tablaClientes.getTableHeader().setReorderingAllowed(false);
 		tablaClientes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
