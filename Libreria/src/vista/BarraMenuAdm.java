@@ -101,6 +101,8 @@ public class BarraMenuAdm extends JMenuBar {
 		add(menuPreferencias);
 
 		menuEstadisticas = new JMenu(ConstantesGUI.T_MENU_ESTADISTICAS);
+		menuEstadisticas.addActionListener(controlador);
+		menuEstadisticas.setActionCommand(Controlador.AC_BTN_DIALO_ESTADISTICAS);
 		add(menuEstadisticas);
 
 		menuAyuda = new JMenu(ConstantesGUI.T_MENU_AYUDA);

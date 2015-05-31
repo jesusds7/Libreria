@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import persistencia.GestorArchivoXMLCliente;
 import persistencia.GestorXMLLibro;
-import persistencia.XmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -22,6 +21,7 @@ import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
 import vista.DialogoAgregarAutor;
 import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
+import vista.DialogoEstadisticas;
 import vista.DialogoInicio;
 import vista.DialogoLoginUsuario;
 import vista.EditDialogoAgregarAutor;
@@ -70,6 +70,7 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_RDBUTTON_FILTRAR_TITULO = "FILTRAR TITULO EN USUARIO";
 	public static final String AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO = "VERIFICAR Y ENTRAR LOGIN USUARIO";
 	public static final String AC_BTN_CANCELAR_DIALOGO = "Cancelar";
+	public static final String AC_BTN_DIALO_ESTADISTICAS = "ESTADISTICAS";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -83,6 +84,8 @@ public class Controlador extends JPanel implements ActionListener {
 	private GestorCliente gestorCliente;
 	private DialogoAgregarCliente dialogoAgregarCliente;
 	private DialogoLoginUsuario dialogoLoginUsuario;
+	private DialogoEstadisticas dialogoEstadisticas;
+	
 	public Controlador() {
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
@@ -142,6 +145,9 @@ public class Controlador extends JPanel implements ActionListener {
 			//XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
 			agregarLibro();
 			dialogoAgregarLibro.dispose();
+			break;
+		case AC_BTN_DIALO_ESTADISTICAS:
+			dialogoEstadisticas.setVisible(true);
 			break;
 		case A_REMOVER_LIBRO:
 			try {
@@ -238,6 +244,7 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		}
 	}
+	
 
 	public void mostartDialogoEditarLibro() throws ExcepcionLibroNoEncontrado{		
 		editDialogoAgregarLibro.cambiarValores(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
