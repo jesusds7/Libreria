@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
@@ -189,7 +191,7 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), nombreAutor,listaGenero.toString() );
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), listaAutor.getSelectedItem().toString(),listaGenero.toString() );
 		dispose();
 		cancelar();
 		return libro;
@@ -238,5 +240,6 @@ public class DialogoAgregarLibro extends JDialog{
 	public void setListaAutor(JComboBox<String> listaAutor) {
 		this.listaAutor = listaAutor;
 	}
+	
 	
 }

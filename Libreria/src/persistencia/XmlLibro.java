@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,66 +24,61 @@ import org.jespxml.modelo.Encoding;
 import org.jespxml.modelo.Tag;
 import org.xml.sax.SAXException;
 
+import vista.ConstantesGUI;
+
 
 public class XmlLibro{
 
-	private static Tag raiz;
-	private static Tag libro;
-	private static Tag id;
-	private static Tag nombre;
-	private static Tag descripcion;
-	private static Tag valor;
-	private static Tag genero;
-	private static Tag autor;
-	private static Tag copias;
-	private static Tag pathImagen;
-
-	public static void EscribirXML(ArrayList<Libro>  listaLibro, String ruta){
-		raiz = new Tag("Libreria");
-		raiz.addAtributo(new Atributo("Cantidad-Libro", Integer.toString(listaLibro.size())));
-		raiz.addComentario(new Comentario("comentario :v"));
+	public static void crearXml(ArrayList<Libro>listaLibro, String ruta) {
 		for (Libro libros : listaLibro) {
-			libro = new Tag("libro");
-			id = new Tag("id");
-			nombre = new Tag("nombre");
-			descripcion = new Tag("descripcion");
-			valor = new Tag("valor");
-			genero = new Tag("genero");
-			autor = new Tag("autor");
-			copias = new Tag("copias");
-			pathImagen = new Tag("rutaImagen");
-			id.addContenido(Integer.toString(libros.getId()));
-			nombre.addContenido(libros.getNombre());
-			descripcion.addContenido(libros.getDescripcion());
-			valor.addContenido(Double.toString(libros.getPrecio()));
-			genero.addContenido(libros.getTipoGenero().toString());
-			autor.addContenido(libros.getNombreAutor());
-			copias.addContenido(Integer.toString(libros.getNumeroCopias()));
-			pathImagen.addContenido(libros.getImagen());
-			raiz.addTagHijo(libro);
-			libro.addTagHijo(id);
-			libro.addTagHijo(nombre);
-			libro.addTagHijo(descripcion);
-			libro.addTagHijo(valor);
-			libro.addTagHijo(genero);
-			libro.addTagHijo(autor);
-			libro.addTagHijo(copias);
-			libro.addTagHijo(pathImagen);
+		Tag libroT = new Tag("Libro");
 
-			JespXML xml = new JespXML(ruta, Encoding.UTF_8);
-			try {
-				xml.escribirXML(raiz);
-			} catch (ParserConfigurationException ex) {
-				Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
-			} catch (TransformerConfigurationException ex) {
-				Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
-			} catch (FileNotFoundException ex) {
-				Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
-			} catch (TransformerException ex) {
-				Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
-			}
+		libroT.addAtributo(new Atributo("Titulo" ,  Integer.toString(listaLibro.size())));
+
+		Tag id = new Tag("Id Libro");
+		id.addContenido(Integer.toString(libros.getId()));;
+
+		Tag nombre = new Tag("Titulo");
+		nombre.addContenido(libros.getNombre());
+
+		Tag descripcion = new Tag("Descripcion");
+		descripcion.addContenido(libros.getDescripcion());
+
+		Tag valor = new Tag("Valor");
+		valor.addContenido(Double.toString(libros.getPrecio()));
+
+		Tag copias = new Tag("Copias Vendidas");
+		copias.addContenido(Integer.toString(libros.getNumeroCopias()));
+		
+		Tag autor = new Tag("Autor");
+		autor.addContenido(libros.getNombreAutor());
+		
+		Tag genero = new Tag("Genero");
+		genero.addContenido(libros.getTipoGenero());
+
+		libroT.addTagHijo(id);
+		libroT.addTagHijo(nombre);
+		libroT.addTagHijo(descripcion);
+		libroT.addTagHijo(valor);
+		libroT.addTagHijo(copias);
+
+		JespXML xml = new JespXML(new File("/src/data/arraylibros.xml"), Encoding.UTF_8);
+
+		try {
+			xml.escribirXML(libroT);
+
+		} catch (TransformerConfigurationException e) {
+			System.out.println(e.toString() +"en transformer Configuration");
+		} catch (FileNotFoundException e) {
+			System.out.println(e.toString() +"en ruta no eencontrada");
+		} catch (ParserConfigurationException e) {
+			System.out.println(e.toString() +"en parser configuration");
+		} catch (TransformerException e) {
+			System.out.println(e.toString() +"en transformer");
+		}
 		}
 	}
+	
 	@SuppressWarnings("deprecation")
 	public static ArrayList<Libro> leerXML(String ruta){
 		JespXML xml = new JespXML(ruta);

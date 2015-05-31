@@ -138,7 +138,7 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.setVisible(false);
 			break;
 		case A_AGREGAR_LIBRO:
-			XmlLibro.EscribirXML(gestorLibro.getListaLibros(),"/src/data/arraylibros.xml");
+			XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
 			agregarLibro();
 			dialogoAgregarLibro.dispose();
 			break;
