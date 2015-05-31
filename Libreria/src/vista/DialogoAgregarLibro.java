@@ -151,6 +151,7 @@ public class DialogoAgregarLibro extends JDialog{
 		add(btnAgregarImagen, cons);
 
 		txtRutaImagen = new JTextField(10);
+		txtRutaImagen.setEnabled(false);
 		cons.gridx = 1;
 		cons.gridy = 6;
 		cons.insets = new Insets(0, 0, 0, 0);

@@ -15,16 +15,13 @@ import modelo.entidades.Autor;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 
-import org.jespxml.JespXML;
-import org.jespxml.excepciones.AtributoNotFoundException;
-import org.jespxml.excepciones.TagHijoNotFoundException;
-import org.jespxml.modelo.Atributo;
-import org.jespxml.modelo.Comentario;
-import org.jespxml.modelo.Encoding;
-import org.jespxml.modelo.Tag;
 import org.xml.sax.SAXException;
 
 import vista.ConstantesGUI;
+import xml.analizador.dom.JespXML;
+import xml.analizador.dom.modelo.Atributo;
+import xml.analizador.dom.modelo.Encoding;
+import xml.analizador.dom.modelo.Tag;
 
 
 public class XmlLibro{
@@ -62,7 +59,7 @@ public class XmlLibro{
 		libroT.addTagHijo(valor);
 		libroT.addTagHijo(copias);
 
-		JespXML xml = new JespXML(new File("/src/data/arraylibros.xml"), Encoding.UTF_8);
+		JespXML xml = new JespXML("/src/data/arraylibros.xml", Encoding.UTF_8);
 
 		try {
 			xml.escribirXML(libroT);
@@ -88,7 +85,7 @@ public class XmlLibro{
 		
 			for(Tag libro : raiz.getTagsHijos()){
 				
-				Tag id = libro.getTagHijoByName("id");
+				/**Tag id = libro.getTagHijoByName("id");
 				Tag nombre = libro.getTagHijoByName("nombre");
 				Tag descripcion = libro.getTagHijoByName("descripcion");
 				Tag valor = libro.getTagHijoByName("valor");
@@ -100,7 +97,7 @@ public class XmlLibro{
 				lista.add(new  Libro(nombre.getContenido(),descripcion.getContenido(),pathImagenTag.getContenido(),
 						Integer.parseInt(valor.getContenido()),Double.parseDouble(valor.getContenido()),
 						autor.getContenido(),genero.getContenido()
-						));
+						));**/
 			}
 		} catch (ParserConfigurationException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,9 +105,9 @@ public class XmlLibro{
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (TagHijoNotFoundException ex) {
+		} /**catch (TagHijoNotFoundException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
-		}
+		}**/
 		return lista;
 	}
 }

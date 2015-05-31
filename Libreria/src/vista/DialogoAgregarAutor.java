@@ -66,6 +66,7 @@ public class DialogoAgregarAutor extends JDialog{
 		add(btnAgregarImagen, cons);
 
 		txtRutaImagen = new JTextField(10);
+		txtRutaImagen.setEnabled(false);
 		cons.gridx = 1;
 		cons.gridy = 2;
 		cons.insets = new Insets(0, 0, 0, 0);

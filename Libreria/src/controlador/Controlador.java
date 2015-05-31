@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import persistencia.GestorArchivoXMLCliente;
+import persistencia.GestorXMLLibro;
 import persistencia.XmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
@@ -138,7 +139,7 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.setVisible(false);
 			break;
 		case A_AGREGAR_LIBRO:
-			XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
+			//XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
 			agregarLibro();
 			dialogoAgregarLibro.dispose();
 			break;
@@ -390,6 +391,7 @@ public class Controlador extends JPanel implements ActionListener {
 		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
+		GestorXMLLibro.guardarArchivoXml(libro);
 	}
 
 	private void crearLibro(Libro libro, TipoGenero genero){
