@@ -3,10 +3,9 @@ package modelo.entidades;
  * @author JESUS
  */
 public class Cliente {
-
+	private int id;
 	private String nombre;
 	private double dinero;
-	private int id;
 	private static int consecutivo;
 
 	public Cliente(String nombre, double dinero) {

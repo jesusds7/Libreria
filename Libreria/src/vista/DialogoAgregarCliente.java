@@ -44,7 +44,7 @@ public class DialogoAgregarCliente extends JDialog{
 		cons.fill = GridBagConstraints.CENTER;
 
 		lbNombre = new JLabel(ConstantesGUI.T_LABEL_NOMBRE);
-		cons.gridx = 0;
+		cons.gridx = 1;
 		cons.gridy = 0;
 		cons.weightx = 0.5;
 		cons.weighty = 0.5;
@@ -53,6 +53,8 @@ public class DialogoAgregarCliente extends JDialog{
 		txtNombre = new JTextField(10);
 		cons.gridx = 1;
 		cons.gridy = 0;
+		cons.weightx = 0.5;
+		cons.weighty = 0.5;
 		add(txtNombre, cons);
 
 		labelPassword = new JLabel(ConstantesGUI.T_LABEL_PASSWORD);
