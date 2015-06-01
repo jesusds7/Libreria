@@ -15,12 +15,12 @@ public class Libro implements Serializable {
 	private double precio;
 	private Autor autor;
 	private String nombreAutor;
-	private TipoGenero tipoGenero;
+	private String tipoGenero;
 	private static int consecutivo;
 
 
 	public Libro(String nombre, String descripcion, String imagen, int numeroCopias,
-			double precio, String autor, TipoGenero tipoGenero) {
+			double precio, String autor, String tipoGenero) {
 		super();
 		this.setNombre(nombre);
 		this.descripcion = descripcion;
@@ -87,11 +87,13 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 
-	public TipoGenero getTipoGenero() {
+	
+
+	public String getTipoGenero() {
 		return tipoGenero;
 	}
 
-	public void setTipoGenero(TipoGenero tipoGenero) {
+	public void setTipoGenero(String tipoGenero) {
 		this.tipoGenero = tipoGenero;
 	}
 

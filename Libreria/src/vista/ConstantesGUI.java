@@ -96,6 +96,10 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_AGREGAR_CLIENTE = "Agregar Cliente";
 	public static final String T_TABLA_AUTOR = "Autor";
 	public static final String T_LABEL_DINERO = "Dinero";
+	public static final String T_LABEL_ESTADO_GENERAL="";
+	public static final String T_LABEL_ESTADO_MAL = "src/imagenes/bad.png" ;
+	public static final String T_LABEL_ESTADO_TEXTO_MAL = "Campo vacio" ;
+	
 	/**
 	 * dialogo editar autor
 	 */
@@ -112,6 +116,17 @@ public class ConstantesGUI {
 	 * Constantes Dialogo Estaditicas
 	 */
 	public static final String T_TITULO_DIA_ESTA = "Estadisticas";
-	public static final int ANCHO_DIA_ESTA = 800;
-	public static final int ALTO_DIA_ESTA = 600;
+	public static final int ANCHO_DIA_ESTA = 400;
+	public static final int ALTO_DIA_ESTA = 200;
+	public static final String BTN_GRAFICAR_DIALO_ESTADIS = "Graficar";
+	public static final String T_MENU_AGREGAR_DE_ARCHIVO = "Agregar";
+	public static final String T_MENU_EDITAR_DE_MENU = "Editar";
+	public static final String T_MENU_ELIMINAR_DE_MENU = "Eliminar";
+	public static final String T_LABEL_PASSWORD = "Constraseña";
+	/**
+	 * Constantes Dialogo Ayuda
+	 */
+	public static final String TITULO_DIAL_AYUD = "Ayuda";
+	public static final int ANCH_DIAL_AYUD = 400;
+	public static final int ALTO_DIAL_AYUD = 400;
 }

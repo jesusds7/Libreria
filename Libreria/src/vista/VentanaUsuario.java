@@ -24,7 +24,6 @@ public class VentanaUsuario extends JFrame {
 	private TableRowSorter<TableModel> trsfiltro;
 
 	public VentanaUsuario(Controlador controlador) {
-
 		this.setTitle(ConstantesGUI.T_VENTANA_USUARIO);
 		this.setLayout(new BorderLayout());
 		this.setSize(ConstantesGUI.VENTANA_USUARIO_ANCHO,ConstantesGUI.VENTANA_USUARIO_ALTO);
@@ -55,7 +54,6 @@ public class VentanaUsuario extends JFrame {
 
 		barraHerramientas = new BarraHerramientasUs(controlador);
 		add(barraHerramientas, BorderLayout.PAGE_START);
-
 	}
 
 	public void filtroTitulo() {

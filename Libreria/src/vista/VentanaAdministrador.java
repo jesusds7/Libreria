@@ -1,9 +1,11 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
@@ -25,9 +28,6 @@ import modelo.util.Util;
 import controlador.Controlador;
 
 public class VentanaAdministrador extends JFrame {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private BarraHerramientasAdm barraHerramientas;
 	private BarraMenuAdm barraMenu;
@@ -60,11 +60,20 @@ public class VentanaAdministrador extends JFrame {
 		add(barraHerramientas, BorderLayout.PAGE_START);
 
 		panelClase = new JPanel(new GridLayout(1,3));
-
+		panelClase = new JPanel(new BorderLayout());
 		panelLibros = new JPanel();
+		
+		modeloTablaLibros = new DefaultTableModel(){
+			private static final long serialVersionUID = 1L;
 
-		modeloTablaLibros = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"}, 0);
+			public boolean isCellEditable (int fila, int columna) {
+				return false;
+			}
+		};
+		modeloTablaLibros.setColumnIdentifiers(new String[]{"N°Orden" , "Nombre", "Descripcion", "precio", "Numero Copias", "Autor", "Genero"});
+		
 		tablalibros = new JTable(modeloTablaLibros);
+		tablalibros.setBackground(Color.decode("#5882FA"));
 		tablalibros.getTableHeader().setReorderingAllowed(false);
 		tablalibros.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
@@ -80,12 +89,22 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelLibros.setBorder(BorderFactory.createTitledBorder("Libros"));
-		panelLibros.add(new JScrollPane(tablalibros));
-		panelClase.add(panelLibros);
+		add(new JScrollPane(tablalibros), BorderLayout.SOUTH);
+		//		panelClase.add(panelLibros);
 
 		panelAutor = new JPanel();
-		modeloTablaAutores = new DefaultTableModel(new String[]{"N°Orden" , "Nombre"}, 0);
+		
+		modeloTablaAutores = new DefaultTableModel(){
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable (int fila, int columna) {
+				return false;
+			}
+		};
+		modeloTablaAutores.setColumnIdentifiers(new String[]{"N°Orden" , "Nombre"});
+		
 		tablaAutores = new JTable(modeloTablaAutores);
+		tablaAutores.setBackground(Color.decode("#F3F781"));
 		tablaAutores.getTableHeader().setReorderingAllowed(false);
 		tablaAutores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
@@ -101,13 +120,20 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelAutor.setBorder(BorderFactory.createTitledBorder("Autor"));
-		panelAutor.add(new JScrollPane(tablaAutores));
-		panelClase.add(panelAutor);
+		add(new JScrollPane(tablaAutores), BorderLayout.EAST);
 
 
 		panelCliente = new JPanel();
-		modeloTablaClientes = new DefaultTableModel(new String[]{"N°Orden" , "Nombre", "Dinero"}, 0);
+		modeloTablaClientes = new DefaultTableModel(){
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable (int fila, int columna) {
+				return false;
+			}
+		};
+		modeloTablaClientes.setColumnIdentifiers(new String[]{"N°Orden" , "Nombre", "Dinero"});
 		tablaClientes = new JTable(modeloTablaClientes);
+		tablaClientes.setBackground(Color.decode("#F7BE81"));
 		tablaClientes.getTableHeader().setReorderingAllowed(false);
 		tablaClientes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 			@Override
@@ -123,19 +149,15 @@ public class VentanaAdministrador extends JFrame {
 			}
 		});
 		panelCliente.setBorder(BorderFactory.createTitledBorder("Cliente"));
-		panelCliente.add(new JScrollPane(tablaClientes));
-		panelClase.add(panelCliente);
+		add(new JScrollPane(tablaClientes), BorderLayout.WEST);
 
-		//		panelCliente = new JPanel();
-		//		panelCliente.setBorder(BorderFactory.createTitledBorder("Clientes"));
-		//		panelClase.add(panelCliente, cons);
 		add(panelClase);
 
 		dialogoAgregarLibro = new DialogoAgregarLibro(this, controlador);
 		dialogoAgregarLibro.setVisible(false);
-//		filtrarAutor();
-//		filtrarClienteNombre();
-//		filtrarLibroTitulo();
+		//		filtrarAutor();
+		//		filtrarClienteNombre();
+		//		filtrarLibroTitulo();
 	}
 
 	public void seleccionarLibro(int id){
@@ -295,6 +317,7 @@ public class VentanaAdministrador extends JFrame {
 	public void filtroAutor(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
 	}
+
 	public void filtrarAutor() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -307,9 +330,11 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablaAutores.getModel());
 		tablaAutores.setRowSorter(trsfiltro);
 	}
+
 	public void filtroAutorID(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 0));
 	}
+
 	public void filtrarAutorID() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -322,9 +347,11 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablaAutores.getModel());
 		tablaAutores.setRowSorter(trsfiltro);
 	}
+
 	public void filtroClienteID(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 0));
 	}
+
 	public void filtrarClienteID() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -337,9 +364,11 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablaClientes.getModel());
 		tablaClientes.setRowSorter(trsfiltro);
 	}
+
 	public void filtroClienteNombre(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
 	}
+
 	public void filtrarClienteNombre() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -352,9 +381,11 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablaClientes.getModel());
 		tablaClientes.setRowSorter(trsfiltro);
 	}
+
 	public void filtroLibroTitulo(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 1));
 	}
+
 	public void filtrarLibroTitulo() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -367,9 +398,11 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablalibros.getModel());
 		tablalibros.setRowSorter(trsfiltro);
 	}
+
 	public void filtroLibroID(){
 		trsfiltro.setRowFilter(RowFilter.regexFilter(barraHerramientas.getTxBuscar().getText(), 0));
 	}
+
 	public void filtrarLibroID() {
 		barraHerramientas.getTxBuscar().addKeyListener(new KeyAdapter() {
 			public void keyReleased(final KeyEvent e) {
@@ -382,5 +415,4 @@ public class VentanaAdministrador extends JFrame {
 		trsfiltro = new TableRowSorter<TableModel>(tablalibros.getModel());
 		tablalibros.setRowSorter(trsfiltro);
 	}
-
 }

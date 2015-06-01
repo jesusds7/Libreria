@@ -10,7 +10,6 @@ import javax.swing.JWindow;
 import controlador.Controlador;
 
 public class SplashLibrary extends JWindow implements Runnable{
-
 	private static final long serialVersionUID = 1L;
 	private Thread thread;
 	private JProgressBar jProgressBarMain;

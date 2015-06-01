@@ -5,13 +5,12 @@ package modelo.entidades;
  * @author JESUS
  */
 public class Cliente {
-	
 	private String nombre;
 	private double dinero;
 	private String usuario;
 	private String contrasenia;
 	private int id;
-	private static int consecutivo;	
+	private static int consecutivo;
 
 	public Cliente(String nombre, double dinero, String usuario, String contrasenia) {
 		super();

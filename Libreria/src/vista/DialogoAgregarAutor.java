@@ -66,6 +66,7 @@ public class DialogoAgregarAutor extends JDialog{
 		add(btnAgregarImagen, cons);
 
 		txtRutaImagen = new JTextField(10);
+		txtRutaImagen.setEnabled(false);
 		cons.gridx = 1;
 		cons.gridy = 2;
 		cons.insets = new Insets(0, 0, 0, 0);
@@ -89,12 +90,12 @@ public class DialogoAgregarAutor extends JDialog{
 	}
 
 	public Autor crearAutor(){
-		Autor autor = new Autor(txtNombre.getText(), txtRutaImagen.getText());
+		Autor autor = new Autor(txtNombre.getText());
 		dispose();
 		cancelar();
 		return autor;
 	}
-
+	
 	public void cancelar(){
 		txtNombre.setText("");
 		txtRutaImagen.setText("");

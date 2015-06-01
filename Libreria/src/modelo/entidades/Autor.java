@@ -6,16 +6,10 @@ public class Autor {
 	private String imagen;
 	private String nombre;
 
-	public Autor(String nombre, String imagen) {
+	public Autor(String nombre) {
 		this.id = consecutivo;
 		this.nombre = nombre;
-		this.imagen = imagen;
 		consecutivo++;
-	}
-
-	@Override
-	public String toString() {
-		return nombre;
 	}
 
 	public int getId() {
@@ -35,5 +29,10 @@ public class Autor {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	@Override
+	public String toString() {
+		return nombre;
 	}
 }

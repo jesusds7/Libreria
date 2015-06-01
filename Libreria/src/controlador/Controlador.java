@@ -1,9 +1,14 @@
 package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import persistencia.GestorArchivoXMLCliente;
+import persistencia.GestorXMLLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -18,6 +23,7 @@ import modelo.excepcionLibroNoEncontrado.ExcepcionLibroNoEncontrado;
 import vista.DialogoAgregarAutor;
 import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
+import vista.DialogoEstadisticas;
 import vista.DialogoInicio;
 import vista.DialogoLoginUsuario;
 import vista.EditDialogoAgregarAutor;
@@ -66,6 +72,8 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String A_RDBUTTON_FILTRAR_TITULO = "FILTRAR TITULO EN USUARIO";
 	public static final String AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO = "VERIFICAR Y ENTRAR LOGIN USUARIO";
 	public static final String AC_BTN_CANCELAR_DIALOGO = "Cancelar";
+	public static final String AC_BTN_DIALO_ESTADISTICAS = "ESTADISTICAS";
+	public static final String A_EVALUAR_CAMPO_ANTERIOR = "ESTADISTICAS";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -79,6 +87,8 @@ public class Controlador extends JPanel implements ActionListener {
 	private GestorCliente gestorCliente;
 	private DialogoAgregarCliente dialogoAgregarCliente;
 	private DialogoLoginUsuario dialogoLoginUsuario;
+	private DialogoEstadisticas dialogoEstadisticas;
+	
 	public Controlador() {
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
@@ -96,6 +106,7 @@ public class Controlador extends JPanel implements ActionListener {
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
 		//		dialogoAgregarLibro.setNombreAutor(dialogoAgregarAutor.getTxtNombre().getText());
 		//		System.out.println(dialogoAgregarAutor.getTxtNombre().getText());
+		
 	}
 
 	public static void main(String[] args) {
@@ -112,10 +123,12 @@ public class Controlador extends JPanel implements ActionListener {
 			dialogoLoginUsuario.setVisible(true);
 			break;
 		case AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO:
+			//this.verificarUsuario();
 			ventanaUsuario.setVisible(true);
 			dialogoLoginUsuario.dispose();
 			break;
 		case A_MOSTRAR_DIALOGO_AGREGAR_LIBRO:
+			dialogoAgregarLibro.iniciarEstados();
 			dialogoAgregarLibro.setVisible(true);
 			break;
 		case A_AGREGAR_IMAGEN:
@@ -135,8 +148,12 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.setVisible(false);
 			break;
 		case A_AGREGAR_LIBRO:
-			agregarLibro();
-			dialogoAgregarLibro.dispose();
+			//XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
+			agregarLibro(dialogoAgregarLibro.evaluarCampos());
+			dialogoAgregarLibro.setPeaje(true);
+			break;
+		case AC_BTN_DIALO_ESTADISTICAS:
+			dialogoEstadisticas.setVisible(true);
 			break;
 		case A_REMOVER_LIBRO:
 			try {
@@ -185,7 +202,6 @@ public class Controlador extends JPanel implements ActionListener {
 			try {
 				mostarDialogoEditarAutor();
 			} catch (ExcepcionAutorNoEncontrado e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -193,7 +209,6 @@ public class Controlador extends JPanel implements ActionListener {
 			try {
 				editarAutor();
 			} catch (ExcepcionAutorNoEncontrado e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -235,6 +250,7 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		}
 	}
+	
 
 	public void mostartDialogoEditarLibro() throws ExcepcionLibroNoEncontrado{		
 		editDialogoAgregarLibro.cambiarValores(buscarLibro(ventanaAdministrador.retornarIdSeleccionLibro()));
@@ -249,6 +265,14 @@ public class Controlador extends JPanel implements ActionListener {
 	public void mostrarDialogoEditarCliente()throws ExcepcionClienteNoEncontrado{
 		editDialogoAgregarCliente.cambiarValores(buscarCliente(ventanaAdministrador.retornarIdSeleccionCliente()));
 		editDialogoAgregarCliente.setVisible(true);
+	}
+	
+	public void verificarUsuario(){
+		if (gestorCliente.verificarUsuario() == true) {
+			ventanaUsuario.setVisible(true);
+		}else {
+			JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
+		}
 	}
 
 
@@ -273,15 +297,15 @@ public class Controlador extends JPanel implements ActionListener {
 			buscarLibroNombre();
 		}else if (aux.equals(TipoBusqueda.LIBRO_ID.toString())) {
 			buscarLibroId();
-		}else if (aux.equals(TipoBusqueda.AUTHOR_NOMBRE.toString())) {
+		}else if (aux.equals(TipoBusqueda.AUTOR_NOMBRE.toString())) {
 			buscarAutorNombre();
-		}else if (aux.equals(TipoBusqueda.AUTHOR_ID.toString())) {
+		}else if (aux.equals(TipoBusqueda.AUTOR_ID.toString())) {
 			buscarAutorId();
 		}else if (aux.equals(TipoBusqueda.CLIENTE_NOMBRE.toString())) {
 			buscarClienteNombre();
 		}else if (aux.equals(TipoBusqueda.CLIENTE_ID.toString())) {
 			buscarClienteId();
-		}else if (aux.equals(TipoBusqueda.SELLECION_OPCION.toString())) {
+		}else if (aux.equals(TipoBusqueda.SELECION_OPCION.toString())) {
 			JOptionPane.showMessageDialog(null, "Debe seleccionar una opcion de busqueda", "Advertencia", 2);
 		}
 	}
@@ -359,13 +383,17 @@ public class Controlador extends JPanel implements ActionListener {
 
 	public void agregarAutor(){
 		Autor autor = dialogoAgregarAutor.crearAutor();
-		crearAutor(autor);
-	}
-
-	public void crearAutor(Autor autor){
-		if(autor != null){
+		if (autor != null) {
 			gestorAutor.agregarAutor(autor);
 			ventanaAdministrador.agregarAutorTabla(autor);
+			agregarAutorCheck();
+			
+		}
+	}
+
+	public void agregarAutorCheck(){
+		for (int i = 0; i < gestorAutor.getListaAutores().size(); i++) {
+			dialogoAgregarLibro.getListaAutor().addItem(gestorAutor.getListaAutores().get(i).getNombre());
 		}
 	}
 
@@ -381,10 +409,19 @@ public class Controlador extends JPanel implements ActionListener {
 		}
 	}
 
-	public void agregarLibro(){
+	public void agregarLibro(boolean agregar){
+		if(agregar){
 		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
+		GestorXMLLibro.guardarArchivoXml(libro);
+		dialogoAgregarLibro.dispose();
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Hay Campos vacios");
+			dialogoAgregarLibro.iniciarEstados();
+		}
+		
 	}
 
 	private void crearLibro(Libro libro, TipoGenero genero){
@@ -393,4 +430,5 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.agregarLibroTabla(libro, genero);
 		}
 	}
+
 }

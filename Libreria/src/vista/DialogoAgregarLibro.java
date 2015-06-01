@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,15 +19,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import modelo.entidades.TipoGenero;
 import controlador.Controlador;
 
 public class DialogoAgregarLibro extends JDialog{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextArea txtADescripcion;
@@ -40,13 +39,18 @@ public class DialogoAgregarLibro extends JDialog{
 	private JLabel lbNumeroCopias;
 	private JLabel lbAutor;
 	private JLabel lbGenero;
+	private JLabel lbEstadoNombre;
+	private JLabel lbEstadoDescripcion;
+	private JLabel lbEstadoValor;
+	private JLabel lbEstadoNumeroCopias;
+	private JLabel lbEstadoRuta;
 	protected JButton btnCrear;
 	private JButton btnCancelar;
 	private JButton btnAgregarImagen;
 	private JButton btnAgregarAutor;
 	private JComboBox<TipoGenero> listaGenero;
 	protected JComboBox<String> listaAutor;
-
+	private Boolean peaje = true;
 	public DialogoAgregarLibro(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
@@ -71,6 +75,12 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 0;
 		add(txtNombre, cons);
+		
+		lbEstadoNombre = new JLabel("");
+		lbEstadoNombre.setOpaque(true);
+		cons.gridx = 2;
+		cons.gridy = 0;
+		add(lbEstadoNombre, cons);
 
 		lbDescripcion = new JLabel(ConstantesGUI.T_LABEL_DESCRIPCION);
 		cons.weightx = 0.5;
@@ -85,6 +95,11 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 1;
 		add(new JScrollPane(txtADescripcion), cons);
+		
+		lbEstadoDescripcion = new JLabel(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		cons.gridx = 2;
+		cons.gridy = 1;
+		add(lbEstadoDescripcion, cons);
 
 		lbValor = new JLabel(ConstantesGUI.T_LABEL_SITIO_VALOR);
 		cons.weightx = 0.5;
@@ -97,6 +112,11 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 2;
 		add(txtValor, cons);
+		
+		lbEstadoValor = new JLabel(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		cons.gridx = 2;
+		cons.gridy = 2;
+		add(lbEstadoValor, cons);
 
 		lbNumeroCopias = new JLabel(ConstantesGUI.T_LABEL_NUMERO_COPIAS);
 		cons.gridx = 0;
@@ -107,6 +127,11 @@ public class DialogoAgregarLibro extends JDialog{
 		cons.gridx = 1;
 		cons.gridy = 3;
 		add(txtNumeroCopias, cons);
+		
+		lbEstadoNumeroCopias = new JLabel(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		cons.gridx = 2;
+		cons.gridy = 3;
+		add(lbEstadoNumeroCopias, cons);
 
 		lbAutor = new JLabel(ConstantesGUI.T_LABEL_AUTOR);
 		cons.gridx = 0;
@@ -149,10 +174,16 @@ public class DialogoAgregarLibro extends JDialog{
 		add(btnAgregarImagen, cons);
 
 		txtRutaImagen = new JTextField(10);
+		txtRutaImagen.setEnabled(false);
 		cons.gridx = 1;
 		cons.gridy = 6;
 		cons.insets = new Insets(0, 0, 0, 0);
 		add(txtRutaImagen, cons);
+		
+		lbEstadoRuta= new JLabel(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		cons.gridx = 2;
+		cons.gridy = 6;
+		add(lbEstadoRuta, cons);
 
 		btnCancelar = new JButton(ConstantesGUI.T_BTN_CANCELAR);
 		btnCancelar.addActionListener(controlador);
@@ -189,7 +220,7 @@ public class DialogoAgregarLibro extends JDialog{
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtADescripcion.getText(), txtRutaImagen.getText(),
-				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), nombreAutor, TipoGenero.ACCION);
+				Integer.parseInt(txtNumeroCopias.getText()), Double.parseDouble(txtValor.getText()), listaAutor.getSelectedItem().toString(),listaGenero.toString() );
 		dispose();
 		cancelar();
 		return libro;
@@ -222,12 +253,127 @@ public class DialogoAgregarLibro extends JDialog{
 			return null;
 		}
 	}
-
+	
+	public void iniciarEstados(){
+		lbEstadoNombre.setText(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		lbEstadoNombre.setIcon(new ImageIcon());
+		
+		lbEstadoDescripcion.setText(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		lbEstadoDescripcion.setIcon(new ImageIcon());
+		
+		lbEstadoValor.setText(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		lbEstadoValor.setIcon(new ImageIcon());
+		
+		lbEstadoNumeroCopias.setText(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		lbEstadoNumeroCopias.setIcon(new ImageIcon());
+		
+		lbEstadoRuta.setText(ConstantesGUI.T_LABEL_ESTADO_GENERAL);
+		lbEstadoRuta.setIcon(new ImageIcon());
+	}
+	
+	public boolean evaluarCampos(){
+		
+		if(txtNombre.getText().equalsIgnoreCase("")){
+			cambiarEstado(lbEstadoNombre);
+			cambiarFalso(peaje);
+		}
+	
+		if(txtADescripcion.getText().equalsIgnoreCase("")){
+			cambiarEstado(lbEstadoDescripcion);
+			cambiarFalso(peaje);
+		}
+		
+		 if(txtValor.getText().equalsIgnoreCase("")){
+			cambiarEstado(lbEstadoValor);
+			cambiarFalso(peaje);
+		}
+		
+		 if(txtNumeroCopias.getText().equalsIgnoreCase("")){
+			cambiarEstado(lbEstadoNumeroCopias);
+			cambiarFalso(peaje);
+		}
+		 if(txtRutaImagen.getText().equalsIgnoreCase("")){
+				cambiarEstado(lbEstadoRuta);
+				cambiarFalso(peaje);
+			}
+		 return peaje;
+	}
+	
+	public void cambiarFalso(boolean peaje){
+		this.peaje = false;
+	}
+	
+	public void cambiarEstado(JLabel labelEstado){
+		labelEstado.setText(ConstantesGUI.T_LABEL_ESTADO_TEXTO_MAL );
+		labelEstado.setIcon(new ImageIcon(ConstantesGUI.T_LABEL_ESTADO_MAL));
+	}
+	
 	public String getNombreAutor() {
 		return nombreAutor;
 	}
 
 	public void setNombreAutor(String nombreAutor) {
 		this.nombreAutor = nombreAutor;
-	}	
+	}
+
+	public JComboBox<String> getListaAutor() {
+		return listaAutor;
+	}
+
+	public void setListaAutor(JComboBox<String> listaAutor) {
+		this.listaAutor = listaAutor;
+	}
+	
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public JTextArea getTxtADescripcion() {
+		return txtADescripcion;
+	}
+
+	public void setTxtADescripcion(JTextArea txtADescripcion) {
+		this.txtADescripcion = txtADescripcion;
+	}
+
+	public JTextField getTxtValor() {
+		return txtValor;
+	}
+
+	public void setTxtValor(JTextField txtValor) {
+		this.txtValor = txtValor;
+	}
+
+	public JTextField getTxtRutaImagen() {
+		return txtRutaImagen;
+	}
+
+	public void setTxtRutaImagen(JTextField txtRutaImagen) {
+		this.txtRutaImagen = txtRutaImagen;
+	}
+
+	public JTextField getTxtNumeroCopias() {
+		return txtNumeroCopias;
+	}
+
+	public void setTxtNumeroCopias(JTextField txtNumeroCopias) {
+		this.txtNumeroCopias = txtNumeroCopias;
+	}
+
+	public Boolean getPeaje() {
+		return peaje;
+	}
+
+	public void setPeaje(Boolean peaje) {
+		this.peaje = peaje;
+	}
+	
+	
+	
+	
+	
 }

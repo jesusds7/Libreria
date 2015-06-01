@@ -12,11 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class JPanelSplash extends JPanel {
-
 	private static final long serialVersionUID = 1L;
-
 	private Image image;
-
 	private JLabel jLabelVersion;
 
 	public JPanelSplash() {
@@ -53,4 +50,3 @@ public class JPanelSplash extends JPanel {
 		super.paint(g);
 	}
 }
-

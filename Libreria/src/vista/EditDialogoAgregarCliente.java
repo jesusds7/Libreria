@@ -24,6 +24,7 @@ public class EditDialogoAgregarCliente extends JDialog {
 	protected JButton btnEditarCliente;
 	private JButton btnCancelar;
 	private JLabel lbDinero;
+
 	public EditDialogoAgregarCliente(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
