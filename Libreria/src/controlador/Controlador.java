@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 
 import persistencia.GestorArchivoXMLCliente;
 import persistencia.GestorXMLLibro;
+import persistencia.LeerXmlLibros;
+import persistencia.XmlLibros;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -88,6 +90,9 @@ public class Controlador extends JPanel implements ActionListener {
 	private DialogoAgregarCliente dialogoAgregarCliente;
 	private DialogoLoginUsuario dialogoLoginUsuario;
 	private DialogoEstadisticas dialogoEstadisticas;
+	private XmlLibros xmlLibros;
+	private LeerXmlLibros leerxmlLibros;
+	
 	
 	public Controlador() {
 		gestorCliente = new GestorCliente();
@@ -106,7 +111,9 @@ public class Controlador extends JPanel implements ActionListener {
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
 		//		dialogoAgregarLibro.setNombreAutor(dialogoAgregarAutor.getTxtNombre().getText());
 		//		System.out.println(dialogoAgregarAutor.getTxtNombre().getText());
-		
+
+		xmlLibros = new  XmlLibros();
+		leerxmlLibros = new LeerXmlLibros();
 	}
 
 	public static void main(String[] args) {
@@ -230,6 +237,7 @@ public class Controlador extends JPanel implements ActionListener {
 			dialogoAgregarAutor.setVisible(true);
 			break;
 		case A_AGREGAR_AUTOR:
+			;	
 			agregarAutor();
 			break;
 		case A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE:
@@ -411,11 +419,13 @@ public class Controlador extends JPanel implements ActionListener {
 
 	public void agregarLibro(boolean agregar){
 		if(agregar){
+		int contadorLibros = leerxmlLibros.leerIdXmlLibros();
 		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
-		GestorXMLLibro.guardarArchivoXml(libro);
+		xmlLibros.agregarLibroXml(libro,contadorLibros);//guarda el libro y el id es contador libros que lo obtiene de los libros que ya existen
 		dialogoAgregarLibro.dispose();
+		
 		}
 		else{
 			JOptionPane.showMessageDialog(null, "Hay Campos vacios");
