@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -20,7 +19,6 @@ public class DialogoLoginUsuario extends JDialog {
 	/**
 	 * @author Ruth Rojas
 	 */
-	
 	private static final long serialVersionUID = 1L;
 	private JLabel labelEncabezado;
 	private JButton btnIngresar;
@@ -114,23 +112,4 @@ public class DialogoLoginUsuario extends JDialog {
 	public void setTextFielContrasenia(JPasswordField textFielContrasenia) {
 		this.textFielContrasenia = textFielContrasenia;
 	}
-	
-	public void verificarUsuario(){
-		String usuario = textFielNombre.getText();
-	    String contrasenia = String.valueOf(textFielContrasenia.getPassword());
-	    
-		   if (usuario.isEmpty() || contrasenia.isEmpty()){
-	            JOptionPane.showMessageDialog(this,"Ingrese su usuario o contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-	            return;
-	    }
-	}
-	
-	public String obtenerUsuario(){
-		return textFielNombre.getText();
-	}
-	
-	public String obtenerContrasenia(){
-		return String.valueOf(textFielContrasenia.getPassword());
-	}
-	
 }

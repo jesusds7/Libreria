@@ -1,24 +1,18 @@
 package modelo.entidades;
-
-
 /** 
  * @author JESUS
  */
 public class Cliente {
+	private int id;
 	private String nombre;
 	private double dinero;
-	private String usuario;
-	private String contrasenia;
-	private int id;
 	private static int consecutivo;
 
-	public Cliente(String nombre, double dinero, String usuario, String contrasenia) {
+	public Cliente(String nombre, double dinero) {
 		super();
 		this.id = consecutivo;
 		this.nombre = nombre;
 		this.dinero = dinero;
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
 		consecutivo++;
 	}
 
@@ -44,21 +38,5 @@ public class Cliente {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getContrasenia() {
-		return contrasenia;
-	}
-
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
 	}
 }

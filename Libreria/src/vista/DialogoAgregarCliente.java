@@ -17,11 +17,9 @@ import modelo.entidades.Cliente;
 import controlador.Controlador;
 
 public class DialogoAgregarCliente extends JDialog{
-	
 	/**
 	 * 
 	 */
-	
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JTextField txtDinero;
@@ -31,13 +29,10 @@ public class DialogoAgregarCliente extends JDialog{
 	protected JButton btnCrearCliente;
 	private JButton btnCancelar;
 	private JLabel lbDinero;
-	private JLabel lbNick;
-	private JTextField txContrasenia;
 
 	public DialogoAgregarCliente(VentanaAdministrador administrador, Controlador controlador) {
 		super(administrador);
 		UIManager.put("TextField.font", new Font("Arial", Font.BOLD, 15));
-		UIManager.put("TextArea.font", new Font("Arial", Font.BOLD, 15));
 		setLayout(new GridBagLayout());
 		setTitle("Ingresar Datos Cliente");
 		setSize(600,350);
@@ -47,7 +42,7 @@ public class DialogoAgregarCliente extends JDialog{
 
 		GridBagConstraints cons = new GridBagConstraints();
 		cons.fill = GridBagConstraints.CENTER;
-		
+
 		lbNombre = new JLabel(ConstantesGUI.T_LABEL_NOMBRE);
 		cons.gridx = 1;
 		cons.gridy = 0;
@@ -61,8 +56,6 @@ public class DialogoAgregarCliente extends JDialog{
 		cons.weightx = 0.5;
 		cons.weighty = 0.5;
 		add(txtNombre, cons);
-		
-		lbDinero = new JLabel(ConstantesGUI.T_LABEL_DINERO);
 
 		labelPassword = new JLabel(ConstantesGUI.T_LABEL_PASSWORD);
 		cons.gridx = 0;
@@ -79,7 +72,7 @@ public class DialogoAgregarCliente extends JDialog{
 		cons.gridx = 0 ;
 		cons.gridy = 2;
 		add(lbDinero, cons);
-		
+
 		txtDinero = new JTextField(10);
 		cons.gridx = 2;
 		cons.gridy = 2;
@@ -101,9 +94,9 @@ public class DialogoAgregarCliente extends JDialog{
 		btnCrearCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
 		add(btnCrearCliente, cons);
 	}
-	
+
 	public Cliente crearCliente(){
-		Cliente cliente = new Cliente(txtNombre.getText(), Double.parseDouble(txtDinero.getText()), "nombre usuario", "contrasenia");
+		Cliente cliente = new Cliente(txtNombre.getText(), Double.parseDouble(txtDinero.getText()));
 		dispose();
 		cancelar();
 		return cliente;
@@ -114,7 +107,7 @@ public class DialogoAgregarCliente extends JDialog{
 		txtDinero.setText("");
 		dispose();
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

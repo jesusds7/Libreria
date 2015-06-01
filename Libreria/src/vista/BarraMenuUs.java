@@ -25,8 +25,6 @@ public class BarraMenuUs extends JMenuBar{
 
 		itemComprar = new JMenuItem();
 		itemComprar.setText(ConstantesGUI.T_MENU_ITEM_US_COMPRAR_LIBRO);
-		itemComprar.addActionListener(controlador);
-		itemComprar.setActionCommand(Controlador.A_MOSTRAR_DIAOLOGO_COMPRAR);
 		menuArchivo.add(itemComprar);
 
 		itemBuscar = new JMenuItem();

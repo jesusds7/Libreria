@@ -27,7 +27,6 @@ import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
 import vista.DialogoEstadisticas;
 import vista.DialogoInicio;
-import vista.DialogoListaLibros;
 import vista.DialogoLoginUsuario;
 import vista.EditDialogoAgregarAutor;
 import vista.EditDialogoAgregarCliente;
@@ -77,7 +76,6 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String AC_BTN_CANCELAR_DIALOGO = "Cancelar";
 	public static final String AC_BTN_DIALO_ESTADISTICAS = "ESTADISTICAS";
 	public static final String A_EVALUAR_CAMPO_ANTERIOR = "ESTADISTICAS";
-	public static final String A_MOSTRAR_DIAOLOGO_COMPRAR = "MOSTRAR_COMPRAR";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -94,7 +92,6 @@ public class Controlador extends JPanel implements ActionListener {
 	private DialogoEstadisticas dialogoEstadisticas;
 	private XmlLibros xmlLibros;
 	private LeerXmlLibros leerxmlLibros;
-	private DialogoListaLibros dialogoListaLibros;
 	
 	
 	public Controlador() {
@@ -107,7 +104,6 @@ public class Controlador extends JPanel implements ActionListener {
 		dialogoAgregarLibro = new DialogoAgregarLibro(ventanaAdministrador, this);
 		editDialogoAgregarLibro = new EditDialogoAgregarLibro(ventanaAdministrador, this);
 		editDialogoAgregarAutor = new EditDialogoAgregarAutor(ventanaAdministrador, this);
-		dialogoListaLibros = new DialogoListaLibros();
 		editDialogoAgregarCliente = new EditDialogoAgregarCliente(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
 		ventanaUsuario = new VentanaUsuario(this);
@@ -115,7 +111,6 @@ public class Controlador extends JPanel implements ActionListener {
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
 		//		dialogoAgregarLibro.setNombreAutor(dialogoAgregarAutor.getTxtNombre().getText());
 		//		System.out.println(dialogoAgregarAutor.getTxtNombre().getText());
-
 		xmlLibros = new  XmlLibros();
 		leerxmlLibros = new LeerXmlLibros();
 	}
@@ -134,7 +129,6 @@ public class Controlador extends JPanel implements ActionListener {
 			dialogoLoginUsuario.setVisible(true);
 			break;
 		case AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO:
-			//this.verificarUsuario();
 			ventanaUsuario.setVisible(true);
 			dialogoLoginUsuario.dispose();
 			break;
@@ -161,7 +155,6 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_AGREGAR_LIBRO:
 			//XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
 			agregarLibro(dialogoAgregarLibro.evaluarCampos());
-			dialogoListaLibros.agregarLibroLista(dialogoAgregarLibro.crearLibro());
 			dialogoAgregarLibro.setPeaje(true);
 			break;
 		case AC_BTN_DIALO_ESTADISTICAS:
@@ -261,8 +254,6 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_AGREGAR_IMAGEN_AUTOR:
 			dialogoAgregarAutor.importarImagenAutor();
 			break;
-		case A_MOSTRAR_DIAOLOGO_COMPRAR:
-			dialogoListaLibros.setVisible(true);
 		}
 	}
 	
@@ -280,14 +271,6 @@ public class Controlador extends JPanel implements ActionListener {
 	public void mostrarDialogoEditarCliente()throws ExcepcionClienteNoEncontrado{
 		editDialogoAgregarCliente.cambiarValores(buscarCliente(ventanaAdministrador.retornarIdSeleccionCliente()));
 		editDialogoAgregarCliente.setVisible(true);
-	}
-	
-	public void verificarUsuario(){
-		if (gestorCliente.verificarUsuario() == true) {
-			ventanaUsuario.setVisible(true);
-		}else {
-			JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
-		}
 	}
 
 
@@ -426,11 +409,11 @@ public class Controlador extends JPanel implements ActionListener {
 
 	public void agregarLibro(boolean agregar){
 		if(agregar){
-		int contadorLibros = leerxmlLibros.leerIdXmlLibros();
+		int contadorLibros = leerxmlLibros.leerXmlLibros();
 		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
-		xmlLibros.agregarLibroXml(libro,contadorLibros);//guarda el libro y el id es contador libros que lo obtiene de los libros que ya existen
+		xmlLibros.agregarLibroXml(libro,contadorLibros);
 		dialogoAgregarLibro.dispose();
 		
 		}
