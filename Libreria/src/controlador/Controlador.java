@@ -106,6 +106,7 @@ public class Controlador extends JPanel implements ActionListener {
 		editDialogoAgregarAutor = new EditDialogoAgregarAutor(ventanaAdministrador, this);
 		editDialogoAgregarCliente = new EditDialogoAgregarCliente(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
+		dialogoEstadisticas = new DialogoEstadisticas(this);
 		ventanaUsuario = new VentanaUsuario(this);
 		//		dialogoPrimario.setVisible(true); Se hace un comentario para que salga primero el Splash luego el panel Principal
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
@@ -158,7 +159,7 @@ public class Controlador extends JPanel implements ActionListener {
 			dialogoAgregarLibro.setPeaje(true);
 			break;
 		case AC_BTN_DIALO_ESTADISTICAS:
-			dialogoEstadisticas.setVisible(true);
+			dialogoEstadisticas.mostrar();
 			break;
 		case A_REMOVER_LIBRO:
 			try {

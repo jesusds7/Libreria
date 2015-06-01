@@ -27,6 +27,7 @@ public class BarraMenuAdm extends JMenuBar {
 	private JMenuItem itemAgregarCliente;
 	private JMenuItem itemSalir;
 	private JMenu menuEstadisticas;
+	private JMenuItem mostrarEstadisticas;
 	private JMenu menuPreferencias;
 	private JMenu menuAyuda;
 
@@ -90,7 +91,7 @@ public class BarraMenuAdm extends JMenuBar {
 		menuEliminar.add(itemRemoverLibro);
 		menuArchivo.add(menuEliminar);
 
-		itemSalir = new JMenuItem(ConstantesGUI.T_MENU_ITEM_SALIR);
+		itemSalir = new JMenu(ConstantesGUI.T_MENU_ITEM_SALIR);
 		itemSalir.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_SALIR));
 		itemSalir.addActionListener(controlador);
 		itemSalir.setActionCommand(Controlador.A_SALIR);
@@ -101,8 +102,12 @@ public class BarraMenuAdm extends JMenuBar {
 		add(menuPreferencias);
 
 		menuEstadisticas = new JMenu(ConstantesGUI.T_MENU_ESTADISTICAS);
-		menuEstadisticas.addActionListener(controlador);
-		menuEstadisticas.setActionCommand(Controlador.AC_BTN_DIALO_ESTADISTICAS);
+		
+		mostrarEstadisticas = new JMenuItem("Mostrar");
+		mostrarEstadisticas.addActionListener(controlador);
+		mostrarEstadisticas.setActionCommand(Controlador.AC_BTN_DIALO_ESTADISTICAS);
+		menuEstadisticas.add(mostrarEstadisticas);
+		
 		add(menuEstadisticas);
 
 		menuAyuda = new JMenu(ConstantesGUI.T_MENU_AYUDA);
