@@ -129,4 +129,8 @@ public class ConstantesGUI {
 	public static final String TITULO_DIAL_AYUD = "Ayuda";
 	public static final int ANCH_DIAL_AYUD = 400;
 	public static final int ALTO_DIAL_AYUD = 400;
+	/**
+	 * Constantes diaologo lista de libros
+	 */
+	public static final String T_TITULO_DIAL_LISTA_LIBROS = "Lista de libros disponibles";
 }

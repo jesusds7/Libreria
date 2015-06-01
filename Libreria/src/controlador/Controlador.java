@@ -27,6 +27,7 @@ import vista.DialogoAgregarCliente;
 import vista.DialogoAgregarLibro;
 import vista.DialogoEstadisticas;
 import vista.DialogoInicio;
+import vista.DialogoListaLibros;
 import vista.DialogoLoginUsuario;
 import vista.EditDialogoAgregarAutor;
 import vista.EditDialogoAgregarCliente;
@@ -76,6 +77,7 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String AC_BTN_CANCELAR_DIALOGO = "Cancelar";
 	public static final String AC_BTN_DIALO_ESTADISTICAS = "ESTADISTICAS";
 	public static final String A_EVALUAR_CAMPO_ANTERIOR = "ESTADISTICAS";
+	public static final String A_MOSTRAR_DIAOLOGO_COMPRAR = "MOSTRAR_COMPRAR";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -92,6 +94,7 @@ public class Controlador extends JPanel implements ActionListener {
 	private DialogoEstadisticas dialogoEstadisticas;
 	private XmlLibros xmlLibros;
 	private LeerXmlLibros leerxmlLibros;
+	private DialogoListaLibros dialogoListaLibros;
 	
 	
 	public Controlador() {
@@ -104,6 +107,7 @@ public class Controlador extends JPanel implements ActionListener {
 		dialogoAgregarLibro = new DialogoAgregarLibro(ventanaAdministrador, this);
 		editDialogoAgregarLibro = new EditDialogoAgregarLibro(ventanaAdministrador, this);
 		editDialogoAgregarAutor = new EditDialogoAgregarAutor(ventanaAdministrador, this);
+		dialogoListaLibros = new DialogoListaLibros();
 		editDialogoAgregarCliente = new EditDialogoAgregarCliente(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
 		ventanaUsuario = new VentanaUsuario(this);
@@ -157,6 +161,7 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_AGREGAR_LIBRO:
 			//XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
 			agregarLibro(dialogoAgregarLibro.evaluarCampos());
+			dialogoListaLibros.agregarLibroLista(dialogoAgregarLibro.crearLibro());
 			dialogoAgregarLibro.setPeaje(true);
 			break;
 		case AC_BTN_DIALO_ESTADISTICAS:
@@ -256,6 +261,8 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_AGREGAR_IMAGEN_AUTOR:
 			dialogoAgregarAutor.importarImagenAutor();
 			break;
+		case A_MOSTRAR_DIAOLOGO_COMPRAR:
+			dialogoListaLibros.setVisible(true);
 		}
 	}
 	
