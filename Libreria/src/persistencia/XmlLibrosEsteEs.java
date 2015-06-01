@@ -20,7 +20,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-public class XmlLibros {
+public class XmlLibrosEsteEs {
 	
 
 	public void agregarLibroXml(Libro libro,int c){
@@ -49,6 +49,7 @@ public class XmlLibros {
 			
 			libroe.appendChild(idLibroe);
 			libroe.appendChild(nombreLibro);
+			libroe.appendChild(desLibro);
 			nodoRaiz.appendChild(libroe);
 			
 			TransformerFactory transFactory = TransformerFactory.newInstance();

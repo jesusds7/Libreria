@@ -9,8 +9,10 @@ import javax.swing.JPanel;
 
 import persistencia.GestorArchivoXMLCliente;
 import persistencia.GestorXMLLibro;
+import persistencia.LeerXmlAutores;
 import persistencia.LeerXmlLibros;
-import persistencia.XmlLibros;
+import persistencia.XmlAutor;
+import persistencia.XmlLibrosEsteEs;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -90,9 +92,10 @@ public class Controlador extends JPanel implements ActionListener {
 	private DialogoAgregarCliente dialogoAgregarCliente;
 	private DialogoLoginUsuario dialogoLoginUsuario;
 	private DialogoEstadisticas dialogoEstadisticas;
-	private XmlLibros xmlLibros;
+	private XmlLibrosEsteEs xmlLibros;
 	private LeerXmlLibros leerxmlLibros;
-	
+	private XmlAutor xmlAutor;
+	private LeerXmlAutores leerXmlAutores;
 	
 	public Controlador() {
 		gestorCliente = new GestorCliente();
@@ -107,13 +110,16 @@ public class Controlador extends JPanel implements ActionListener {
 		editDialogoAgregarCliente = new EditDialogoAgregarCliente(ventanaAdministrador, this);
 		ventanaAdministrador = new VentanaAdministrador(this);
 		dialogoEstadisticas = new DialogoEstadisticas(this);
+		
 		ventanaUsuario = new VentanaUsuario(this);
 		//		dialogoPrimario.setVisible(true); Se hace un comentario para que salga primero el Splash luego el panel Principal
 		dialogoLoginUsuario = new DialogoLoginUsuario(this);
 		//		dialogoAgregarLibro.setNombreAutor(dialogoAgregarAutor.getTxtNombre().getText());
 		//		System.out.println(dialogoAgregarAutor.getTxtNombre().getText());
-		xmlLibros = new  XmlLibros();
+		xmlLibros = new  XmlLibrosEsteEs();
 		leerxmlLibros = new LeerXmlLibros();
+		xmlAutor = new XmlAutor();
+		leerXmlAutores = new LeerXmlAutores();
 	}
 
 	public static void main(String[] args) {
@@ -235,8 +241,7 @@ public class Controlador extends JPanel implements ActionListener {
 		case A_MOSTAR_AGREGAR_AUTOR:
 			dialogoAgregarAutor.setVisible(true);
 			break;
-		case A_AGREGAR_AUTOR:
-			;	
+		case A_AGREGAR_AUTOR:	
 			agregarAutor();
 			break;
 		case A_MOSTRAR_DIALOGO_AGREGAR_CLIENTE:
@@ -383,9 +388,11 @@ public class Controlador extends JPanel implements ActionListener {
 	public void agregarAutor(){
 		Autor autor = dialogoAgregarAutor.crearAutor();
 		if (autor != null) {
+			int contadorLibros = leerXmlAutores.leerXmlAutores();
 			gestorAutor.agregarAutor(autor);
 			ventanaAdministrador.agregarAutorTabla(autor);
 			agregarAutorCheck();
+			xmlAutor.agregarAutorXml(autor, contadorLibros);
 			
 		}
 	}

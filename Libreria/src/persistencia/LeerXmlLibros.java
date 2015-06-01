@@ -23,27 +23,10 @@ public class LeerXmlLibros {
 		    Element raiz = documento.getDocumentElement();
 
 		    //Obtener la lista de nodos que tienen etiqueta "EMPLEADO"
-		    NodeList listaEmpleados = raiz.getElementsByTagName("Libro");
-		    libros = listaEmpleados.getLength();
+		    NodeList listaLibros = raiz.getElementsByTagName("Libro");
+		    libros = listaLibros.getLength();
 		  
-		    //Recorrer la lista de empleados
-//		    for(int i=0; i<listaEmpleados.getLength(); i++) {   
-//		        //Obtener de la lista un empleado tras otro
-//		        Node empleado = listaEmpleados.item(i);
-//		    
-//		        
-//		        System.out.println("Empleado "+i);
-//		        System.out.println("==========");    
-//
-//		        //Obtener la lista de los datos que contiene ese empleado
-//		        NodeList datosEmpleado = empleado.getChildNodes();
-//		        //Recorrer la lista de los datos que contiene el empleado
-//		        for(int j=0; j<datosEmpleado.getLength(); j++) {
-//		           this.libros=j;
-//		                 
-//		        }
-//		       
-//		    }
+
 		 
 		} catch (SAXException ex) {
 		    System.out.println("ERROR: El formato XML del fichero no es correcto\n"+ex.getMessage());
@@ -56,7 +39,6 @@ public class LeerXmlLibros {
 		    ex.printStackTrace();
 		}
 		  return libros;
-		// return libros;
 	}
 
 }

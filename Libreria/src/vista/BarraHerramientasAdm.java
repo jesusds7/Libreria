@@ -75,6 +75,9 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnRemoverCliente.addActionListener(controlador);
 		btnRemoverCliente.setActionCommand(Controlador.A_REMOVER_CLIENTE);
 		add(btnRemoverCliente);
+		addSeparator();
+		txBuscar = new JTextField();
+		add(txBuscar);
 
 		btnBuscar = new JButton();
 		btnBuscar.setIcon(createImageIcon(ConstantesGUI.I_ICONO_BTN_BUSCAR));
@@ -82,9 +85,7 @@ public class BarraHerramientasAdm extends JToolBar {
 		btnBuscar.addActionListener(controlador);
 		btnBuscar.setActionCommand(Controlador.A_BUSCAR_LIBRO);
 		add(btnBuscar);
-		txBuscar = new JTextField();
-		add(txBuscar);
-
+		
 		listaBusqueda = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
 		add(listaBusqueda);
 	}
