@@ -114,4 +114,8 @@ public class DialogoEstadisticas extends JDialog {
 
 		}
 	}
+	
+	public void mostrar(){
+		setVisible(true);
+	}
 }
