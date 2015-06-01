@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
 public class XmlLibros {
 	
 
-	public void agregarLibroXml(Libro libro,int c){
+	public void agregarLibroXml(Libro libro,int id){
 		try{
 			
 			
@@ -38,7 +38,7 @@ public class XmlLibros {
 			Element libroe = doc.createElement("Libro");
 			
 			Element idLibroe = doc.createElement("Id");
-			idLibroe.setTextContent(Integer.toString(c));
+			idLibroe.setTextContent(Integer.toString(id));
 			
 			Element nombreLibro = doc.createElement("Nombre");
 			nombreLibro.setTextContent(libro.getNombre());
