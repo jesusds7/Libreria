@@ -1,6 +1,8 @@
 package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -71,6 +73,7 @@ public class Controlador extends JPanel implements ActionListener {
 	public static final String AC_BTN_VERIFICAR_Y_ENTRAR_POR_USUARIO = "VERIFICAR Y ENTRAR LOGIN USUARIO";
 	public static final String AC_BTN_CANCELAR_DIALOGO = "Cancelar";
 	public static final String AC_BTN_DIALO_ESTADISTICAS = "ESTADISTICAS";
+	public static final String A_EVALUAR_CAMPO_ANTERIOR = "ESTADISTICAS";
 	private VentanaAdministrador ventanaAdministrador;
 	private DialogoInicio dialogoPrimario;
 	private DialogoAgregarLibro dialogoAgregarLibro;
@@ -123,6 +126,7 @@ public class Controlador extends JPanel implements ActionListener {
 			dialogoLoginUsuario.dispose();
 			break;
 		case A_MOSTRAR_DIALOGO_AGREGAR_LIBRO:
+			dialogoAgregarLibro.iniciarEstados();
 			dialogoAgregarLibro.setVisible(true);
 			break;
 		case A_AGREGAR_IMAGEN:
@@ -143,8 +147,8 @@ public class Controlador extends JPanel implements ActionListener {
 			break;
 		case A_AGREGAR_LIBRO:
 			//XmlLibro.crearXml(gestorLibro.getListaLibros(), "/data/arraylibros.xml");
-			agregarLibro();
-			dialogoAgregarLibro.dispose();
+			agregarLibro(dialogoAgregarLibro.evaluarCampos());
+			dialogoAgregarLibro.setPeaje(true);
 			break;
 		case AC_BTN_DIALO_ESTADISTICAS:
 			dialogoEstadisticas.setVisible(true);
@@ -373,6 +377,7 @@ public class Controlador extends JPanel implements ActionListener {
 			gestorAutor.agregarAutor(autor);
 			ventanaAdministrador.agregarAutorTabla(autor);
 			agregarAutorCheck();
+			
 		}
 	}
 
@@ -394,11 +399,19 @@ public class Controlador extends JPanel implements ActionListener {
 		}
 	}
 
-	public void agregarLibro(){
+	public void agregarLibro(boolean agregar){
+		if(agregar){
 		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
 		GestorXMLLibro.guardarArchivoXml(libro);
+		dialogoAgregarLibro.dispose();
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Hay Campos vacios");
+			dialogoAgregarLibro.iniciarEstados();
+		}
+		
 	}
 
 	private void crearLibro(Libro libro, TipoGenero genero){
@@ -407,4 +420,5 @@ public class Controlador extends JPanel implements ActionListener {
 			ventanaAdministrador.agregarLibroTabla(libro, genero);
 		}
 	}
+
 }

@@ -96,6 +96,10 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_AGREGAR_CLIENTE = "Agregar Cliente";
 	public static final String T_TABLA_AUTOR = "Autor";
 	public static final String T_LABEL_DINERO = "Dinero";
+	public static final String T_LABEL_ESTADO_GENERAL="";
+	public static final String T_LABEL_ESTADO_MAL = "src/imagenes/bad.png" ;
+	public static final String T_LABEL_ESTADO_TEXTO_MAL = "Campo vacio" ;
+	
 	/**
 	 * dialogo editar autor
 	 */
