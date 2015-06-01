@@ -14,7 +14,7 @@ import org.xml.sax.SAXException;
 
 public class LeerXmlLibros {
 	private int libros;
-	public int leerXmlLibros(){
+	public int leerIdXmlLibros(){
 		try {
 		    DocumentBuilderFactory fábricaCreadorDocumento = DocumentBuilderFactory.newInstance();
 		    DocumentBuilder creadorDocumento = fábricaCreadorDocumento.newDocumentBuilder();
@@ -41,5 +41,7 @@ public class LeerXmlLibros {
 		  return libros;
 		
 	}
+	
+	
 
 }

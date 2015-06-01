@@ -409,11 +409,11 @@ public class Controlador extends JPanel implements ActionListener {
 
 	public void agregarLibro(boolean agregar){
 		if(agregar){
-		int contadorLibros = leerxmlLibros.leerXmlLibros();
+		int contadorLibros = leerxmlLibros.leerIdXmlLibros();
 		TipoGenero genero = dialogoAgregarLibro.seleccionBox();
 		Libro libro = dialogoAgregarLibro.crearLibro();
 		crearLibro(libro, genero);
-		xmlLibros.agregarLibroXml(libro,contadorLibros);
+		xmlLibros.agregarLibroXml(libro,contadorLibros);//guarda el libro y el id es contador libros que lo obtiene de los libros que ya existen
 		dialogoAgregarLibro.dispose();
 		
 		}
